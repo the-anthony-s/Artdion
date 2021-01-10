@@ -1,0 +1,11 @@
+%h2 Sign up
+= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form'}) do |f|
+  = render "users/shared/error_messages", resource: resource
+  = f.input :first_name, autofocus: false, error: 'Invalid first name', label: false, input_html: {autocomplete: 'first-name', placeholder: 'First name', class: 'auth-form__control', tabindex: '1'}, required: true
+  = f.input :last_name, autofocus: false, error: 'Invalid last name', label: false, input_html: {autocomplete: 'last-name', placeholder: 'Last name', class: 'auth-form__control', tabindex: '2'}, required: true
+  = f.input :email, autofocus: false, error: 'Invalid email address', label: false, input_html: {autocomplete: 'email', placeholder: 'Email address', class: 'auth-form__control', tabindex: '3'}, required: true
+  = f.input :password, autofocus: false, error: 'Invalid password (minimum 6 characters)', label: false, input_html: {autocomplete: 'new-password', placeholder: 'Password', class: 'auth-form__control', tabindex: '4'}, required: true
+  = f.input :username, autofocus: false, error: 'Invalid email username (only letters, numbers, and underscores)', label: false, input_html: {autocomplete: 'off', placeholder: 'Username', class: 'auth-form__control', tabindex: '5'}, required: true
+  .actions
+    = f.submit "Sign up"
+= render "users/shared/links"

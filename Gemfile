@@ -53,4 +53,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
+
+
+gem 'haml-rails', '~> 2.0'
+gem 'autoprefixer-rails'
 gem 'hotwire-rails'
+gem 'devise'
+gem 'simple_form'
+gem 'friendly_id', '~> 5.4.0'
