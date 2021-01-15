@@ -1,0 +1,4 @@
+= turbo_frame_tag dom_id(photo) do
+  %div= photo.name
+  %div(id="PhotoCard#{photo.id}_likes")
+    = render partial: "photos/photo-like", locals: { photo: photo }

@@ -18,11 +18,16 @@ Rails.application.routes.draw do
     unlocks: 'users/unlocks'
   }
 
-  # devise_scope :user do
-  #   resources :photos, module: :users, only: %i[new create edit update]
-  # end
+  devise_scope :user do
+    resources :photos, module: :users, only: %i[new create edit update]
+  end
 
   resources :users, path: ''
+
+  # Photos
+  resources :photos, path: 'photos', only: %i[index show] do
+    resource :like, module: :photos, only: %i[create destroy]
+  end
 
   root 'pages#index'
 end

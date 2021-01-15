@@ -1,0 +1,45 @@
+#AppContainer::before {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.3s linear,opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  content: '';
+  z-index: var(--zindex-app);
+}
+
+.app {
+  width: 100%;
+  max-width: var(--content-page);
+  min-height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.app-body {
+  flex: 1;
+  position: relative;
+  display: block;
+}
+
+
+//--------------
+// SCROLL BLOCKER
+//--------------
+.app-noscroll {
+  overflow-y: scroll !important;
+  overflow: hidden !important;
+  height: 100% !important;
+  margin-top: 0 !important;
+}

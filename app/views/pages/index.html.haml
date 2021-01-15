@@ -1,2 +1,4 @@
-%h1 Pages#index
-%p Find me in app/views/pages/index.html.erb
+.container
+  -# = turbo_stream_from "photos"
+  -# = turbo_frame_tag "photos" do
+  = render @photos

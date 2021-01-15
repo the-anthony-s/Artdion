@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: var(--container-width-default);
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-container);
+  padding-left: var(--space-container);
+}
+
+.container--tight {
+  max-width: var(--container-width-tight);
+}
+
+.container--wide {
+  max-width: var(--container-width-wide);
+}
+
+.container--media {
+  padding-right: 0;
+  padding-left: 0;
+
+  @include bp(sm) {
+    padding-right: var(--space-container);
+    padding-left: var(--space-container);
+  }
+}

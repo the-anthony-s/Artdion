@@ -1,0 +1,49 @@
+:root, body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  //---------------------
+  // ELEMENTS
+  //---------------------
+  --color-border-default: hsla(0,0%,60%,.42);
+  --color-border-dark: hsla(0,0%,60%,.72);
+
+  --color-navbar: #151516;
+
+
+  //---------------------
+  // MAIN COLORS
+  //---------------------
+  --color-primary-ligher: #f6f5f3;
+  --color-primary-light: #eae8e4;
+  --color-primary: #19110b;
+  --color-primary-dark: #0c3550;
+  --color-primary-darker: #00253e;
+
+  --color-accent: #8b7167;
+  --color-accent-dark: #735e55;
+  --color-accent-darker: #504039;
+
+  --color-white-darker: #f1f1f1;
+  --color-white-dark: #f9f9f9;
+  --color-white: #ffffff;
+  --color-black: var(--color-primary);
+  --color-black-light: #262626;
+  --color-black-lighter: var(--color-primary-ligher);
+
+  --color-red: #ff6766;
+
+  --color-bg: #ffffff;
+  --color-contrast-lower: #f6f5f3;
+  --color-contrast-low: #eae8e4;
+  --color-contrast-medium: #aeaeae;
+  --color-contrast-high: #565656;
+  --color-contrast-higher: #333333;
+
+
+  //---------------------
+  // BORDER COLOR
+  //---------------------
+  --color-border: #eae8e4;
+  --color-border-dark: var(--color-primary);
+}

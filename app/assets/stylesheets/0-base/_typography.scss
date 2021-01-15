@@ -1,0 +1,98 @@
+:root {
+  // font family
+  --font-primary: "Neue Montreal", Arial, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, Helvetica, sans;
+
+  // font size
+  --text-base-size: 14px; // body font-size
+  --text-scale-ratio: 1;
+
+  @media (max-height: 690px) {
+    --text-scale-ratio: 0.925;
+  }
+
+  @media (max-height: 800px) {
+    --text-scale-ratio: 0.95;
+  }
+
+  @media (max-height: 920px) {
+    --text-scale-ratio: 0.975;
+  }
+  
+  // capital letters - used in combo with the lhCrop mixin
+  --font-primary-capital-letter: 1;
+}
+
+
+:root, * {
+  --font-weight-regular: 100;
+  --font-weight-medium: 600;
+  --font-weight-bold: 900;
+
+  --font-size-small: 13px;
+  --font-size-body: 14px;
+  --font-size-large: 16px;
+
+  --line-height-small: 1.4;
+  --line-height-body: 1.5rem;
+  --line-height-large: 1.8rem;
+
+  --font-size-h1: 2.125rem;
+  --font-size-h2: 1.85rem;
+  --font-size-h3: 1.45rem;
+  --font-size-h4: 1.25rem;
+  --font-size-h5: 1rem;
+  --font-size-h6: .8rem;
+  
+  --line-height-h1: 2.5rem;
+  --line-height-h2: 2.2rem;
+  --line-height-h3: 1.8rem;
+  --line-height-h4: 1.6rem;
+  --line-height-h5: 1.4rem;
+  --line-height-h6: 1.2rem;
+
+  --letter-spacing-h1: 0;
+  --letter-spacing-h2: 0;
+  --letter-spacing-h3: 0;
+  --letter-spacing-h4: 0;
+  --letter-spacing-h5: 0;
+  --letter-spacing-h6: 0;
+
+  --font-weight-h1: var(--font-weight-bold);
+  --font-weight-h2: var(--font-weight-bold);
+  --font-weight-h3: var(--font-weight-bold);
+  --font-weight-h4: var(--font-weight-bold);
+  --font-weight-h5: var(--font-weight-medium);
+  --font-weight-h6: var(--font-weight-medium);
+
+
+  @include bp(md) {
+    --line-height-h1: 1.21875;
+    --line-height-h2: 1.21875;
+    --line-height-h3: 1.21875;
+    --line-height-h4: 1.21875;
+    --line-height-h5: 1.21875;
+    --line-height-h6: 1.21875;
+
+    --font-size-h1: calc((.01834*100vw + (22.29901px))*var(--text-scale-ratio));
+    --font-size-h2: calc((.01975*100vw + (11.70663px))*var(--text-scale-ratio));
+    --font-size-h3: calc((.01635*100vw + (12.33427px))*var(--text-scale-ratio));
+    --font-size-h4: calc((.01435*100vw + (12.33427px))*var(--text-scale-ratio));
+    --font-size-h5: calc((.00735*100vw + (12.33427px))*var(--text-scale-ratio));
+    --font-size-h6: calc((.00335*100vw + (12.33427px))*var(--text-scale-ratio));
+  }
+}
+
+@supports(--css: variables) {
+}
+
+body {
+  font-family: var(--font-primary);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-primary);
+  font-weight: 700;
+}
+
+// font family
+.font-primary { font-family: var(--font-primary); }

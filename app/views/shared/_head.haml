@@ -1,0 +1,25 @@
+-# Title
+%title= content_for?(:title) ? "#{yield(:title)} — Gallery" : "Gallery — Online world gallery"
+
+-# meta tags
+%meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+%meta{content: 'width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no', name: 'viewport'}/
+%meta{'http-equiv': 'X-UA-Compatible', content: 'IE=edge'}
+%meta{name: "HandheldFriendly", content: "true"}
+%meta{name: "MobileOptimized", content: "176"}
+%meta{name: "googlebot", content: "index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"}
+%meta{name: "robots", content: "index, follow"}/
+
+-# include SEO tags
+-# include Favicon
+
+-# Assets
+%script{crossorigin: "anonymous", src: "https://kit.fontawesome.com/15b6ad9e55.js"}
+= csrf_meta_tags
+= csp_meta_tag
+
+= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload'
+= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload'
+= javascript_pack_tag 'application', 'data-turbo-track': 'reload'
+
+= yield :head

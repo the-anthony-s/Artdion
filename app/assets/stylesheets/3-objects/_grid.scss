@@ -1,0 +1,12 @@
+.grid {
+  display: grid;
+}
+
+
+
+//-------------
+// Column
+//-------------
+.col {
+  grid-column-end: span 1;
+}

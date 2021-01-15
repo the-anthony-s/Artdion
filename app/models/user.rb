@@ -6,6 +6,9 @@ class User < ApplicationRecord
          :confirmable, :trackable,
          authentication_keys: [:login]
 
+  # References
+  has_many :photos
+
   ## Fields
   validate :validate_username
   validates :username, presence: true, uniqueness: { case_sensitive: false }
@@ -15,6 +18,11 @@ class User < ApplicationRecord
   ## Friendly ID
   extend FriendlyId
   friendly_id :username, use: :slugged
+
+  ## Check if model liked
+  def likes?(likable)
+    likable.likes.where(user_id: id).exists?
+  end
 
   ## User Email and Nickname for login
   attr_writer :login
