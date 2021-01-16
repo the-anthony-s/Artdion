@@ -1,4 +1,12 @@
 = simple_form_for(photo, local: true) do |f|
+  %div(style="position: relative;")
+    = f.label :image, 'Upload your file'
+    = image_tag photo.image_url(:S300).to_s, 'data-src': photo.image_url, class: "lazy file-upload-preview photo-upload__view__photo", id: "NewPhoto"
+    = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }
+    = f.hidden_field :image, value: photo.cached_image_data, id: "photo-image-upload-result"
+  %br/
+  %br/
+  %br/
   = f.input :name
   %br/
   = f.input :description

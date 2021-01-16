@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :photos
 
   ## Fields
+  include ImageUploader::Attachment(:image)
+
   validate :validate_username
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true

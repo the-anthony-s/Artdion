@@ -1,4 +1,22 @@
-= turbo_frame_tag dom_id(photo) do
-  %div= photo.name
-  %div(id="PhotoCard#{photo.id}_likes")
-    = render partial: "photos/photo-like", locals: { photo: photo }
+- show_user = true if show_user == nil || show_user == true
+- show_details = true if show_details == nil || show_details == true
+
+%div(class="col")
+  %div(class="photoCard" itemListElement="itemListElement" itemscope itemtype="http://schema.org/ListItem")
+    %meta{:content => "#{photo.name}", :itemprop => "name"}/
+    %meta{:content => "#{photo_counter}", :itemprop => "position"}/
+    %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
+
+    = link_to photo, class: 'photoCard-media' do
+      = photo_card(photo)
+
+
+    - if show_details
+      %div(class="photoCard-info")
+        %div(class="photoCard-info-heading")
+          = link_to photo, class: 'link link--url' do
+            %span(class="display-name text--body")= photo.name
+        %div(class="photoCard-info-action")
+          %ul(class="photoCard-actions")
+            %li(class="photoCard-actions--item" id="PhotoCard#{photo.id}_likes")
+              = render partial: "photos/photo-like", locals: { photo: photo }

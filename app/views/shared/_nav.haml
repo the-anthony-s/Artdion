@@ -20,7 +20,8 @@
         - if user_signed_in?
           %div(class="nav-account__profile dropdown-item")
             = button_tag(class: 'nav-profile dropdown-trigger') do
-              %span(class="avatar")= user_initials(current_user)
+              %span(class="avatar")
+                = render partial: 'users/shared/avatar', locals: { user: current_user }
             %div(class="nav-dropdown dropdown" tabindex="-1")
               %ul(class="dropdown-links")
                 %li(class="dropdown-links__item")

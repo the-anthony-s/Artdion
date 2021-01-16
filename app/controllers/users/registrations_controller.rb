@@ -22,7 +22,7 @@ module Users
       params.require(:user).permit(
         :username, :first_name, :last_name,
         :email, :password, :password_confirmation,
-        :current_password
+        :current_password, :image
       )
     end
 

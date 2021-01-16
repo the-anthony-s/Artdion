@@ -1,0 +1,38 @@
+.link {
+  color: inherit;
+  font-weight: var(--text-weight-medium);
+	text-decoration: none;
+  text-transform: none;
+  display: inline-flex;
+  align-items: center;
+
+  &:hover, 
+  &:focus, 
+  &:active {
+  	text-decoration: underline;
+  }
+
+  & span+span {
+    padding-left: 6px;
+  }
+}
+
+
+
+.link--secondary {
+  color: var(--color-contrast-high);
+
+  &:hover, 
+  &:focus, 
+  &:active {
+    color: var(--color-contrast-higher);
+  	text-decoration: none;
+  }
+}
+
+
+.link--url {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}

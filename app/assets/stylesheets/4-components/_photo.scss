@@ -1,0 +1,87 @@
+.photoCard {
+  position: relative;
+  display: block;
+}
+
+.photoCard-media {
+  position: relative;
+  display: block;
+
+  & > img {
+    width: 100%;
+    max-width: 100%;
+    background: var(--color-contrast-lower);
+    display: block;
+    height: auto;
+  }
+
+  & > div {
+    height: 30vh;
+    width: 100%;
+    background: var(--color-contrast-lower);
+    display: block;
+  }
+}
+
+.photoCard-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: var(--space-xs);
+  padding-right: var(--space-container);
+  padding-left: var(--space-container);
+
+  @include bp(sm) {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.photoCard-info-heading {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+
+  & .link {
+    font-size: var(--font-size-body);
+  }
+}
+
+.photoCard-info-action {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+// Card actions
+.photoCard-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: calc(var(--space-xxxs) * (-1));
+  position: relative;
+
+  &--item {
+    flex: none;
+  }
+}
+
+.photoCard-action {
+  color: var(--color-contrast-medium);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  text-decoration: none;
+  text-transform: none;
+  padding: var(--space-xxxs);
+  display: inline-block;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-contrast-higher);
+  }
+}
+
+.photoCard-action-dislike {
+  color: var(--color-red);
+}

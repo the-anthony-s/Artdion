@@ -1,0 +1,4 @@
+- if user.image_data?
+  = image_tag current_user.image_url(:S300).to_s, 'data-src': current_user.image_url, class: "lazy", alt: "#{user_name(user)} avatar"
+- else
+  = image_tag asset_path('avatar.jpg'), 'data-src': asset_path('avatar.jpg'), class: "lazy", alt: "#{user_name(user)} avatar"

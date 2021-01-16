@@ -53,8 +53,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
-
-
 gem 'haml-rails', '~> 2.0'
 gem 'autoprefixer-rails'
 gem 'hotwire-rails'
@@ -65,3 +63,10 @@ gem 'font-awesome-sass', '~> 5.12.0'
 gem 'active_link_to'
 gem 'sucker_punch'
 gem 'oj'
+gem 'shrine', '~> 3.3'
+gem 'aws-sdk-s3', '~> 1.14'
+gem 'image_processing', '~> 1.10'
+gem 'uppy-s3_multipart', '>= 0.3.2'
+gem 'marcel'
+gem 'fastimage'
+gem 'sucker_punch'

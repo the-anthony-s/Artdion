@@ -1,11 +1,27 @@
 .grid {
   display: grid;
+  list-style: none;
+}
+
+
+//-------------
+// PHOTOS
+//-------------
+.grid--photos {
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-auto-columns: row;
+  grid-gap: 1rem;
+  
+  @include bp(sm) {
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    grid-gap: 2rem;
+  }
 }
 
 
 
 //-------------
-// Column
+// COLUMN
 //-------------
 .col {
   grid-column-end: span 1;

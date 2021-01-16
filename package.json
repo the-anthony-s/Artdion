@@ -7,9 +7,12 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "@uppy/image-editor": "^0.2.0",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
-    "typeahead.js": "^0.11.1"
+    "randomstring": "^1.1.5",
+    "typeahead.js": "^0.11.1",
+    "uppy": "^1.24.0"
   },
   "version": "0.1.0",
   "devDependencies": {
