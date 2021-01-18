@@ -1,0 +1,17 @@
+ru:
+  
+  # PRIMARY NAVBAR
+  nav:
+    search:
+      title: Поиск работ
+      placeholder: Поиск по сайту
+    link:
+      home: Главная
+      gallery: Галерея
+      profile: Аккаунт
+      profile_settings: Настройки
+      profile_logout: Выйти
+    button:
+      new_photo: Загрузить работу
+      signin: Войти
+      signup: Регистрация

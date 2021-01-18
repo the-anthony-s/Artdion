@@ -1,11 +1,42 @@
-%h2 Sign up
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form'}) do |f|
-  = render "users/shared/error_messages", resource: resource
-  = f.input :first_name, autofocus: false, error: 'Invalid first name', label: false, input_html: {autocomplete: 'first-name', placeholder: 'First name', class: 'auth-form__control', tabindex: '1'}, required: true
-  = f.input :last_name, autofocus: false, error: 'Invalid last name', label: false, input_html: {autocomplete: 'last-name', placeholder: 'Last name', class: 'auth-form__control', tabindex: '2'}, required: true
-  = f.input :email, autofocus: false, error: 'Invalid email address', label: false, input_html: {autocomplete: 'email', placeholder: 'Email address', class: 'auth-form__control', tabindex: '3'}, required: true
-  = f.input :password, autofocus: false, error: 'Invalid password (minimum 6 characters)', label: false, input_html: {autocomplete: 'new-password', placeholder: 'Password', class: 'auth-form__control', tabindex: '4'}, required: true
-  = f.input :username, autofocus: false, error: 'Invalid email username (only letters, numbers, and underscores)', label: false, input_html: {autocomplete: 'off', placeholder: 'Username', class: 'auth-form__control', tabindex: '5'}, required: true
-  .actions
-    = f.submit "Sign up"
-= render "users/shared/links"
+%div(class="auth")
+  %div(class="auth-heading")
+    %div(class="auth-heading__heading")
+      %h1(class="text text--h4 text-color-light")= t('devise.registrations.heading')
+    %div(class="auth-heading__subheading")
+      %p(class="text text--large text-color-light")= t('devise.registrations.subheading')
+  
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form'}) do |f|
+    %div(class="auth-form__row")
+      %div(class="auth-form__grid")
+        %div(class="auth-form__input")
+          = f.input :first_name, autofocus: false, error: t('devise.registrations.form.error.first_name'), label: false, input_html: {autocomplete: 'first-name', placeholder: t('devise.registrations.form.placeholder.first_name'), class: 'auth-form__control', tabindex: '1'}, required: true
+
+
+        %div(class="auth-form__input")
+          = f.input :last_name, autofocus: false, error: t('devise.registrations.form.error.last_name'), label: false, input_html: {autocomplete: 'last-name', placeholder: t('devise.registrations.form.placeholder.last_name'), class: 'auth-form__control', tabindex: '2'}, required: true
+
+
+    %div(class="auth-form__row")
+      %div(class="auth-form__input")
+        = f.input :email, autofocus: false, error: t('devise.registrations.form.error.email'), label: false, input_html: {autocomplete: 'email', placeholder: t('devise.registrations.form.placeholder.email'), class: 'auth-form__control', tabindex: '3'}, required: true
+
+
+    %div(class="auth-form__row")
+      %div(class="auth-form__input")
+        = f.input :password, autofocus: false, error: (t('devise.registrations.form.error.password', count: @minimum_password_length) if @minimum_password_length), label: false, input_html: {autocomplete: 'new-password', placeholder: t('devise.registrations.form.placeholder.password'), class: 'auth-form__control', tabindex: '4'}, required: true
+
+
+    %div(class="auth-form__row")
+      %div(class="auth-form__input")
+        = f.input :username, autofocus: false, error: t('devise.registrations.form.error.username'), label: false, input_html: {autocomplete: 'off', placeholder: t('devise.registrations.form.placeholder.username'), class: 'auth-form__control', tabindex: '5'}, required: true
+
+
+    %div(class="auth-form__row")
+      %p(class="text text--body text-color-light text-center")= t('devise.registrations.sign_up_agreement_html', sign_up_terms: link_to(t('devise.registrations.sign_up_terms'), '', target: :_blank, class: 'auth-link'), sign_up_privacy: link_to(t('devise.registrations.sign_up_privacy'), '', class: 'auth-link', target: :_blank))
+
+
+    %div(class="auth-form__action")
+      = button_tag t('devise.registrations.form.submit'), class: "btn btn--accent btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"  
+
+  %div(class="auth-links")
+    = render 'users/shared/links'

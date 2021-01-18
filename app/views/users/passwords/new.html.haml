@@ -1,10 +1,29 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = render "users/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "users/shared/links"
+-# %h2= t(".forgot_your_password")
+-# = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+-#   = f.error_notification
+-#   .form-inputs
+-#     = f.input :email,                       |
+-#       required: true,                       |
+-#       autofocus: true,                      |
+-#       input_html: { autocomplete: "email" } |
+-#   .form-actions
+-#     = f.button :submit, t(".send_me_reset_password_instructions")
+-# = render "users/shared/links"
+
+
+%div(class="auth")
+  %div(class="auth-heading")
+    %div(class="auth-heading__heading")
+      %h1(class="text text--h4 text-color-light")= t('devise.passwords.new.heading')
+    %div(class="auth-heading__subheading")
+      %p(class="text text--body text-color-light")= t('devise.passwords.new.subheading')
+  
+  = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form', method: :post}) do |f|
+    %div(class="auth-form__row")
+      %div(class="auth-form__input")
+        = f.input :email, autofocus: false, error: t('devise.passwords.new.form.error.email'), label: false, input_html: {autocomplete: 'email', placeholder: t('devise.passwords.new.form.placeholder.email'), class: 'auth-form__control', tabindex: '1'}, required: true
+    %div(class="auth-form__action")
+      = button_tag t('devise.passwords.new.form.submit'), class: "btn btn--accent btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"  
+
+  %div(class="auth-links")
+    = render 'users/shared/links'

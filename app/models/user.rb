@@ -14,7 +14,7 @@ class User < ApplicationRecord
 
   validate :validate_username
   validates :username, presence: true, uniqueness: { case_sensitive: false }
-  validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, multiline: true
+  validates_format_of :username, with: /^[a-zA-Z0-9_.]*$/, multiline: true
   validates_presence_of :first_name, :last_name
 
   ## Friendly ID

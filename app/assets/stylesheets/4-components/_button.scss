@@ -1,0 +1,91 @@
+.btn {
+	color: var(--color-contrast-lower);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: none;
+  line-height: var(--line-height-small);
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  display: inline-block;
+  padding: var(--space-sm) var(--space-sm);
+  width: auto;
+  min-width: 140px;
+  border-radius: var(--radius-default);
+  border: 1px solid var(--color-contrast-higher);
+  background: var(--color-contrast-higher);
+  user-select: none;
+  appearance: none;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  outline: none;
+
+  &:hover, 
+  &:focus,
+  &:active, 
+  &:focus-within {
+    color: var(--color-contrast-lower);
+	  background: var(--color-contrast-high);
+	  border-color: var(--color-contrast-high);
+  }
+
+  & > span + span {
+    margin-left: var(--space-xxxs);
+  }
+}
+
+
+
+//-----------------
+// Colors
+//-----------------
+.btn--accent {
+  color: var(--color-white);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-white);
+    background: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
+  }
+}
+
+.btn--light {
+  color: var(--color-black);
+  background: var(--color-white);
+  border-color: var(--color-white);
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-black);
+    background: var(--color-white-darker);
+    border-color: var(--color-white-darker);
+  }
+}
+
+
+
+//-----------------
+// Modifications
+//-----------------
+.btn--action {
+  min-width: 0px;
+  padding: var(--space-xxs) var(--space-sm);
+}
+
+.btn--wide {
+  width: 100%;
+}
+
+.btn--responsive {
+  width: 100%;
+
+  @include bp(xs) {
+    width: auto;
+  }
+}

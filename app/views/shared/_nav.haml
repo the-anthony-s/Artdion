@@ -7,16 +7,16 @@
       = form_tag 'search_path', method: :get, class: "nav-search search", role: "search", enforce_utf8: true, autofocus: false, 'accept-charset': 'UTF-8' do
         %button(class="nav-search__button")= icon "far", "search"
         %div(class="nav-search__input" role="combobox")
-          = text_field_tag :q, params[:q], placeholder: 'Search online gallery', class: 'nav-search__control', type: "search", id: "searchControl", autocomplete: "off", tabindex: "1", autocapitalize: "none", spellcheck: "false", title: "Search gallery", required: true, 'accept-charset': 'UTF-8'
+          = text_field_tag :q, params[:q], placeholder: t('nav.search.placeholder'), class: 'nav-search__control', type: "search", id: "searchControl", autocomplete: "off", tabindex: "1", autocapitalize: "none", spellcheck: "false", title: t('nav.search.title'), required: true, 'accept-charset': 'UTF-8'
     %div(class="nav-right")
       %ul(class="nav-menu")
         %li(class="nav-menu__item")
-          = active_link_to "Home", root_path, active: :exact, class: "nav-link"
+          = active_link_to t('nav.link.home'), root_path, active: :exact, class: "nav-link"
         %li(class="nav-menu__item")
-          = active_link_to "Gallery", '/ssssss', active: :exact, class: "nav-link"
+          = active_link_to t('nav.link.gallery'), '/ssssss', active: :exact, class: "nav-link"
       %div(class="nav-account")
         %div(class="nav-account__upload")
-          = active_link_to "Submit an art", new_photo_path, class: 'nav-btn'
+          = active_link_to t('nav.button.new_photo'), new_photo_path, class: 'nav-btn'
         - if user_signed_in?
           %div(class="nav-account__profile dropdown-item")
             = button_tag(class: 'nav-profile dropdown-trigger') do
@@ -25,15 +25,15 @@
             %div(class="nav-dropdown dropdown" tabindex="-1")
               %ul(class="dropdown-links")
                 %li(class="dropdown-links__item")
-                  = active_link_to 'View profile', current_user, class: 'dropdown-link', 'data-turbo-action': "replace"
+                  = active_link_to t('nav.link.profile'), current_user, class: 'dropdown-link', 'data-turbo-action': "replace"
                 %li(class="dropdown-links__item")
-                  = active_link_to 'Account settings', edit_user_registration_path, class: 'dropdown-link'
+                  = active_link_to t('nav.link.profile_settings'), edit_user_registration_path, class: 'dropdown-link'
                 %li(class="dropdown-links__item dropdown-links__item--separator")
-                  = active_link_to "Logout", destroy_user_session_path, method: :delete, class: 'dropdown-link dropdown-link--logout'
+                  = active_link_to t('nav.link.profile_logout'), destroy_user_session_path, method: :delete, class: 'dropdown-link dropdown-link--logout'
         - else
           %div(class="nav-account__login")
-            = active_link_to "Log In", new_user_session_path, class: 'nav-btn nav-btn--login'
-            = active_link_to "Account", new_user_registration_path, class: 'nav-btn nav-btn--signup'
+            = active_link_to t('nav.button.signin'), new_user_session_path, class: 'nav-btn nav-btn--login'
+            = active_link_to t('nav.button.signup'), new_user_registration_path, class: 'nav-btn nav-btn--signup'
     %div(class="nav-mobile dropdown-item")
       = button_tag(class: 'nav-toggle dropdown-trigger') do
         = icon "far", "bars"

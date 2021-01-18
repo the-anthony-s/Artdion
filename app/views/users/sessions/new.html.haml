@@ -1,17 +1,19 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "users/shared/links"
+-# = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+
+%div(class="auth")
+  %div(class="auth-heading")
+    %div(class="auth-heading__heading")
+      %h1(class="text text--h4 text-color-light")= t('devise.sessions.heading')
+  
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form'}) do |f|
+    %div(class="auth-form__row")
+      %div(class="auth-form__input")
+        = f.input :login, autofocus: false, error: 'Problem with your login', label: false, input_html: {autocomplete: 'off', placeholder: t('devise.sessions.form.placeholder.login'), class: 'auth-form__control', tabindex: '1'}, required: true
+    %div(class="auth-form__row")
+      %div(class="auth-form__input")
+        = f.input :password, autofocus: false, error: 'Problem with your password', label: false, input_html: {autocomplete: 'current-password', placeholder: t('devise.sessions.form.placeholder.password'), class: 'auth-form__control', autocomplete: 'current-password', tabindex: '2'}, required: true
+    %div(class="auth-form__action")
+      = button_tag t('devise.sessions.form.submit'), class: "btn btn--accent btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"  
+
+  %div(class="auth-links")
+    = render 'users/shared/links'

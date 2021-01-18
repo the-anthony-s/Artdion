@@ -76,14 +76,12 @@ h6,
 	letter-spacing: var(--letter-spacing-large);
 }
 
-
-
-
 .text--eyebrow {
 	color: var(--color-contrast-medium);
 	font-size: var(--font-size-eyebrow);
 	font-weight: var(--font-weight-medium);
 }
+
 
 
 // Font weight
@@ -99,6 +97,8 @@ h6,
 	font-weight: var(--font-weight-bold);
 }
 
+
+
 // Positioning
 .text-center {
 	text-align: center;
@@ -110,4 +110,15 @@ h6,
 
 .text-right {
 	text-align: rigth;
+}
+
+
+
+// Colors
+.text-color-light {
+	color: var(--color-white) !important;
+}
+
+.text-color-dark {
+	color: var(--color-black) !important;
 }
