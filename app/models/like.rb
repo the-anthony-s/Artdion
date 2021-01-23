@@ -1,5 +1,9 @@
 class Like < ApplicationRecord
   # RELATIONSHIPS
-  belongs_to :user, counter_cache: true
-  belongs_to :likable, polymorphic: true, counter_cache: true
+  belongs_to :user
+  belongs_to :likable, polymorphic: true
+
+  # Counter cache
+  counter_culture :user
+  counter_culture :likable
 end

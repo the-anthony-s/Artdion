@@ -1,1 +1,8 @@
-%h1 Hi, #{@user.first_name}
+- if @user.deleted_at?
+  .section
+    .container
+      %p(class="text text--body") This user was deleted at #{@user.deleted_at}
+- else
+  .section
+    .container
+      %h1 Hi, #{@user.first_name}

@@ -5,7 +5,7 @@
   letter-spacing: none;
   line-height: var(--line-height-small);
   text-decoration: none;
-  text-transform: uppercase;
+  text-transform: none;
   text-align: center;
   display: inline-block;
   padding: var(--space-sm) var(--space-sm);
@@ -73,6 +73,11 @@
 //-----------------
 // Modifications
 //-----------------
+.btn--small {
+  padding: var(--space-xxs) var(--space-xs);
+  min-width: auto;
+}
+
 .btn--action {
   min-width: 0px;
   padding: var(--space-xxs) var(--space-sm);

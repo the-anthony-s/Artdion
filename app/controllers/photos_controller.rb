@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
   private
 
   def set_photo
-    @photo = Photo.includes(%i[user]).find(params[:id])
+    @photo = Photo.find(params[:id])
   end
 
   def convert_search

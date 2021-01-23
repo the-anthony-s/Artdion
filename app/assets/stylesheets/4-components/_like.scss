@@ -1,0 +1,15 @@
+.like {
+  color: var(--color-contrast-high);
+
+  &:hover, &:active {
+    color: var(--color-red);
+  }
+}
+
+.dislike {
+  color: var(--color-red);
+
+  &:hover, &:active {
+    color: var(--color-contrast-high);
+  }
+}

@@ -1,1 +1,21 @@
-%h1= @photo.name
+%section(class="photoView" id="Photo#{@photo.id}")
+  %div(class="photoView-container")
+    %div(class="photoView-media")
+      -# = photo_view(@photo)
+
+%section(class="photoDetails")
+  %div(class="container")
+    -# = turbo_stream_from 'comments'
+    
+    -# = turbo_frame_tag 'comment_form' do
+    %div(class="comments-form")
+      = render partial: 'comments/form', locals: { commentable: @photo }
+    
+    -# = turbo_frame_tag 'comments' do
+
+
+%section(class="comments-section")
+  %div(class="container")
+
+    %div(class="comments")
+      = render @photo.comments.default_order.where(parent_id: nil), max_nesting: 2

@@ -32,7 +32,7 @@
 
 
     %div(class="auth-form__row")
-      %p(class="text text--body text-color-light text-center")= t('devise.registrations.sign_up_agreement_html', sign_up_terms: link_to(t('devise.registrations.sign_up_terms'), '', target: :_blank, class: 'auth-link'), sign_up_privacy: link_to(t('devise.registrations.sign_up_privacy'), '', class: 'auth-link', target: :_blank))
+      %p(class="text text--body text-color-light text-center")= t('devise.registrations.sign_up_agreement_html', sign_up_terms: link_to(t('devise.registrations.sign_up_terms'), terms_path, target: :_blank, class: 'auth-link'), sign_up_privacy: link_to(t('devise.registrations.sign_up_privacy'), privacy_path, class: 'auth-link', target: :_blank))
 
 
     %div(class="auth-form__action")

@@ -1,0 +1,5 @@
+= simple_form_for([commentable, Comment.new], local: true, html: { class: "comment-form form #{local_assigns[:class]}", data: { target: local_assigns[:target] } }) do |f|
+  = f.input :body, placeholder: t('comment.form.placeholder.body'), html: { class: 'form-control' }, label: false, error: t('comment.form.error.body')
+  = f.hidden_field :parent_id, value: local_assigns[:parent_id], html: { class: 'form-control display-none' }
+  %div(class="comment-form__action")
+    = button_tag t('comment.form.submit'), class: "btn btn--small btn--accent", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"

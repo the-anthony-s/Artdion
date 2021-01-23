@@ -1,3 +1,17 @@
+//--------------------
+// Appearance
+//--------------------
+.display-none {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+
+//--------------------
+// Text
+//--------------------
 .display-name {
   white-space: nowrap;
   text-overflow: ellipsis;

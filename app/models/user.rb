@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  acts_as_paranoid without_default_scope: true
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -7,7 +9,9 @@ class User < ApplicationRecord
          authentication_keys: [:login]
 
   # References
-  has_many :photos
+  has_many :photos, dependent: :destroy
+  has_many :comments
+  has_many :likes
 
   ## Fields
   include ImageUploader::Attachment(:image)

@@ -1,2 +1,16 @@
 en:
-  hello: "Hello world"
+  # PRIMARY NAVBAR
+  nav:
+    search:
+      title: Search gallery
+      placeholder: Search online gallery
+    link:
+      home: Home
+      gallery: Gallery
+      profile: View profile
+      profile_settings: Account settings
+      profile_logout: Logout
+    button:
+      new_photo: Submit an art
+      signin: Login
+      signup: Join free

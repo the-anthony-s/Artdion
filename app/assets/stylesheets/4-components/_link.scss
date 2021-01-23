@@ -18,6 +18,18 @@
 }
 
 
+.text .link {
+  color: var(--color-contrast-higher);
+  text-decoration: underline;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none;
+  }
+}
+
+
 
 .link--secondary {
   color: var(--color-contrast-high);

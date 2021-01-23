@@ -55,6 +55,13 @@ h6,
 	letter-spacing: var(--letter-spacing-h6);
 }
 
+.text--minor {
+	font-size: var(--font-size-minor);
+	font-weight: var(--font-weight-regular);
+	line-height: var(--line-height-minor);
+	letter-spacing: var(--letter-spacing-minor);
+}
+
 .text--small {
 	font-size: var(--font-size-small);
 	font-weight: var(--font-weight-regular);
@@ -66,7 +73,7 @@ h6,
 	font-size: var(--font-size-body);
 	font-weight: var(--font-weight-regular);
 	line-height: var(--line-height-body);
-	letter-spacing: var(--letter-spacing-small);
+	letter-spacing: var(--letter-spacing-body);
 }
 
 .text--large {
@@ -74,12 +81,6 @@ h6,
 	font-weight: var(--font-weight-regular);
 	line-height: var(--line-height-large);
 	letter-spacing: var(--letter-spacing-large);
-}
-
-.text--eyebrow {
-	color: var(--color-contrast-medium);
-	font-size: var(--font-size-eyebrow);
-	font-weight: var(--font-weight-medium);
 }
 
 
@@ -115,6 +116,18 @@ h6,
 
 
 // Colors
+.text-color-primary {
+	color: var(--color-contrast-higher) !important;
+}
+
+.text-color-secondary {
+	color: var(--color-contrast-high) !important;
+}
+
+.text-color-muted {
+	color: var(--color-contrast-medium) !important;
+}
+
 .text-color-light {
 	color: var(--color-white) !important;
 }

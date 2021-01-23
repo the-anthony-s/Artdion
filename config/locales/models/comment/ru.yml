@@ -1,0 +1,9 @@
+ru:
+  comment:
+    deleted: Комментарий удален
+  form:
+    placeholder:
+      body: Добавить комментарий
+    error:
+      body: Комментарий обязателен
+    submit: Опубликовать

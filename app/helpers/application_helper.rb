@@ -9,4 +9,19 @@ module ApplicationHelper
   def upload_server
     Rails.configuration.upload_server
   end
+
+  # Number formatting
+  def formatted_number(number)
+    number_to_human(
+      number,
+      format: '%n%u',
+      precision: 1,
+      significant: true,
+      units: {
+        thousand: 'K',
+        million: 'M',
+        billion: 'B'
+      }
+    )
+  end
 end

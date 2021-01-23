@@ -1,0 +1,56 @@
+-# if user deleted -> show comment, but display user as [deleted] without the link to profile
+-# if user presents, but comment deleted -> show message [comment was deleted]
+
+- nesting = local_assigns.fetch(:nesting, 1)
+- max_nesting = local_assigns[:max_nesting]
+
+%div(class="thread" id="#{dom_id(comment)}" data-controller="reply"){class: comment.comments_count? ? "thread--has-replies" : nil}
+  - if comment.deleted_at?
+    %div(class="comment")
+      %div(class="comment-owner")
+        = render partial: 'users/shared/avatar', locals: { user: comment.user }
+
+      %div(class="comment-body")
+        %div(class="comment-body__text comment-body__text--deleted")
+          %p(class="text text--small text-color-muted")= t('comment.deleted')
+
+  - else
+
+    %div(class="comment")
+      = link_to comment.user, class: "comment-owner" do
+        = render partial: 'users/shared/avatar', locals: { user: comment.user }
+      
+      %div(class="comment-body")
+        %div(class="comment-body__heading")
+          -# - if comment.user.deleted_at?
+          -#   %span(class="comment-body__heading-user text-color-muted")= user_username(comment.user)
+          = link_to user_username(comment.user), comment.user, class: comment.user.deleted_at? ? "comment-body__heading-user text-color-muted" : "comment-body__heading-user"
+          %div(class="comment-body__heading-timestamp")
+            %span(class="timeago text text--minor text-color-secondary")= time_ago_in_words(comment.created_at)
+        -# comment content
+        %div(class="comment-body__text")
+          = auto_link(simple_format(h(comment.body), class: 'text text--small'), :html => { target: '_blank', class: 'link', rel: "noopener noreferrer nofollow" })
+        -# comment actions
+        %div(class="comment-body__actions")
+          %div(class="comment-body__action" id="Comment#{comment.id}_likes")
+            = render partial: 'comments/like', locals: { comment: comment }
+          %div(class="comment-body__action")
+            = link_to "#", class: 'comment-action', data: { action: "click->reply#toggle" } do
+              = icon "far", "reply"
+          
+          - if user_signed_in? && current_user == comment.user
+            %div(class="comment-body__action")
+              = link_to [comment.commentable, comment], method: :delete, class: 'comment-action' do
+                = icon "far", "trash"
+
+        -# reply form
+        = render partial: 'comments/form', locals: { commentable: comment.commentable, class: "display-none comment-form--reply", parent_id: reply_to_comment_id(comment, nesting, max_nesting), user_id: reply_to_user_id(comment, comment.user_id), target: "reply.form" }
+
+
+
+
+
+  -# -# show comment's children
+  - if comment.comments_count?
+    %div(class="thread-replies")
+      = render comment.comments.includes([:commentable]).default_order, nesting: nesting + 1, max_nesting: local_assigns[:max_nesting]

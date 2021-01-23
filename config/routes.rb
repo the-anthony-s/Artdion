@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   ## Pages ---> Default Controller
   get '/', to: 'pages#index'
 
+  ## Legal ---> Documents: terms, privacy
+  get '/privacy', to: 'legal#privacy'
+  get '/terms', to: 'legal#terms'
+
   # Users Controller
   devise_for :users, path: 'account', path_names: {
     sing_in: 'sign_in',
@@ -24,9 +28,15 @@ Rails.application.routes.draw do
 
   resources :users, path: ''
 
+  # Comments
+  resources :comments do
+    resource :like, module: :comments, only: %i[create destroy]
+  end
+
   # Photos
   resources :photos, path: 'photos', only: %i[index show] do
     resource :like, module: :photos, only: %i[create destroy]
+    resources :comments, module: :photos
   end
 
   root 'pages#index'

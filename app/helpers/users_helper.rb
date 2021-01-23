@@ -1,20 +1,19 @@
 module UsersHelper
   def user_name(user)
+    return '[deleted]' if user.deleted_at?
+
     "#{user.first_name} #{user.last_name}" if user.first_name? && user.last_name?
   end
 
   def user_username(user)
-    "@#{user.username}"
+    return '[deleted]' if user.deleted_at?
+
+    user.username.to_s
   end
 
   def user_initials(user)
-    user.first_name.chars.first + user.last_name.chars.first
-  end
+    return '[X]' if user.deleted_at?
 
-  def user_avatar(user, size = :xsmall)
-    # add image_data
-    content_tag(:span, class: 'avatar') do
-      user_initials(user)
-    end
+    user.first_name.chars.first + user.last_name.chars.first
   end
 end

@@ -9,9 +9,14 @@ class Photo < ApplicationRecord
   # scope :search_import, -> { includes(:tags, :user).where(private: false, active: true) }
 
   # References
-  belongs_to :user, counter_cache: true
+  belongs_to :user
+
+  # Counter cache
+  counter_culture :user
+  # counter_culture :user, column_name: ->(model) { "#{model.state}_photos_count" }
 
   has_many :likes, as: :likable
+  has_many :comments, as: :commentable
 
   # Validation
   include ImageUploader::Attachment(:image)

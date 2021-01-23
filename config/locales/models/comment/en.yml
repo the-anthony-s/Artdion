@@ -1,0 +1,9 @@
+en:
+  comment:
+    deleted: Comment was deleted
+    form:
+      placeholder:
+        body: Add a comment
+      error:
+        body: Comment is required.
+      submit: Post

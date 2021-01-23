@@ -10,10 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_085552) do
+ActiveRecord::Schema.define(version: 2021_01_21_192309) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
+    t.integer "parent_id"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
+    t.datetime "deleted_at"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+    t.index ["deleted_at"], name: "index_comments_on_deleted_at"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -51,6 +67,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_085552) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0
+    t.integer "comments_count", default: 0
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
@@ -85,10 +102,14 @@ ActiveRecord::Schema.define(version: 2021_01_14_085552) do
     t.string "slug"
     t.integer "photos_count", default: 0
     t.integer "likes_count", default: 0
+    t.datetime "deleted_at"
+    t.integer "comments_count", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
+  add_foreign_key "comments", "users"
 end

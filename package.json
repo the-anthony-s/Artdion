@@ -11,6 +11,7 @@
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
     "randomstring": "^1.1.5",
+    "stimulus": "^2.0.0",
     "typeahead.js": "^0.11.1",
     "uppy": "^1.24.0"
   },

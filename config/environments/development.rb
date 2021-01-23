@@ -2,6 +2,15 @@ Rails.application.configure do
   # Devise config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
+  # Bullet gem N+1
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+  end
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

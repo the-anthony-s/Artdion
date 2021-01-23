@@ -1,3 +1,6 @@
+//--------------------
+// PHOTO CARD
+//--------------------
 .photoCard {
   position: relative;
   display: block;
@@ -84,4 +87,49 @@
 
 .photoCard-action-dislike {
   color: var(--color-red);
+}
+
+
+//--------------------
+// PHOTO SHOW PAGE
+//--------------------
+.photoView {
+  position: relative;
+  overflow: hidden;
+}
+
+.photoView-container {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: var(--container-width-default);
+  padding: 0 0 16px;
+
+  @include bp(sm) {
+    padding: 20px var(--space-container);
+  }
+}
+
+.photoView-media {
+  text-align: center;
+  display: block;
+  overflow: hidden;
+
+  & > img {
+    width: 100%;
+    vertical-align: top;
+    object-fit: contain;
+
+    @include bp(sm) {
+      max-width: 100%;
+      max-height: calc(100vh - (var(--nav-height) * 3) + (20px * 2));
+    }
+  }
+}
+
+
+// photo details
+.photoDetails {
+  min-height: var(--nav-height);
+  position: relative;
 }
