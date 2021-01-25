@@ -1,2 +1,6 @@
 en:
-  hello: "Hello world"
+  
+  tabs:
+    works:
+      one: work
+      other: works

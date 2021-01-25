@@ -1,7 +1,7 @@
-require("@hotwired/turbo-rails")
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+require("@hotwired/turbo-rails")
 
 // window.Rails = Rails
 window.jQuery = $;

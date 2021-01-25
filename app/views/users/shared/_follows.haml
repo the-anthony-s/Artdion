@@ -1,0 +1,8 @@
+- if user_signed_in?
+  - if current_user.follows?
+    = link_to "Unfollow", user_follow_path(user), method: :delete, remote: true, class: 'btn btn--small'
+  - else
+    = link_to "Follow", user_follow_path(user), method: :post, remote: true, class: 'btn btn--small'
+
+- else
+  = link_to "Follow", new_user_registration_path, class: 'btn btn--small'

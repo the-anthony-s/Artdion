@@ -15,7 +15,7 @@
       %div(class="photoCard-info")
         %div(class="photoCard-info-heading")
           = link_to photo, class: 'link link--url' do
-            %span(class="display-name text--body")= photo.name
+            %div(class="display-name text--body")= photo.name
         %div(class="photoCard-info-action")
           %ul(class="photoCard-actions")
             %li(class="photoCard-actions--item" id="PhotoCard#{photo.id}_likes")

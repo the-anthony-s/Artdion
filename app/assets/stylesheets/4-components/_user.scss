@@ -1,0 +1,118 @@
+//----------------------
+// SECTION - PANEL
+//----------------------
+.user-panel {
+  padding-top: 16px;
+  padding-bottom: 24px;
+  position: relative;
+  display: block;
+
+  @include bp(sm) {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  // @include bp(lg) {
+  //   padding-top: 68px;
+  //   padding-bottom: 68px;
+  // }
+}
+
+.user {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  
+  @include bp(sm) {
+    display: flex;
+    align-items: flex-start;
+    width: auto;
+  }
+}
+
+
+// user partial avatar container
+.user-avatar {
+  flex: none;
+  height: 100px;
+  width: 100px;
+  overflow: hidden;
+  border-radius: var(--radius-rounded);
+  margin-bottom: var(--space-2);
+  position: relative;
+  
+  @include bp(sm) {
+    margin-bottom: 0;
+    margin-right: var(--space-3);
+  }
+
+  @include bp(lg) {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+
+// user partial body
+.user-body {
+  flex: 1;
+}
+
+.user-body__name {
+  display: flex;
+  align-items: center;
+}
+
+.user-body__actions {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-left: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+
+  @include bp(sm) {
+    flex-direction: row;
+    position: relative;
+    text-align: left;
+  }
+
+  & .user-body__action {
+    flex: none;
+  }
+
+  & .user-body__action + .user-body__action {
+    margin-top: var(--space-2);
+
+    @include bp(sm) {
+      margin-top: 0;
+      margin-left: var(--space-3);
+    }
+  }
+}
+
+.user-body__about {
+  padding-top: 16px;
+
+  @include bp(sm) {
+    padding-top: 24px;
+  }
+}
+
+.user-body__details {
+  display: flex;
+  flex-direction: column;
+  word-break: break-all;
+  margin-bottom: -8px;
+  margin-left: -24px;
+  padding-top: 16px;
+
+  & .user-body__detail {
+    padding-bottom: 8px;
+    padding-left: 24px;
+    min-width: 0;
+  }
+}

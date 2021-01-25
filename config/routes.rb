@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     resources :photos, module: :users, only: %i[new create edit update]
   end
 
-  resources :users, path: ''
+  resources :users, path: '' do
+    resource :follow, module: :users
+  end
 
   # Comments
   resources :comments do

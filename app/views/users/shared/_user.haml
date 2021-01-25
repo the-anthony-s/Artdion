@@ -1,0 +1,27 @@
+%section(class="user-panel")
+  %div(class="container")
+    %div(class="user")
+      %div(class="user-avatar")
+        = render partial: 'users/shared/avatar', locals: { user: user }
+      %div(class="user-body")
+        %div(class="user-body__name")
+          %h1(class="text text--h2")= user_name(user)
+          %div(class="user-body__actions")
+            - if user_signed_in? && (current_user == user)
+              %div(class="user-body__action")
+                = link_to "Edit", edit_user_registration_path, class: 'btn btn--small'
+            %div(class="user-body__action")
+              = render partial: "users/shared/follows", locals: { user: user }
+
+        %div(class="user-body__about")
+          %p(class="text text--body") Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum reiciendis quod consequatur rerum pariatur ipsam accusantium, commodi magni vero praesentium laudantium quam minus obcaecati adipisci ex ipsum ratione quis dolor?
+        
+        %div(class="user-body__details")
+          %div(class="user-body__detail")
+            = link_to '', class: 'link link--secondary' do
+              %span= icon "fas", "map-marker-alt"
+              %span Moscow, Russia
+          %div(class="user-body__detail")
+            = link_to '', class: 'link link--secondary', target: :_blank, rel: "nofollow" do
+              %span= icon "fas", "link"
+              %span website.com
