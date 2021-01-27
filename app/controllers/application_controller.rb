@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
 
   before_action :store_user_location!, if: :storable_location?
   before_action :set_locale
+  before_action :default_format_json
+
+  # Turbo fix
+  # courses AJAX to work incorrectly
+  def default_format_json
+    request.format = :html
+  end
 
   # Set user's prefered locale (website translation)
   def set_locale

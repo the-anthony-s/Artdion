@@ -6,6 +6,7 @@ class Photo < ApplicationRecord
 
   # Scope
   scope :default_order, -> { order(created_at: :desc).where(private: false, active: true) }
+  scope :user_order, -> { order(created_at: :desc) }
   # scope :search_import, -> { includes(:tags, :user).where(private: false, active: true) }
 
   # References
@@ -17,6 +18,9 @@ class Photo < ApplicationRecord
 
   has_many :likes, as: :likable
   has_many :comments, as: :commentable
+
+  # Tags
+  acts_as_taggable_on :tags
 
   # Validation
   include ImageUploader::Attachment(:image)

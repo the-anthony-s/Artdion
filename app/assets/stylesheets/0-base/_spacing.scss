@@ -8,5 +8,9 @@
   --space-3: 36px;
   --space-4: 72px;
 
-  --space-container: 3.4vw;
+  --space-container: 12px;
+
+  @include bp(sm) {
+    --space-container: 30px;
+  }
 }

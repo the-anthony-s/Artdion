@@ -103,6 +103,7 @@
   display: block;
   width: 100%;
   max-width: var(--container-width-default);
+  margin: 0 auto;
   padding: 0 0 16px;
 
   @include bp(sm) {
@@ -122,14 +123,91 @@
 
     @include bp(sm) {
       max-width: 100%;
-      max-height: calc(100vh - (var(--nav-height) * 3) + (20px * 2));
+      max-height: calc(100vh - ((var(--nav-height) * 2) + (20px * 3)));
     }
   }
 }
 
-
-// photo details
-.photoDetails {
-  min-height: var(--nav-height);
+.photoNav {
   position: relative;
+  display: block;
+}
+
+.photoNav-container {
+  height: var(--nav-height);
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.photoNav-left {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  flex: 1;
+  padding-right: var(--space-container);
+}
+
+.photoNav-right {
+  flex: none;
+  display: flex;
+  position: relative;
+  margin: -4px;
+}
+
+.photoNav-action {
+  padding: 4px;
+}
+
+// Photo Description and Details
+.photoAbout {
+  position: relative;
+  padding: 20px 0 0;
+}
+
+.photoAbout-container {
+  width: 100%;
+
+  @include bp(sm) {
+    max-width: 700px;
+  }
+}
+
+.photoAbout-description {
+  padding-top: 16px;
+  display: block;
+  position: relative;
+}
+
+.photoAbout-details {
+  padding-top: 16px;
+  position: relative;
+}
+
+.photoAbout-detail {
+  position: relative;
+  display: block;
+
+  &__icon {
+    display: inline-block;
+    width: 20px;
+    padding-right: 4px;
+  }
+
+  & + & {
+    padding-top: 8px;
+  }
+}
+
+// photo related
+.photoRelated {
+  position: relative;
+}
+
+// Heading
+.photoHeading {
+  padding: 72px 0 24px;
 }

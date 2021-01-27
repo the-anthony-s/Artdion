@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   acts_as_paranoid without_default_scope: true
 
   # Include default devise modules. Others available are:
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   validate :validate_username
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { within: 5..20 }
-  validates_format_of :username, with: /^[a-zA-Z0-9_.](?!\w*__\w*)\w+$/, multiline: true
+  validates_format_of :username, with: /^[@a-zA-Z0-9_.](?!\w*__\w*)\w+$/, multiline: true
   validates_presence_of :first_name, :last_name
 
   ## Friendly ID
@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
   end
 
   ## Check if model follows
-  def follows?
-    following.where(user_id: id).exists?
+  def follows?(user)
+    user.following.where(user_id: id).exists?
   end
 
   ## User Email and Nickname for login

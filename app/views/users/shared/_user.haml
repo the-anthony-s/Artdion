@@ -10,8 +10,9 @@
             - if user_signed_in? && (current_user == user)
               %div(class="user-body__action")
                 = link_to "Edit", edit_user_registration_path, class: 'btn btn--small'
-            %div(class="user-body__action")
-              = render partial: "users/shared/follows", locals: { user: user }
+            - if user_signed_in? && (current_user != user)
+              %div(class="user-body__action")
+                = render partial: "users/shared/follows", locals: { user: user }
 
         %div(class="user-body__about")
           %p(class="text text--body") Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum reiciendis quod consequatur rerum pariatur ipsam accusantium, commodi magni vero praesentium laudantium quam minus obcaecati adipisci ex ipsum ratione quis dolor?

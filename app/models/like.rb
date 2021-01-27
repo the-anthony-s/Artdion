@@ -6,4 +6,7 @@ class Like < ApplicationRecord
   # Counter cache
   counter_culture :user
   counter_culture :likable
+
+  # Scopes
+  scope :default_order, -> { order(created_at: :asc) }
 end

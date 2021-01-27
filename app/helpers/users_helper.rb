@@ -8,7 +8,7 @@ module UsersHelper
   def user_username(user)
     return '[deleted]' if user.deleted_at?
 
-    user.username.to_s
+    "@#{user.username.downcase}"
   end
 
   def user_initials(user)

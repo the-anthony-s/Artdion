@@ -8,7 +8,7 @@
 // PHOTOS
 //-------------
 .grid--photos {
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(1, 1fr);
   grid-auto-columns: row;
   grid-gap: 1rem;
   
@@ -16,6 +16,25 @@
     grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
     grid-gap: 2rem;
   }
+}
+
+.grid--photosRelated {
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-columns: row;
+  grid-gap: 1rem;
+  
+  @include bp(sm) {
+    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    grid-gap: 2rem;
+  }
+}
+
+.grid--photos .col,
+.grid--photosRelated .col {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 

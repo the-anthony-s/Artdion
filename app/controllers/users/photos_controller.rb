@@ -31,7 +31,10 @@ module Users
       end
     end
 
-    def edit; end
+    def edit
+      # redirect to 404 if the user is not the owner
+      # return redirect_to @photo if user_signed_in? && current_user.id != @photo.user_id
+    end
 
     def update
       @photo.assign_attributes(photo_params)

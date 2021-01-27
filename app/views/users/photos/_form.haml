@@ -13,6 +13,8 @@
   %br/
   = f.input :location
   %br/
+  = f.input :tag_list, input_html: {value: f.object.tag_list.join(",")}
+  %br/
   %br/
   %br/
   = f.submit

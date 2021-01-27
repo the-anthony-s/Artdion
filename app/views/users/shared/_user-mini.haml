@@ -1,0 +1,8 @@
+%div(class="userMini")
+  = link_to user, class: 'userMini-avatar' do
+    = render partial: 'users/shared/avatar', locals: { user: user }
+  %div(class="userMini-profile")
+    = link_to user, class: 'userMini-name' do
+      %span(class="display-name")= user_name(user)
+    = link_to user, class: 'userMini-username' do
+      %span(class="displya-name")= user_username(user)

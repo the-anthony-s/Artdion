@@ -9,4 +9,11 @@
 -#       %h1 Hi, #{@user.first_name}
 
 = render partial: 'users/shared/user', locals: { user: @user }
-= render partial: 'users/shared/nav'
+= render partial: 'users/shared/nav', locals: { user: @user }
+
+%div(class="section")
+  %div(class="container container--media")
+    %div(class="grid grid--photos")
+      -# = turbo_stream_from "photos"
+      -# = turbo_frame_tag "photos" do
+      = render @photos

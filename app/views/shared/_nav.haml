@@ -2,7 +2,7 @@
   %div(class="nav-container")
     %div(class="nav-left")
       = link_to root_path, class: 'nav-root' do
-        A&G
+        Art Dion
     %div(class="nav-center")
       = form_tag 'search_path', method: :get, class: "nav-search search", role: "search", enforce_utf8: true, autofocus: false, 'accept-charset': 'UTF-8' do
         %button(class="nav-search__button")= icon "far", "search"
@@ -25,7 +25,7 @@
             %div(class="nav-dropdown dropdown" tabindex="-1")
               %ul(class="dropdown-links")
                 %li(class="dropdown-links__item")
-                  = active_link_to t('nav.link.profile'), current_user, class: 'dropdown-link', 'data-turbo-action': "replace"
+                  = active_link_to t('nav.link.profile'), user_path(current_user), class: 'dropdown-link', 'data-turbo-action': "replace"
                 %li(class="dropdown-links__item")
                   = active_link_to t('nav.link.profile_settings'), edit_user_registration_path, class: 'dropdown-link'
                 %li(class="dropdown-links__item dropdown-links__item--separator")

@@ -1,6 +1,5 @@
 en:
-  
-  tabs:
-    works:
-      one: work
-      other: works
+  user:
+    tabs:
+      works: work
+      likes: like

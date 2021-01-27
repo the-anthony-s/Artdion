@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # scope '/(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+  # end
+
+
   ## Pages ---> Default Controller
   get '/', to: 'pages#index'
 
@@ -27,6 +31,9 @@ Rails.application.routes.draw do
   end
 
   resources :users, path: '' do
+    member do
+      get '/likes', to: 'users#likes'
+    end
     resource :follow, module: :users
   end
 
@@ -41,6 +48,7 @@ Rails.application.routes.draw do
     resources :comments, module: :photos
   end
 
+  # Root
   root 'pages#index'
 
   # File Upload

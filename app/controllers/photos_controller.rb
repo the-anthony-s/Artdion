@@ -7,11 +7,15 @@ class PhotosController < ApplicationController
   end
 
   def show
-    # @photos = Photo.default_order.tagged_with(
-    #   @photo.tags, any: true
-    # ).where.not(
-    #   id: @photo.id
-    # ).take(20)
+    @related = Photo.default_order.tagged_with(
+      @photo.tags, any: true
+    ).where.not(
+      id: @photo.id
+    ).take(20)
+
+    @tags = Tag.where(
+      id: @photo.tags.pluck(:id)
+    ).take(20)
   end
 
   private
