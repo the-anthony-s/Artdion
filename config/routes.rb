@@ -10,6 +10,15 @@ Rails.application.routes.draw do
   get '/privacy', to: 'legal#privacy'
   get '/terms', to: 'legal#terms'
 
+  # Comments
+  resources :comments do
+    resource :like, module: :comments, only: %i[create destroy]
+  end
+
+  # Classifications
+  resources :classifications, path: 'gallery', only: %i[index show]
+
+
   # Users Controller
   devise_for :users, path: 'account', path_names: {
     sing_in: 'sign_in',
@@ -36,12 +45,7 @@ Rails.application.routes.draw do
     end
     resource :follow, module: :users
   end
-
-  # Comments
-  resources :comments do
-    resource :like, module: :comments, only: %i[create destroy]
-  end
-
+  
   # Photos
   resources :photos, path: 'photos', only: %i[index show] do
     resource :like, module: :photos, only: %i[create destroy]

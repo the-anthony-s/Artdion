@@ -36,6 +36,10 @@
         = simple_format(@photo.description, class: 'text text--paragraph text--small')
       %div(class="photoAbout-details")
         %div(class="photoAbout-detail")
+          = link_to @photo.classification, class: 'link link--secondary' do
+            %span(class="photoAbout-detail__icon")= icon "fas", "list-alt"
+            %span(class="photoAbout-detail__text")= @photo.classification.name
+        %div(class="photoAbout-detail")
           %span(class="photoAbout-detail__icon")= icon "fas", "calendar"
           %span(class="photoAbout-detail__text") 2020
         %div(class="photoAbout-detail")

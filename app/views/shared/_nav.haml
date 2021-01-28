@@ -13,7 +13,7 @@
         %li(class="nav-menu__item")
           = active_link_to t('nav.link.home'), root_path, active: :exact, class: "nav-link"
         %li(class="nav-menu__item")
-          = active_link_to t('nav.link.gallery'), '/ssssss', active: :exact, class: "nav-link"
+          = active_link_to t('nav.link.gallery'), classifications_path, active: :exact, class: "nav-link"
       %div(class="nav-account")
         %div(class="nav-account__upload")
           = active_link_to t('nav.button.new_photo'), new_photo_path, class: 'nav-btn'

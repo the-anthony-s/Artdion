@@ -11,6 +11,12 @@ class Photo < ApplicationRecord
 
   # References
   belongs_to :user
+  belongs_to :classification
+
+  # Counters
+  counter_culture :classification, column_name: proc { |model|
+    !model.private? && model.active? ? 'photos_count' : nil
+  }
 
   # Counter cache
   counter_culture :user
@@ -25,6 +31,7 @@ class Photo < ApplicationRecord
   # Validation
   include ImageUploader::Attachment(:image)
   validates_presence_of :image
+  validates_presence_of :classification_id
 
   # Check if photo is downloadable
   def downloadable?

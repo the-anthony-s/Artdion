@@ -1,0 +1,45 @@
+.classification {
+  position: relative;
+  display: block;
+  user-select: none;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  border-radius: var(--radius-default);
+}
+
+.classification-cover {
+  position: relative;
+  padding-bottom: 30%;
+  display: block;
+
+  & > img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.classification-heading {
+  padding: var(--space-container);
+  position: relative;
+  text-align: left;
+  display: block;
+}
+
+.classification-heading__subheading {
+  padding-top: 8px;
+}
+
+.classification-heading__stats {
+  padding-top: 8px;
+
+  & > span + span {
+    padding-left: 8px;
+  }
+}

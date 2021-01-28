@@ -9,6 +9,8 @@
   %br/
   = f.input :name
   %br/
+  = f.collection_select :classification_id, Classification.selection_order.includes([:translations]).all, :id, :name, { class: 'chosen-select'}
+  %br/
   = f.input :description
   %br/
   = f.input :location

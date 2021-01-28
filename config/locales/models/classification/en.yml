@@ -1,0 +1,5 @@
+en:
+  classification:
+    photos:
+      one: "%{count} photo"
+      other: "%{count} photos"

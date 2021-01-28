@@ -1,7 +1,26 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+I18n.locale = :en
+books = Classification.create(name: 'Books', description: 'Something about books classification...')
+jewelry = Classification.create(name: 'Costume and Jewelry', description: 'Something about Costume and Jewelry...')
+decorative = Classification.create(name: 'Decorative Arts and Utilitarian Objects', description: 'Something about books...')
+drawings = Classification.create(name: 'Drawings', description: 'Something about drawings...')
+installations = Classification.create(name: 'Installations', description: 'Something about installations...')
+paintings = Classification.create(name: 'Paintings', description: 'Something about paintings...')
+photographs = Classification.create(name: 'Photographs', description: 'Something about photographs...')
+plates = Classification.create(name: 'Plates', description: 'Something about plates...')
+prints = Classification.create(name: 'Prints', description: 'Something about prints...')
+sculpture = Classification.create(name: 'Sculpture', description: 'Something about sculpture...')
+textiles = Classification.create(name: 'Textiles', description: 'Something about textiles...')
+
+
+I18n.locale = :ru
+books.update(name: 'Книги', description: 'Что-то крутое про книги...')
+jewelry.update(name: 'Костюмы и украшения', description: 'Something about Costume and Jewelry...')
+decorative.update(name: 'Декоративно-прикладное искусство и предметы быта', description: 'Something about books...')
+drawings.update(name: 'Рисунки', description: 'Something about drawings...')
+installations.update(name: 'Установки', description: 'Something about installations...')
+paintings.update(name: 'Картины', description: 'Something about paintings...')
+photographs.update(name: 'Фотографии', description: 'Something about photographs...')
+plates.update(name: 'Тарелки', description: 'Something about plates...')
+prints.update(name: 'Печать', description: 'Something about prints...')
+sculpture.update(name: 'Скульптура', description: 'Something about sculpture...')
+textiles.update(name: 'Текстиль', description: 'Something about textiles...')

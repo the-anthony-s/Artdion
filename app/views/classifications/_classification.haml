@@ -1,0 +1,12 @@
+%div(class="col")
+  = link_to classification, class: 'classification' do
+    %div(class="classification-cover")
+      = classification_cover(classification.photos.last)
+    %div(class="classification-heading")
+      %div(class="classification-heading__heading")
+        %p(class="text text--h4")= classification.name
+      %div(class="classification-heading__subheading")
+        %p(class="text text--body")= classification.description.truncate(128)
+      %p(class="text text--body fw-medium classification-heading__stats")
+        %span(class="text-color-secondary")= icon "fas", "image-polaroid"
+        %span= t('classification.photos', count: classification.photos_count)

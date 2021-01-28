@@ -1,0 +1,7 @@
+ru:
+  classification:
+    photos:
+      few: "%{count} фотографии"
+      many: "%{count} фотографий"
+      one: "%{count} фотография"
+      other: "%{count} фотографий"

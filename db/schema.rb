@@ -10,10 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_171925) do
+ActiveRecord::Schema.define(version: 2021_01_27_231351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "classification_translations", force: :cascade do |t|
+    t.bigint "classification_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "description"
+    t.index ["classification_id"], name: "index_classification_translations_on_classification_id"
+    t.index ["locale"], name: "index_classification_translations_on_locale"
+  end
+
+  create_table "classifications", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "photos_count", default: 0
+  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -81,6 +101,8 @@ ActiveRecord::Schema.define(version: 2021_01_27_171925) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0
     t.integer "comments_count", default: 0
+    t.bigint "classification_id"
+    t.index ["classification_id"], name: "index_photos_on_classification_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
@@ -154,5 +176,6 @@ ActiveRecord::Schema.define(version: 2021_01_27_171925) do
   end
 
   add_foreign_key "comments", "users"
+  add_foreign_key "photos", "classifications"
   add_foreign_key "taggings", "tags"
 end
