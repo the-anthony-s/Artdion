@@ -15,4 +15,4 @@
     %div(class="auth-footer")
       %div(class="container")
         %div(class="auth-footer__container")
-          %p(class="text text--small text-color-light")= t('devise.shared.recaptcha.message_html', terms: link_to(t('devise.shared.recaptcha.terms'), "https://policies.google.com/terms?hl=#{I18n.locale}", target: :_blank, class: "auth-link"), privacy: link_to(t('devise.shared.recaptcha.privacy'), "https://policies.google.com/privacy?hl=#{I18n.locale}", target: :_blank, class: "auth-link"))
+          %p(class="text text--minor text-color-secondary")= t('devise.shared.recaptcha.message_html', terms: link_to(t('devise.shared.recaptcha.terms'), "https://policies.google.com/terms?hl=#{I18n.locale}", target: :_blank, class: "auth-link"), privacy: link_to(t('devise.shared.recaptcha.privacy'), "https://policies.google.com/privacy?hl=#{I18n.locale}", target: :_blank, class: "auth-link"))

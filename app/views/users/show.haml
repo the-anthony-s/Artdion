@@ -16,4 +16,4 @@
     %div(class="grid grid--photos")
       -# = turbo_stream_from "photos"
       -# = turbo_frame_tag "photos" do
-      = render @photos
+      = render partial: 'photos/photo', collection: @photos, locals: { show_user: false }

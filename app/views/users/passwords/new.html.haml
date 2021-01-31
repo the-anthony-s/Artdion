@@ -14,7 +14,7 @@
 %div(class="auth")
   %div(class="auth-heading")
     %div(class="auth-heading__heading")
-      %h1(class="text text--h3 text-color-light")= t('devise.passwords.new.heading')
+      %h1(class="text text--h2 text-color-light")= t('devise.passwords.new.heading')
     %div(class="auth-heading__subheading")
       %p(class="text text--large text-color-light")= t('devise.passwords.new.subheading')
   
@@ -23,7 +23,7 @@
       %div(class="auth-form__input")
         = f.input :email, autofocus: false, error: t('devise.passwords.new.form.error.email'), label: false, input_html: {autocomplete: 'email', placeholder: t('devise.passwords.new.form.placeholder.email'), class: 'auth-form__control', tabindex: '1'}, required: true
     %div(class="auth-form__action")
-      = button_tag t('devise.passwords.new.form.submit'), class: "btn btn--primary btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"  
+      = button_tag t('devise.passwords.new.form.submit'), class: "auth-form__submit", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"  
 
   %div(class="auth-links")
     = render 'users/shared/links'

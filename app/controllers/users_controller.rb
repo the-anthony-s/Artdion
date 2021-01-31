@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def likes
     @photos = Photo.where(
       id: Like.where(likable_type: 'Photo', user_id: @user.id).pluck(:likable_id)
-    ).default_order.all
+    ).default_order.includes([:user]).all
   end
 
   private

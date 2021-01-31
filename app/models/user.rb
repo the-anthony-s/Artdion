@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_tagger
   acts_as_paranoid without_default_scope: true
 
   # Include default devise modules. Others available are:

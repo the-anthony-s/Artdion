@@ -13,7 +13,7 @@
       %div(class="auth-form__input")
         = f.input :password, autofocus: false, error: 'Problem with your password', label: false, input_html: {autocomplete: 'current-password', placeholder: t('devise.sessions.form.placeholder.password'), class: 'auth-form__control', autocomplete: 'current-password', tabindex: '2'}, required: true
     %div(class="auth-form__action")
-      = button_tag t('devise.sessions.form.submit'), class: "btn btn--primary btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"
+      = button_tag t('devise.sessions.form.submit'), class: "auth-form__submit", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"
 
   %div(class="auth-links")
     = render 'users/shared/links'

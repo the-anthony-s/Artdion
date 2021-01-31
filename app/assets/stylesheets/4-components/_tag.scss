@@ -6,12 +6,12 @@
   overflow: hidden;
 }
 
-.tag-container {
+.tags .tag-container {
   padding-left: 8px;
   padding-bottom: 8px;
 }
 
-.tag {
+.tags .tag {
   position: relative;
   display: inline-block;
   color: var(--color-contrast-higher);

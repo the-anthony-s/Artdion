@@ -38,11 +38,10 @@ document.addEventListener('turbo:load', (e) => {
       url: '/s/autocomplete?q=%Q',
       wildcard: '%Q',
       filter: function (data) {
-        // console.log(data);
-        return $.map(data, function (photo) {
+        console.log(data);
+        return $.map(data, function (tag) {
           return {
-            value: photo.name,
-            location: photo.location
+            value: tag.name
           };
         });
       }

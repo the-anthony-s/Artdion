@@ -10,10 +10,11 @@
 .grid--photos {
   grid-template-columns: repeat(1, 1fr);
   grid-auto-columns: row;
-  grid-gap: var(--space-container);
-  
+  grid-row-gap: 40px;
+
   @include bp(sm) {
-    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    grid-gap: var(--space-container);
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   }
 }
 
@@ -25,14 +26,6 @@
   @include bp(sm) {
     grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
   }
-}
-
-.grid--photos .col,
-.grid--photosRelated .col {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  justify-content: flex-end;
 }
 
 
@@ -51,16 +44,6 @@
 
   @include bp(md) {
     grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.grid--photosRelated {
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-columns: row;
-  grid-gap: var(--space-container);
-  
-  @include bp(sm) {
-    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
   }
 }
 

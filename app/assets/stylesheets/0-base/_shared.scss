@@ -2,8 +2,8 @@
   // container width
   --container-page: 100%;
   --container-wide: 1480px;
-  // --container-width-default: 1920px;
-  --container-width-default: 100%;
+  --container-width-default: 1920px;
+  // --container-width-default: 100%;
   --container-width-tight: 642px;
 
   // navigation bar
@@ -11,7 +11,7 @@
 
   // radius
   --radius-default: 0px;
-  --radius-rounded: 9999px;
+  --radius-rounded: 35%;
   --radius-sm: calc(var(--radius, 0.25em)/2);
   --radius-md: var(--radius, 0.25em);
   --radius-lg: calc(var(--radius, 0.25em)*2);

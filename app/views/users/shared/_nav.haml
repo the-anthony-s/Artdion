@@ -1,12 +1,13 @@
 %section(class="user-tabs")
-  %div(class="user-tabs__container")
-    %div(class="user-tab")
-      = active_link_to user, class: 'user-tab-link', active: :exact do
-        %span(class="user-tab-link__icon")= icon "fas", "image"
-        %span(class="user-tab-link__name")= t('user.tabs.works').pluralize(user.photos_count).capitalize
-        %span(class="user-tab-link__count")= user.photos_count
-    %div(class="user-tab")
-      = active_link_to likes_user_path, class: 'user-tab-link', active: :exact do
-        %span(class="user-tab-link__icon")= icon "fas", "heart"
-        %span(class="user-tab-link__name")= t('user.tabs.likes').pluralize(user.likes_count).capitalize
-        %span(class="user-tab-link__count")= user.likes_count
+  %div(class="container")
+    %div(class="user-tabs__container")
+      %div(class="user-tab")
+        = active_link_to user, class: 'user-tab-link', active: :exact do
+          %span(class="user-tab-link__icon")= icon "fas", "image"
+          %span(class="user-tab-link__name")= t('user.tabs.works').pluralize(user.photos_count).capitalize
+          %span(class="user-tab-link__count")= user.photos_count
+      %div(class="user-tab")
+        = active_link_to likes_user_path, class: 'user-tab-link', active: :exact do
+          %span(class="user-tab-link__icon")= icon "fas", "heart"
+          %span(class="user-tab-link__name")= t('user.tabs.likes').pluralize(user.likes_count).capitalize
+          %span(class="user-tab-link__count")= user.likes_count

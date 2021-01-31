@@ -28,7 +28,8 @@
   overflow: hidden !important;
   border-bottom-left-radius: var(--radius-default) !important;
   border-bottom-right-radius: var(--radius-default) !important;
-  box-shadow: var(--shadow-modal) !important;
+  // box-shadow: var(--shadow-modal) !important;
+  box-shadow: none !important;
 }
 
 .tt-dataset .tt-suggestion.tt-selectable {
@@ -41,8 +42,15 @@
   white-space: nowrap;
   padding: 8px 16px;
   max-width: 100%;
-  display: block;
+  height: var(--nav-height);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   cursor: pointer;
+
+  @include bp(sm) {
+    height: auto;
+  }
 
   &:hover,
   &:focus,

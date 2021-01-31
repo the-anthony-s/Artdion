@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   # scope '/(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
   # end
 
+  # Search controller
+  mount Searchjoy::Engine, at: 'searchjoy'
+  resource :search, path: '/s', only: :show, controller: :search do
+    collection do
+      get :autocomplete
+    end
+  end
 
   ## Pages ---> Default Controller
   get '/', to: 'pages#index'

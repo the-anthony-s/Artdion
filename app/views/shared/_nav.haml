@@ -4,7 +4,7 @@
       = link_to root_path, class: 'nav-root' do
         Art Dion
     %div(class="nav-center")
-      = form_tag 'search_path', method: :get, class: "nav-search search", role: "search", enforce_utf8: true, autofocus: false, 'accept-charset': 'UTF-8' do
+      = form_tag search_path, method: :get, class: "nav-search search", role: "search", enforce_utf8: true, autofocus: false, 'accept-charset': 'UTF-8' do
         %button(class="nav-search__button")= icon "far", "search"
         %div(class="nav-search__input" role="combobox")
           = text_field_tag :q, params[:q], placeholder: t('nav.search.placeholder'), class: 'nav-search__control', type: "search", id: "searchControl", autocomplete: "off", tabindex: "1", autocapitalize: "none", spellcheck: "false", title: t('nav.search.title'), required: true, 'accept-charset': 'UTF-8'

@@ -31,7 +31,7 @@
   %div(class="container")
     %div(class="photoAbout-container")
       %div(class="photoAbout-name")
-        %h1(class="text text--h4")= @photo.name
+        %h1(class="text text--h3")= @photo.name
       %div(class="photoAbout-description")
         = simple_format(@photo.description, class: 'text text--paragraph text--small')
       %div(class="photoAbout-details")
@@ -55,7 +55,7 @@
       %h4(class="text text--large") Related photos
   %div(class="container")
     %div(class="grid grid--photosRelated")
-      = render partial: 'photos/photo', collection: @related
+      = render partial: 'photos/photo', collection: @related, locals: { show_info: false }
 
 %section(class="photoTags")
   %div(class="photoHeading")

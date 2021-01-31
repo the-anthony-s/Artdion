@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_27_231351) do
+ActiveRecord::Schema.define(version: 2021_01_28_210056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,23 @@ ActiveRecord::Schema.define(version: 2021_01_27_231351) do
     t.bigint "classification_id"
     t.index ["classification_id"], name: "index_photos_on_classification_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
+  end
+
+  create_table "searchjoy_searches", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "search_type"
+    t.string "query"
+    t.string "normalized_query"
+    t.integer "results_count"
+    t.datetime "created_at"
+    t.string "convertable_type"
+    t.bigint "convertable_id"
+    t.datetime "converted_at"
+    t.index ["convertable_type", "convertable_id"], name: "index_searchjoy_searches_on_convertable"
+    t.index ["created_at"], name: "index_searchjoy_searches_on_created_at"
+    t.index ["search_type", "created_at"], name: "index_searchjoy_searches_on_search_type_and_created_at"
+    t.index ["search_type", "normalized_query", "created_at"], name: "index_searchjoy_searches_on_search_type_query"
+    t.index ["user_id"], name: "index_searchjoy_searches_on_user_id"
   end
 
   create_table "taggings", id: :serial, force: :cascade do |t|

@@ -17,43 +17,36 @@
     display: block;
     height: auto;
   }
-
-  & > div {
-    height: 30vh;
-    width: 100%;
-    background: var(--color-contrast-lower);
-    display: block;
-  }
 }
 
 .photoCard-info {
+  position: relative;
   display: flex;
-  flex-direction: row;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-top: var(--space-xs);
-  padding-right: var(--space-container);
+  margin-top: 12px;
   padding-left: var(--space-container);
-
+  padding-right: var(--space-container);
+  
   @include bp(sm) {
-    padding-right: 0;
     padding-left: 0;
+    padding-right: 0;
   }
 }
 
 .photoCard-info-heading {
-  display: flex;
-  align-items: center;
-  min-width: 0;
-
-  & .link {
-    font-size: var(--font-size-body);
-  }
-}
-
-.photoCard-info-action {
   flex: 1;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  padding-right: 8px;
+}
+
+.photoCard-info-actions {
+  flex: none;
+  display: flex;
 }
 
 // Card actions
@@ -61,7 +54,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: calc(var(--space-xxxs) * (-1));
+  margin: -4px;
   position: relative;
 
   &--item {
@@ -71,11 +64,11 @@
 
 .photoCard-action {
   color: var(--color-contrast-medium);
-  font-size: var(--font-size-body);
-  line-height: var(--line-height-body);
+  font-size: var(--font-size-large);
+  line-height: 1;
   text-decoration: none;
   text-transform: none;
-  padding: var(--space-xxxs);
+  padding: 4px;
   display: inline-block;
 
   &:hover,
@@ -88,6 +81,31 @@
 .photoCard-action-dislike {
   color: var(--color-red);
 }
+
+.photoCard-link {
+  text-decoration: none;
+  text-transform: none;
+  appearance: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.photoCard-link--photo {
+  color: var(--color-contrast-higher);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+}
+
+.photoCard-link--user {
+  color: var(--color-contrast-medium);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
 
 
 //--------------------

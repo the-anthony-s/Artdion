@@ -2,15 +2,21 @@
   %div(class="container")
     %div(class="intro-heading")
       %div(class="intro-heading__heading")
-        %h1(class="text text--h2")= @classification.name
-      %div(class="intro-heading__subheading")
-        %p(class="text text--body")= @classification.description
+        %h1(class="text text--h2")= params[:q].capitalize
+      
+      -# - if @photos.suggestions.any?
+      -#   %div(class="intro-heading__suggestions")
+      -#     %p(class="text text--large text-color-secondary")
+      -#       Did you mean: 
+      -#       %div= @photos.suggestions.first
+
       %div(class="intro-heading__tags")
         %div(class="intro-tags")
           %div(class="intro-tags__scroll")
             = render partial: 'tags/tag', collection: @tags
 
-%div(class="section")
+
+%section(class="section")
   %div(class="container container--media")
     %div(class="grid grid--photos")
       = render partial: 'photos/photo', collection: @photos

@@ -2,6 +2,6 @@
   - if user.image_data? && !user.deleted_at?
     = image_tag user.image_url(:S300).to_s, 'data-src': user.image_url, class: "lazy", alt: "#{user_name(user)} avatar"
   - elsif user.deleted_at?
-    = image_tag asset_path('avatar_2.png'), 'data-src': asset_path('avatar_2.png'), class: "lazy", alt: "#{user_name(user)} avatar"
+    = image_tag asset_path('avatar.jpg'), 'data-src': asset_path('avatar.jpg'), class: "lazy", alt: "#{user_name(user)} avatar"
   - else
-    = image_tag asset_path('avatar_2.png'), 'data-src': asset_path('avatar_2.png'), class: "lazy", alt: "#{user_name(user)} avatar"
+    = image_tag asset_path('avatar.jpg'), 'data-src': asset_path('avatar.jpg'), class: "lazy", alt: "#{user_name(user)} avatar"

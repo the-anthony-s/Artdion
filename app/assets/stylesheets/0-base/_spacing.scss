@@ -10,7 +10,7 @@
 
   --space-container: 12px;
 
-  @include bp(sm) {
+  @include bp(md) {
     --space-container: 30px;
   }
 }

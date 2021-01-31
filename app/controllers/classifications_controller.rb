@@ -6,7 +6,12 @@ class ClassificationsController < ApplicationController
   end
 
   def show
-    @photos = @classification.photos.default_order.all
+    @photos = @classification.photos.default_order.includes([:user]).all
+    @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
+      taggings: {
+        taggable_type: 'Photo', taggable_id: @photos.pluck(:id)
+      }
+    ).take(20).uniq
   end
 
   private
