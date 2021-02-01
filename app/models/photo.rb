@@ -28,6 +28,9 @@ class Photo < ApplicationRecord
   # Tags
   acts_as_taggable_on :tags
 
+  # Impressions -> Count views
+  is_impressionable counter_cache: true, unique: true
+
   # Validation
   include ImageUploader::Attachment(:image)
   validates_presence_of :image

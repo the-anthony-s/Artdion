@@ -49,21 +49,24 @@
           %span(class="photoAbout-detail__icon")= icon "fas", "map-marker-alt"
           %span(class="photoAbout-detail__text")= @photo.location
 
-%section(class="photoRelated")
-  %div(class="photoHeading")
+- if @related.any?
+  %section(class="photoRelated")
+    %div(class="photoHeading")
+      %div(class="container")
+        %h4(class="text text--large") Related photos
     %div(class="container")
-      %h4(class="text text--large") Related photos
-  %div(class="container")
-    %div(class="grid grid--photosRelated")
-      = render partial: 'photos/photo', collection: @related, locals: { show_info: false }
+      %div(class="grid grid--photosRelated")
+        = render partial: 'photos/photo', collection: @related, locals: { show_info: false }
 
-%section(class="photoTags")
-  %div(class="photoHeading")
+- if @tags.any?
+  %section(class="photoTags")
+    %div(class="photoHeading")
+      %div(class="container")
+        %h4(class="text text--large") Related tags
     %div(class="container")
-      %h4(class="text text--large") Related tags
-  %div(class="container")
-    %div(class="tags")
-      = render partial: 'tags/tag', collection: @tags
+      %div(class="tags")
+        = render partial: 'tags/tag', collection: @tags
+
 
 
 -# %section(class="photoDetails")

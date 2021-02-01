@@ -31,7 +31,7 @@
   --font-size-minor: 13px;
   --font-size-small: 14px;
   --font-size-body: 15px;
-  --font-size-large: 18px;
+  --font-size-large: 16px;
 
   --link-height-minor: 1.5;
   --line-height-small: 1.44;
@@ -68,6 +68,8 @@
 
 
   @include bp(md) {
+    --font-size-large: 18px;
+    
     --line-height-h1: 1.1;
     --line-height-h2: 1.2;
     --line-height-h3: 1.2;

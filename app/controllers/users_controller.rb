@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   before_action :set_user, only: %i[show likes]
 
   def show
+    # Count views
+    impressionist(@user)
+    
     return @photos = @user.photos.user_order.all if user_signed_in? && (@user == current_user)
 
     @photos = @user.photos.default_order.all

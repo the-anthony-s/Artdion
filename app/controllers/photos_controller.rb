@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController
+class PhotosController < ApplicationController  
   before_action :set_photo, only: %i[show edit update]
   before_action :convert_search, only: %i[show]
 
@@ -7,6 +7,9 @@ class PhotosController < ApplicationController
   end
 
   def show
+    # Count views
+    impressionist(@photo)
+
     @related = Photo.default_order.tagged_with(
       @photo.tags, any: true
     ).where.not(

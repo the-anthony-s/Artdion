@@ -5,3 +5,15 @@ ru:
       many: "%{count} фотографий"
       one: "%{count} фотография"
       other: "%{count} фотографий"
+    show:
+      subheading: "%{photos_count} от %{users_count}"
+      photos_count:
+        few: "%{count} фотографии"
+        many: "%{count} фотографий"
+        one: "%{count} фотография"
+        other: "%{count} фотографий"
+      users_count:
+        few: "%{count} человек"
+        many: "%{count} человек"
+        one: "%{count} человека"
+        other: "%{count} человек"

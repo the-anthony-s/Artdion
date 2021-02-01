@@ -44,6 +44,30 @@
   padding-right: 8px;
 }
 
+.photoCard-link {
+  text-decoration: none;
+  text-transform: none;
+  appearance: none;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.photoCard-link--photo {
+  color: var(--color-contrast-higher);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+}
+
+.photoCard-link--user {
+  color: var(--color-contrast-medium);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
 .photoCard-info-actions {
   flex: none;
   display: flex;
@@ -80,30 +104,6 @@
 
 .photoCard-action-dislike {
   color: var(--color-red);
-}
-
-.photoCard-link {
-  text-decoration: none;
-  text-transform: none;
-  appearance: none;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.photoCard-link--photo {
-  color: var(--color-contrast-higher);
-  font-size: var(--font-size-body);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.1;
-}
-
-.photoCard-link--user {
-  color: var(--color-contrast-medium);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-regular);
-  line-height: 1.2;
-  margin-top: 2px;
 }
 
 

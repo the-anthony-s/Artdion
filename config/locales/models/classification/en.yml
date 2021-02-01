@@ -3,3 +3,11 @@ en:
     photos:
       one: "%{count} photo"
       other: "%{count} photos"
+    show:
+      subheading: "%{photos_count} from %{users_count}"
+      photos_count:
+        one: "%{count} photos"
+        other: "%{count} photos"
+      users_count:
+        one: "%{count} people"
+        other: "%{count} people"

@@ -20,6 +20,23 @@
   display: block;
 }
 
+.intro-heading__heading {
+  width: 100%;
+  display: block;
+}
+
+.intro-heading__subheading {
+  max-width: 700px;
+  width: 100%;
+  padding-top: 12px;
+}
+
+.intro-heading__stats {
+  padding-top: 12px;
+  width: 100%;
+  display: block;
+}
+
 .intro-heading__tags {
   margin-top: 24px;
 }
@@ -70,6 +87,10 @@
   overflow-y: hidden;
   display: flex;
   scroll-behavior: smooth;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .intro-tags .tag-container {

@@ -16,6 +16,9 @@ class User < ApplicationRecord
   has_many :followers, as: :follower, dependent: :delete_all, class_name: 'Follow'
   has_many :following, as: :followable, dependent: :delete_all, class_name: 'Follow'
 
+  ## Impressions -> Count views
+  is_impressionable counter_cache: true, unique: true
+
   ## Fields
   include ImageUploader::Attachment(:image)
 
