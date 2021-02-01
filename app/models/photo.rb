@@ -37,6 +37,8 @@ class Photo < ApplicationRecord
   validates_presence_of :classification_id
 
   # Search -> Searchkick gem
+  extend Pagy::Search
+
   searchkick callbacks: :async,
              match: :word_middle,
              conversions: :conversions,

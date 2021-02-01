@@ -9,7 +9,21 @@ class ClassificationsController < ApplicationController
     # Count views
     impressionist(@classification)
 
-    @photos = @classification.photos.default_order.includes([:user]).all
+    @pagy, @photos = pagy @classification.photos.default_order.includes([:user]).all
+
+    respond_to do |format|
+      format.html
+      format.json {
+        render json: {
+          entries: render_to_string(
+            partial: 'photos/photo',
+            collection: @photos,
+            formats: [:html]
+          ),
+          pagination: view_context.pagy_nav(@pagy)
+        }
+      }
+    end
   end
 
   private

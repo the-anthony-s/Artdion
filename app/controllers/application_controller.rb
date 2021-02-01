@@ -1,13 +1,15 @@
 class ApplicationController < ActionController::Base
+  include Pagy::Backend
+
   protect_from_forgery with: :exception
 
   before_action :store_user_location!, if: :storable_location?
   before_action :set_locale
-  before_action :default_format_json
+  # before_action :default_format_html
 
   # Turbo fix
   # courses AJAX to work incorrectly
-  def default_format_json
+  def default_format_html
     request.format = :html
   end
 

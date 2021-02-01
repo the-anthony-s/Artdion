@@ -10,6 +10,7 @@
     "@uppy/image-editor": "^0.2.0",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
+    "rails-erb-loader": "^5.5.2",
     "randomstring": "^1.1.5",
     "stimulus": "^2.0.0",
     "typeahead.js": "^0.11.1",

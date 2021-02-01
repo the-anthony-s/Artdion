@@ -16,7 +16,13 @@
             = render partial: 'tags/tag', collection: @tags
 
 
-%section(class="section")
+%div{:class => "section", :"data-controller" => "infinite-scroll"}
   %div(class="container container--media")
-    %div(class="grid grid--photos")
-      = render partial: 'photos/photo', collection: @photos
+    %div{:class => "grid grid--photos", :"data-target" => "infinite-scroll.entries"}
+      -# = turbo_stream_from "photos"
+      -# = turbo_frame_tag "photos" do
+      = render @photos
+
+    %div(class="pagination-container" id="PaginationContainer")
+      %div{:"data-target" => "infinite-scroll.pagination"}
+        != pagy_nav(@pagy)
