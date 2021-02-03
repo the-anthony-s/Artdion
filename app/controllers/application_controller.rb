@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
 
   # Turbo fix
   # courses AJAX to work incorrectly
+  ## HAS BUGS - NOT A GOOD OPTION
   def default_format_html
     request.format = :html
   end
@@ -20,6 +21,22 @@ class ApplicationController < ActionController::Base
     return I18n.locale = current_user.language if user_signed_in? && current_user.language?
 
     I18n.locale = extract_locale_from_headers
+  end
+
+  # Get current timezone
+  def set_time_zone
+    if user_signed_in?
+      Time.zone = current_user.time_zone
+    else
+      browser_time_zone
+    end
+  end
+
+  def browser_time_zone
+    browser_tz = ActiveSupport::TimeZone.find_tzinfo(cookies[:browser_time_zone])
+    ActiveSupport::TimeZone.all.find { |zone| zone.tzinfo == browser_tz } || Time.zone
+  rescue TZInfo::UnknownTimezone, TZInfo::InvalidTimezoneIdentifier
+    Time.zone
   end
 
   # Return user back after login

@@ -21,7 +21,6 @@ export default class extends Controller {
 
   processIntersectionEntries(entries) {
     entries.forEach(entry => {
-      console.log(entry)
       if (entry.isIntersecting) {
         this.loadMore()
       }

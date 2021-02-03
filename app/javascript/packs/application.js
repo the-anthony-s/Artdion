@@ -8,8 +8,13 @@ window.jQuery = $;
 window.$ = $;
 
 // Components
+import 'components/time'
 import 'components/dropDown'
+import 'components/fileUpload'
 import 'components/search'
+
+// Stimulus JS
+import 'controllers'
 
 // Check website theme
 window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -26,4 +31,3 @@ document.addEventListener('turbo:load', () => {
     }
   })
 })
-import "controllers"
