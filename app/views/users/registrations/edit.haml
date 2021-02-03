@@ -34,9 +34,11 @@
       %div(class="settings-grid__panel")
         %div(class="settings-panel")
           %div(class="settings-heading")
-            %h1(class="text text--h4")= yield(:title) 
+            %h1(class="text text--h4")= yield(:title)
             - if devise_mapping.confirmable? && resource.pending_reconfirmation?
               %p(class="text text--body") Currently waiting confirmation for: #{resource.unconfirmed_email}
+            - elsif !current_user.confirmed_at?
+              %p(class="text text--body") Please, confirm your email address
           
           %div(class="settings-body")
             
@@ -60,7 +62,7 @@
                     = f.input :location, required: false, autofocus: false, label: t('user.settings.edit.form.label.location')
                     = f.input :website, required: false, autofocus: false, label: t('user.settings.edit.form.label.website')
                     = f.input :language, label: t('user.settings.edit.form.label.language'), selected: 1 do
-                      = f.select :language, Language.is_active.all.map { |r| [r.name_native, r.iso_639_1, { class: r.id }] }
+                      = f.select :language, Language.is_active.all.map { |r| [r.name_native, r.iso_639_1, { class: r.id }] }, include_blank: t('user.settings.edit.form.select.language_default')
                   %div(class="form-row form-row--grid")
                     = f.input :about, required: false, autofocus: false, label: t('user.settings.edit.form.label.about')
               
@@ -85,7 +87,9 @@
                       %div(class="settings-banner__sidebar")
                         sidebar
                     %div(class="settings-banner__hint")
-                      %p(class="text text--minor text-color-secondary")= t('user.settings.edit.form.hint.messaging')
+                      %p(class="text text--minor text-color-secondary")= t('user.settings.edit.form.hint.messaging', email: current_user.email)
+                      - if (devise_mapping.confirmable? && resource.pending_reconfirmation?) || !current_user.confirmed_at?
+                        %p(class="text text--minor fw-medium text-color-secondary")= t('user.settings.edit.form.hint.messaging_warning', email: current_user.email)
 
 
               %div(class="form-block")

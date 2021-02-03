@@ -44,22 +44,22 @@ Language.create(
   pause: false
 )
 
-# Language.create(
-#   name: "Spanish",
-#   name_native: "Español",
-#   iso_639_1: "es",
-#   iso_639_3: "spa",
-#   iso_639_2b: "spa",
-#   iso_639_2t: "spa",
-#   pause: true
-# )
+Language.create(
+  name: 'Spanish',
+  name_native: 'Español',
+  iso_639_1: 'es',
+  iso_639_3: 'spa',
+  iso_639_2b: 'spa',
+  iso_639_2t: 'spa',
+  pause: true
+)
 
-# Language.create(
-#   name: "French",
-#   name_native: "Français",
-#   iso_639_1: "fr",
-#   iso_639_3: "fra",
-#   iso_639_2b: "fre",
-#   iso_639_2t: "fra",
-#   pause: true
-# )
+Language.create(
+  name: 'French',
+  name_native: 'Français',
+  iso_639_1: 'fr',
+  iso_639_3: 'fra',
+  iso_639_2b: 'fre',
+  iso_639_2t: 'fra',
+  pause: true
+)

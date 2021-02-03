@@ -57,7 +57,9 @@ module Users
         :username, :first_name, :last_name,
         :email, :password, :password_confirmation,
         :current_password, :image, :location, :website,
-        :about, :instagram, :twitter, :message, :language
+        :about, :instagram, :twitter, :message, :language,
+        :email_announcements, :email_notifications, :email_recommendations,
+        :email_tips, :email_updates
       )
     end
 

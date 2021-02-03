@@ -8,7 +8,40 @@
         = render partial: 'users/registrations/shared/nav'
 
       %div(class="settings-grid__panel")
-        %div(class="settings-heading")
-          %h1(class="text text--h4")= yield(:title) 
-
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore minima architecto ullam adipisci dolorem hic, voluptatum dicta aspernatur laborum dolor voluptatibus molestiae qui doloribus eaque. Nulla amet quisquam ex quaerat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quos rerum minus, doloremque quas sapiente, porro eligendi officia culpa nihil voluptate fugiat illum. Inventore aliquid, nulla dignissimos quod consequatur nihil. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore aperiam, quia placeat reprehenderit, vero tempora esse cupiditate nesciunt itaque ratione, eveniet provident ut repudiandae numquam animi enim adipisci sequi sunt.
+        %div(class="settings-panel")
+          %div(class="settings-heading")
+            %h1(class="text text--h4")= yield(:title) 
+          
+          %div(class="settings-body")
+            
+            = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form', method: :put }) do |f|
+              
+              %div(class="form-block")
+                %div(class="form-heading")
+                  %p(class="text text--large")= t('user.settings.email.form.heading.intro')
+                %div(class="form-set")
+                  = f.label :email_announcements, class: 'form-checkbox' do
+                    = f.check_box :email_announcements, as: :boolean, checked_value: true, unchecked_value: false
+                    %span.labelText= t('user.settings.email.form.label.announcements')
+                %div(class="form-set")
+                  = f.label :email_updates, class: 'form-checkbox' do
+                    = f.check_box :email_updates, as: :boolean, checked_value: true, unchecked_value: false
+                    %span.labelText= t('user.settings.email.form.label.updates')
+                %div(class="form-set")
+                  = f.label :email_notifications, class: 'form-checkbox' do
+                    = f.check_box :email_notifications, as: :boolean, checked_value: true, unchecked_value: false
+                    %span.labelText= t('user.settings.email.form.label.notifications')
+                %div(class="form-set")
+                  = f.label :email_recommendations, class: 'form-checkbox' do
+                    = f.check_box :email_recommendations, as: :boolean, checked_value: true, unchecked_value: false
+                    %span.labelText= t('user.settings.email.form.label.recommendations')
+                %div(class="form-set")
+                  = f.label :email_tips, class: 'form-checkbox' do
+                    = f.check_box :email_tips, as: :boolean, checked_value: true, unchecked_value: false
+                    %span.labelText= t('user.settings.email.form.label.tips')
+              
+              %div(class="form-block")
+                %div(class="form-set")
+                  %div(class="form-row")
+                    -# = f.submit
+                    = button_tag t('user.settings.email.form.submit'), class: "btn btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}

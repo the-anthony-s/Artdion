@@ -12,6 +12,7 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
       t.boolean :download, default: true
       t.boolean :private, default: false
       t.boolean :active, default: true
+      t.boolean :on_sale, default: true
 
       t.timestamps
     end

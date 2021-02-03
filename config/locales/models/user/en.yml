@@ -4,10 +4,10 @@ en:
     tabs:
       works: 
         one: work
-        few: works
+        other: works
       likes: 
         one: like
-        few: likes
+        other: likes
     
     settings:
       title:
@@ -43,9 +43,12 @@ en:
             twitter: Twitter
             messaging: Display a 'Message' button on your profile
           hint:
-            instagram: So that we can feature you on %{instagram}
-            twitter: So that we can feature you on %{twitter}
-            messaging: Messages will be sent to your email
+            instagram: "So that we can feature you on %{instagram}"
+            twitter: "So that we can feature you on %{twitter}"
+            messaging: "Messages will be sent to your email (%{email})."
+            messaging_warning: "Only users with verified email can receive messages. Please confirm your email address - %{email}."
+          select:
+            language_default: Browser language
           submit: Update account
 
       security:
@@ -75,3 +78,15 @@ en:
             paragraph_1: Deleting your account removes all of your photos from Artdion. However, the Artdion License is irrevocable, so copies of the photo that were downloaded before deletion may still be used.
             paragraph_2_html: "If you're just looking to remove a photo, you can do that from %{paragraph_2_link}."
             paragraph_2_link: Manage works
+
+      email:
+        form:
+          heading:
+            intro: "Send me emails related to:"
+          label:
+            announcements: Announcements
+            updates: Community updates
+            notifications: Milestones and notifications
+            recommendations: Recommended works, photos, collections, and people to follow
+            tips: Resources, tips, and guides
+          submit: Update email settings

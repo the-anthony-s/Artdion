@@ -1,4 +1,3 @@
-
 class User < ApplicationRecord
   acts_as_tagger
   acts_as_paranoid without_default_scope: true
@@ -28,6 +27,14 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }, length: { within: 5..20 }
   validates_format_of :username, with: /^[@a-zA-Z0-9_.](?!\w*__\w*)\w+$/, multiline: true
   validates_presence_of :first_name, :last_name
+
+  typed_store :preferences, coder: ActiveRecord::TypedStore::IdentityCoder do |t|
+    t.boolean :email_announcements, default: true, null: false
+    t.boolean :email_updates, default: true, null: false
+    t.boolean :email_notifications, default: true, null: false
+    t.boolean :email_recommendations, default: true, null: false
+    t.boolean :email_tips, default: true, null: false
+  end
 
   ## Friendly ID
   extend FriendlyId
