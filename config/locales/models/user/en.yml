@@ -1,5 +1,77 @@
 en:
   user:
+    
     tabs:
-      works: work
-      likes: like
+      works: 
+        one: work
+        few: works
+      likes: 
+        one: like
+        few: likes
+    
+    settings:
+      title:
+        edit_profile: Edit profile
+        email: Email settings
+        security: Security
+        subscription: Subscription
+        close: Close account
+      nav:
+        edit_profile: Edit profile
+        email: Email settings
+        security: Security
+        subscription: Subscription
+        close: Close account
+    
+      # pages
+      edit:
+        form:
+          heading:
+            about: About
+            social: Social
+            messaging: Messaging
+          label:
+            first_name: First name
+            last_name: Last name
+            email: Email
+            username: Username
+            location: Location
+            website: Personal site / Portfolio
+            about: Bio
+            language: Language
+            instagram: Instagram
+            twitter: Twitter
+            messaging: Display a 'Message' button on your profile
+          hint:
+            instagram: So that we can feature you on %{instagram}
+            twitter: So that we can feature you on %{twitter}
+            messaging: Messages will be sent to your email
+          submit: Update account
+
+      security:
+        form:
+          heading:
+            sessions: Last 10 sessions
+          label:
+            current_password: Current password
+            password: New password
+            password_confirmation: New password confirmation
+          submit: Update password
+        sessions:
+          platform: Platform
+          date: Date
+      
+      close:
+        form:
+          heading:
+            warning_word: "Warning:"
+            warning: closing your account is irreversible. It deletes all of your photos, collections, and stats.
+          label:
+            current_password: Password
+          submit: Delete account
+          confirmation: Are you sure that you want to delete your account?
+          caption:
+            heading: Deleting photos
+            paragraph_1: Deleting your account removes all of your photos from Artdion. However, the Artdion License is irrevocable, so copies of the photo that were downloaded before deletion may still be used.
+            paragraph_2_html: "If you're just looking to remove a photo, you can do that from %{paragraph_2_link}."
+            paragraph_2_link: Manage works

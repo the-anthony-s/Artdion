@@ -1,13 +1,13 @@
 en:
   classification:
     photos:
-      one: "%{count} photo"
-      other: "%{count} photos"
+      one: work
+      other: works
     show:
       subheading: "%{photos_count} from %{users_count}"
       photos_count:
-        one: "%{count} photos"
-        other: "%{count} photos"
+        one: work
+        other: works
       users_count:
-        one: "%{count} people"
-        other: "%{count} people"
+        one: people
+        other: people

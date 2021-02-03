@@ -1,3 +1,124 @@
+//---------------
+// DEFAULT
+//---------------
 textarea {
   font-family: var(--font-family-default);
+}
+
+
+//---------------
+// Form
+//---------------
+.form {
+  display: block;
+  position: relative;
+  width: 100%;
+}
+
+.form-block + .form-block {
+  margin-top: 38px;
+}
+
+.form-heading {
+  margin-bottom: 16px;
+}
+
+.form-row {
+  position: relative;
+
+  & + & {
+    margin-top: 24px;
+  }
+
+  &--grid {
+    display: grid;
+    grid-gap: 24px;
+    
+    @include bp(sm) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+.form label {
+  color: var(--color-contrast-higher);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-small);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form input[type="text"],
+.form input[type="email"],
+.form input[type="password"],
+.form textarea,
+.form select {
+  width: 100%;
+  display: block;
+  color: var(--color-contrast-higher);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  text-transform: none;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-default);
+  box-shadow: none;
+  appearance: none;
+
+  &:focus {
+    border-color: var(--color-border-dark);
+  }
+}
+
+.form input[type="submit"] {
+  color: var(--color-contrast-lower);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: none;
+  line-height: var(--line-height-small);
+  text-decoration: none;
+  text-transform: none;
+  text-align: center;
+  display: inline-block;
+  padding: 8px 12px;
+  min-width: 140px;
+  border-radius: var(--radius-default);
+  border: 1px solid var(--color-contrast-higher);
+  background: var(--color-contrast-higher);
+  user-select: none;
+  appearance: none;
+  cursor: pointer;
+  white-space: nowrap;
+  touch-action: manipulation;
+  outline: none;
+
+  @include bp(sm) {
+    padding: 12px 12px;
+  }
+
+  &:hover, 
+  &:focus,
+  &:active, 
+  &:focus-within {
+    color: var(--color-contrast-lower);
+	  background: var(--color-contrast-high);
+	  border-color: var(--color-contrast-high);
+  } 
+}
+
+.form-checkbox {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  cursor: pointer !important;
+
+  & .labelText {
+    padding-left: 8px;
+    color: var(--color-contrast-higher);
+    font-size: var(--font-size-body);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-body);
+  }
 }

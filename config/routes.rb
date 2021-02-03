@@ -28,10 +28,10 @@ Rails.application.routes.draw do
 
   # Users Controller
   devise_for :users, path: 'account', path_names: {
-    sing_in: 'sign_in',
+    sing_in: 'login',
     sing_out: 'sign_out',
-    sing_up: 'sign_up',
-    edit: 'settings'
+    sing_up: 'join',
+    edit: ''
   }, controllers: {
     registrations: 'users/registrations',
     confirmations: 'users/confirmations',
@@ -43,6 +43,11 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
+    get 'account/email', to: 'users/registrations#email', as: :email_user_registration
+    get 'account/scurity', to: 'users/registrations#security', as: :security_user_registration
+    get 'account/subscription', to: 'users/registrations#subscription', as: :subscription_user_registration
+    get 'account/close', to: 'users/registrations#close', as: :close_user_registration
+
     resources :photos, module: :users, only: %i[new create edit update]
   end
 

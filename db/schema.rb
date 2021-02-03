@@ -10,10 +10,52 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_01_062558) do
+ActiveRecord::Schema.define(version: 2021_02_02_222919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "ahoy_events", force: :cascade do |t|
+    t.bigint "visit_id"
+    t.bigint "user_id"
+    t.string "name"
+    t.jsonb "properties"
+    t.datetime "time"
+    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
+    t.index ["properties"], name: "index_ahoy_events_on_properties", opclass: :jsonb_path_ops, using: :gin
+    t.index ["user_id"], name: "index_ahoy_events_on_user_id"
+    t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
+  end
+
+  create_table "ahoy_visits", force: :cascade do |t|
+    t.string "visit_token"
+    t.string "visitor_token"
+    t.bigint "user_id"
+    t.string "ip"
+    t.text "user_agent"
+    t.text "referrer"
+    t.string "referring_domain"
+    t.text "landing_page"
+    t.string "browser"
+    t.string "os"
+    t.string "device_type"
+    t.string "country"
+    t.string "region"
+    t.string "city"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "utm_source"
+    t.string "utm_medium"
+    t.string "utm_term"
+    t.string "utm_content"
+    t.string "utm_campaign"
+    t.string "app_version"
+    t.string "os_version"
+    t.string "platform"
+    t.datetime "started_at"
+    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
+    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
+  end
 
   create_table "classification_translations", force: :cascade do |t|
     t.bigint "classification_id", null: false
@@ -103,6 +145,21 @@ ActiveRecord::Schema.define(version: 2021_02_01_062558) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.string "name_native"
+    t.string "iso_639_1"
+    t.string "iso_639_3"
+    t.string "iso_639_2b"
+    t.string "iso_639_2t"
+    t.integer "language_type", default: 1
+    t.integer "language_scope", default: 1
+    t.boolean "pause", default: true
+    t.boolean "common", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.bigint "user_id"
     t.string "likable_type"
@@ -185,14 +242,17 @@ ActiveRecord::Schema.define(version: 2021_02_01_062558) do
     t.string "first_name"
     t.string "last_name"
     t.string "username"
+    t.string "website"
     t.string "instagram"
+    t.string "twitter"
     t.string "language"
     t.string "timezone"
-    t.text "bio"
+    t.text "about"
     t.string "location"
     t.float "longitude"
     t.float "latitude"
     t.text "image_data"
+    t.boolean "message"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

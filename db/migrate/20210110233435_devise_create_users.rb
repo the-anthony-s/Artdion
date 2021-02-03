@@ -11,14 +11,17 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :first_name
       t.string :last_name
       t.string :username, uniq: true
+      t.string :website
       t.string :instagram
+      t.string :twitter
       t.string :language
       t.string :timezone
-      t.text :bio
+      t.text :about
       t.string :location
       t.float :longitude
       t.float :latitude
       t.text :image_data
+      t.boolean :message
 
       ## Recoverable
       t.string   :reset_password_token

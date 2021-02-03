@@ -82,6 +82,20 @@
   }
 }
 
+.btn--delete {
+  color: var(--color-white);
+  background: var(--color-red);
+  border-color: var(--color-red);
+
+  &:hover,
+  &:focus,
+  &:active {
+   color: var(--color-white);
+  background: var(--color-red-dark);
+  border-color: var(--color-red-dark); 
+  }
+}
+
 
 //-----------------
 // ACTION BUTTON

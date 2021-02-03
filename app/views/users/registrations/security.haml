@@ -1,0 +1,44 @@
+= content_for :title, t('user.settings.title.security')
+
+%section(class="section settings-section")
+  %div(class="container container--small")
+    %div(class="settings-grid")
+      
+      %div(class="settings-grid__nav")
+        = render partial: 'users/registrations/shared/nav'
+
+      %div(class="settings-grid__panel")
+        %div(class="settings-heading")
+          %h1(class="text text--h4")= yield(:title) 
+
+        %div(class="settings-body")
+            
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form', method: :put }) do |f|
+            
+            %div(class="form-block")
+              %div(class="form-set")
+                %div(class="form-row")
+                  = f.input :current_password, required: true, input_html: { autocomplete: "current-password" }, label: t('user.settings.security.form.label.current_password')
+                %div(class="form-row")
+                  = f.input :password, required: false, input_html: { autocomplete: "new-password" }, label: t('user.settings.security.form.label.password')
+                %div(class="form-row")
+                  = f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" }, label: t('user.settings.security.form.label.password_confirmation')
+                %div(class="form-row")
+                  = button_tag t('user.settings.security.form.submit'), class: "btn btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}
+
+        %div(class="settings-body")
+          %div(class="settings-heading")
+            %h5(class="text text--h5")= t('user.settings.security.form.heading.sessions')
+          %div(class="settings-body")
+            %table(class="settings-sessions")
+              %thead
+                %tr
+                  %th= t('user.settings.security.sessions.platform')
+                  %th= t('user.settings.security.sessions.date')
+              %tbody
+                - current_user.visits.order(started_at: :asc).take(10).each do |visit|
+                  %tr
+                    %td
+                      %p(class="text text--small")= visit.browser + " (#{visit.os})"
+                    %td
+                      %p(class="text text--small")= I18n.l(visit.started_at)

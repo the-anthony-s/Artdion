@@ -20,9 +20,9 @@ module ApplicationHelper
       precision: 1,
       significant: true,
       units: {
-        thousand: 'K',
-        million: 'M',
-        billion: 'B'
+        thousand: I18n.t('helpers.number.thousand'),
+        million: I18n.t('helpers.number.million'),
+        billion: I18n.t('helpers.number.billion')
       }
     )
   end

@@ -54,3 +54,8 @@ en:
       create: 'Create %{model}'
       update: 'Update %{model}'
       submit: 'Save %{model}'
+    
+    number:
+      thousand: k
+      million: m
+      billion: b

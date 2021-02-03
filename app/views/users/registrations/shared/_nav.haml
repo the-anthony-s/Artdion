@@ -1,0 +1,11 @@
+%ul(class="settings-nav")
+  %li(class="settings-nav__item")
+    = active_link_to t('user.settings.nav.edit_profile'), edit_user_registration_path, active: :exact, class: 'settings-nav-link'
+  %li(class="settings-nav__item")
+    = active_link_to t('user.settings.nav.email'), email_user_registration_path, active: :exact, class: 'settings-nav-link'
+  %li(class="settings-nav__item")
+    = active_link_to t('user.settings.nav.security'), security_user_registration_path, active: :exact, class: 'settings-nav-link'
+  %li(class="settings-nav__item")
+    = active_link_to t('user.settings.nav.subscription'), subscription_user_registration_path, active: :exact, class: 'settings-nav-link'
+  %li(class="settings-nav__item")
+    = active_link_to t('user.settings.nav.close'), close_user_registration_path, active: :exact, class: 'settings-nav-link'

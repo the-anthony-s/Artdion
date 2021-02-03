@@ -9,6 +9,10 @@
   padding-left: var(--space-container);
 }
 
+.container--small {
+  max-width: var(--container-width-small);
+}
+
 .container--tight {
   max-width: var(--container-width-tight);
 }

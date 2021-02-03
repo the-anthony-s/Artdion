@@ -56,6 +56,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'active_link_to'
 gem 'acts-as-taggable-on', '~> 7.0'
+gem 'ahoy_matey'
 gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', '~> 1.14'
 gem 'counter_culture'

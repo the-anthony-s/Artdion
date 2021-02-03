@@ -1,3 +1,4 @@
+
 class User < ApplicationRecord
   acts_as_tagger
   acts_as_paranoid without_default_scope: true
@@ -15,6 +16,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :followers, as: :follower, dependent: :delete_all, class_name: 'Follow'
   has_many :following, as: :followable, dependent: :delete_all, class_name: 'Follow'
+  has_many :visits, class_name: 'Ahoy::Visit'
 
   ## Impressions -> Count views
   is_impressionable counter_cache: true, unique: true
@@ -29,7 +31,7 @@ class User < ApplicationRecord
 
   ## Friendly ID
   extend FriendlyId
-  friendly_id :custom_slug, use: :slugged
+  friendly_id :username, use: %i[slugged finders]
 
   ## Check if model liked
   def likes?(likable)
@@ -65,11 +67,6 @@ class User < ApplicationRecord
 
   ## Friendly_id: change slug if user's username updated or slug is blank
   def should_generate_new_friendly_id?
-    slug.blank? && username_changed?
-  end
-
-  ## Friendly_id: add @ to slug
-  def custom_slug
-    "@ #{username}"
+    username_changed?
   end
 end

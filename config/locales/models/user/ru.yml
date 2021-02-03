@@ -1,2 +1,79 @@
 ru:
-  hello: "Hello world"
+  user:
+    tabs:
+      works:
+        few: работы
+        many: работ
+        one: работа
+        other: работ
+      likes:
+        few: нравятся
+        many: нравятся
+        one: нравится
+        other: нравятся
+    settings:
+      title:
+        edit_profile: Настройки аккаунта
+        email: Уведомления
+        security: Безопасность
+        subscription: Премиум аккаунт
+        close: Учетная запись
+      nav:
+        edit_profile: Настройки аккаунта
+        email: Уведомления
+        security: Безопасность
+        subscription: Премиум аккаунт
+        close: Учетная запись
+      
+      # pages
+      edit:
+        form:
+          heading:
+            about: О себе
+            social: Социальные сети
+            messaging: Сообщения
+          label:
+            first_name: Имя
+            last_name: Фамилия
+            email: Email
+            username: Имя пользователя
+            location: Город, Страна
+            website: Ссылка на вебсайт / портфолио
+            about: Биография
+            language: Язык
+            instagram: Instagram
+            twitter: Twitter
+            messaging: Отобразите кнопку "Сообщение" в своем профиле
+          hint:
+            instagram: Чтобы мы могли представить вас в %{instagram}
+            twitter: Чтобы мы могли представить вас в %{twitter}
+            messaging: Сообщения будут отправлены на вашу электронную почту
+          submit: Обновить аккаунт
+      
+      security:
+        form:
+          heading:
+            sessions: Последние 10 сессий
+          label:
+            current_password: Текущий пароль
+            password: Новый пароль
+            password_confirmation: Подтверждение нового пароля
+          submit: Обновить пароль
+        sessions:
+          platform: Платформа
+          date: Дата
+
+      close:
+        form:
+          heading:
+            warning_word: "Внимание:"
+            warning: удаление учетной записи необратимо. Все ваши фотографии, коллекции и статистика будет удалена.
+          label:
+            current_password: Пароль
+          submit: Удалить учетную запись
+          confirmation: Вы уверены, что хотите удалить учетную запись?
+          caption:
+            heading: Удаление личных работ
+            paragraph_1: При удалении учетной записи все ваши работы (фотографии) будут удалены с Artdion. Однако лицензия Artdion является безотзывной, поэтому копии работ (фотографии), которые были загружены перед удалением, все равно можно использовать.
+            paragraph_2_html: "Если вы просто хотите удалить фотографию, вы можете сделать это в разделе %{paragraph_2_link}."
+            paragraph_2_link: Управление фотографиями

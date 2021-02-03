@@ -12,10 +12,9 @@
     padding-bottom: 48px;
   }
 
-  // @include bp(lg) {
-  //   padding-top: 68px;
-  //   padding-bottom: 68px;
-  // }
+  @include bp(xl) {
+    padding-bottom: 68px;
+  }
 }
 
 .user {

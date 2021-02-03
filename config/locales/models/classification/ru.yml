@@ -1,19 +1,19 @@
 ru:
   classification:
     photos:
-      few: "%{count} фотографии"
-      many: "%{count} фотографий"
-      one: "%{count} фотография"
-      other: "%{count} фотографий"
+      few: работы
+      many: работ
+      one: работа
+      other: работ
     show:
       subheading: "%{photos_count} от %{users_count}"
       photos_count:
-        few: "%{count} фотографии"
-        many: "%{count} фотографий"
-        one: "%{count} фотография"
-        other: "%{count} фотографий"
+        few: работы
+        many: работ
+        one: работа
+        other: работ
       users_count:
-        few: "%{count} человек"
-        many: "%{count} человек"
-        one: "%{count} человека"
-        other: "%{count} человек"
+        few: человек
+        many: человек
+        one: человека
+        other: человек

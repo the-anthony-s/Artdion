@@ -4,10 +4,12 @@
       %div(class="user-tab")
         = active_link_to user, class: 'user-tab-link', active: :exact do
           %span(class="user-tab-link__icon")= icon "fas", "image"
-          %span(class="user-tab-link__name")= t('user.tabs.works').pluralize(user.photos_count).capitalize
-          %span(class="user-tab-link__count")= user.photos_count
+          %span(class="user-tab-link__name")= t('user.tabs.works', count: user.photos_count).capitalize
+          %span(class="user-tab-link__count")= formatted_number(user.photos_count)
       %div(class="user-tab")
         = active_link_to likes_user_path, class: 'user-tab-link', active: :exact do
           %span(class="user-tab-link__icon")= icon "fas", "heart"
-          %span(class="user-tab-link__name")= t('user.tabs.likes').pluralize(user.likes_count).capitalize
-          %span(class="user-tab-link__count")= user.likes_count
+          %span(class="user-tab-link__name")= t('user.tabs.likes', count: user.likes_count).capitalize
+          %span(class="user-tab-link__count")= formatted_number(user.likes_count)
+
+-# = t('classification.photos', count: formatted_number(classification.photos_count))

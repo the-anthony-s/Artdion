@@ -30,6 +30,7 @@
   --color-black-lighter: #555555;
 
   --color-red: #ff6766;
+  --color-red-dark: #ea5150;
 
   --color-bg: #ffffff;
   --color-contrast-lower: #f3f3f3;
@@ -40,8 +41,14 @@
 
 
   //---------------------
+  // COMMUNICATION
+  //---------------------
+  --color-warning: var(--color-red);
+
+
+  //---------------------
   // BORDER COLOR
   //---------------------
   --color-border: #eae8e4;
-  --color-border-dark: var(--color-primary);
+  --color-border-dark: var(--color-contrast-higher);
 }

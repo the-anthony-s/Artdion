@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
+  # after_action :track_action
+
   before_action :store_user_location!, if: :storable_location?
   before_action :set_locale
   # before_action :default_format_html
@@ -54,5 +56,13 @@ class ApplicationController < ActionController::Base
     else
       DEFAULT_LOCALE
     end
+  end
+
+  protected
+
+  # Track users' actions
+  # Not using it due to a lack of performance
+  def track_action
+    ahoy.track 'Ran action', request.path_parameters
   end
 end

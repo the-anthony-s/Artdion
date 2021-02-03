@@ -1,0 +1,95 @@
+= content_for :title, t('user.settings.title.edit_profile')
+
+-# %h2= t(".title", resource: resource.model_name.human)
+-# = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+-#   = f.error_notification
+-#   .form-inputs(style="positon: relative;")
+-#     = f.label :image, 'Upload your file'
+-#     = image_tag current_user.image_url, 'data-src': current_user.image_url, class: "lazy file-upload-preview photo-upload__view__photo", id: "NewPhoto"
+-#     = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }
+-#     = f.hidden_field :image, value: current_user.cached_image_data, id: "photo-image-upload-result"
+-#   .form-inputs
+-#     = f.input :email, required: true, autofocus: true
+-#     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+-#       %p= t(".currently_waiting_confirmation_for_email", email: resource.unconfirmed_email)
+-#     = f.input :password, hint: t(".leave_blank_if_you_don_t_want_to_change_it"), required: false, input_html: { autocomplete: "new-password" }
+-#     = f.input :password_confirmation, required: false, input_html: { autocomplete: "new-password" }
+-#     = f.input :current_password, hint: t(".we_need_your_current_password_to_confirm_your_changes"), required: true, input_html: { autocomplete: "current-password" }
+-#   .form-actions
+-#     = f.button :submit, t(".update")
+-# %h3= t(".cancel_my_account")
+-# %p
+-#   = t(".unhappy")
+-#   = link_to t(".cancel_my_account"), registration_path(resource_name), data: { confirm: t(".are_you_sure") }, method: :delete
+-# = link_to t("devise.shared.links.back"), :back
+
+
+%section(class="section settings-section")
+  %div(class="container container--small")
+    %div(class="settings-grid")
+      
+      %div(class="settings-grid__nav")
+        = render partial: 'users/registrations/shared/nav'
+
+      %div(class="settings-grid__panel")
+        %div(class="settings-panel")
+          %div(class="settings-heading")
+            %h1(class="text text--h4")= yield(:title) 
+            - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+              %p(class="text text--body") Currently waiting confirmation for: #{resource.unconfirmed_email}
+          
+          %div(class="settings-body")
+            
+            = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: 'form', method: :put }) do |f|
+              
+              %div(class="form-block")
+                %div(class="form-set")
+                  %div(class="form-row form-row--grid")
+                    = f.input :first_name, required: true, autofocus: false, label: t('user.settings.edit.form.label.first_name')
+                    = f.input :last_name, required: true, autofocus: false, label: t('user.settings.edit.form.label.last_name')
+                  %div(class="form-row")
+                    = f.input :email, required: true, autofocus: false, label: t('user.settings.edit.form.label.email')
+                  %div(class="form-row")
+                    = f.input :username, required: true, autofocus: false, label: t('user.settings.edit.form.label.username')
+
+              %div(class="form-block")
+                %div(class="form-heading")
+                  %h6(class="text text--h5")= t('user.settings.edit.form.heading.about')
+                %div(class="form-set")
+                  %div(class="form-row form-row--grid")
+                    = f.input :location, required: false, autofocus: false, label: t('user.settings.edit.form.label.location')
+                    = f.input :website, required: false, autofocus: false, label: t('user.settings.edit.form.label.website')
+                    = f.input :language, label: t('user.settings.edit.form.label.language'), selected: 1 do
+                      = f.select :language, Language.is_active.all.map { |r| [r.name_native, r.iso_639_1, { class: r.id }] }
+                  %div(class="form-row form-row--grid")
+                    = f.input :about, required: false, autofocus: false, label: t('user.settings.edit.form.label.about')
+              
+              %div(class="form-block")
+                %div(class="form-heading")
+                  %h6(class="text text--h5")= t('user.settings.edit.form.heading.social')
+                %div(class="form-set")
+                  %div(class="form-row form-row--grid")
+                    = f.input :instagram, required: false, autofocus: false, label: t('user.settings.edit.form.label.instagram')
+                    = f.input :twitter, required: false, autofocus: false, label: t('user.settings.edit.form.label.twitter')
+
+              %div(class="form-block")
+                %div(class="form-heading")
+                  %h6(class="text text--h5")= t('user.settings.edit.form.heading.messaging')
+                %div(class="form-set")
+                  %div(class="form-row")
+                    %div(class="settings-banner")
+                      %div(class="settings-banner__main")
+                        = f.label :message, class: 'form-checkbox' do
+                          = f.check_box :message, as: :boolean, checked_value: true, unchecked_value: false
+                          %span.labelText=t('user.settings.edit.form.label.messaging')
+                      %div(class="settings-banner__sidebar")
+                        sidebar
+                    %div(class="settings-banner__hint")
+                      %p(class="text text--minor text-color-secondary")= t('user.settings.edit.form.hint.messaging')
+
+
+              %div(class="form-block")
+                %div(class="form-set")
+                  %div(class="form-row")
+                    -# = f.submit
+                    = button_tag t('user.settings.edit.form.submit'), class: "btn btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}

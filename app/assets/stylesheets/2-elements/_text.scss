@@ -135,3 +135,17 @@ h6,
 .text-color-dark {
 	color: var(--color-black) !important;
 }
+
+.text-color-warning {
+	color: var(--color-warning) !important;
+}
+
+
+// Block
+.text-paragraph {
+	display: block;
+
+	& + & {
+		padding-top: 18px;
+	}
+}

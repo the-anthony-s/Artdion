@@ -1,9 +1,43 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
     before_action :authenticate_user!
-    # before_action :set_user, only: %i[preferences security]
+    before_action :set_user
 
-    layout 'application', only: %i[edit update preferences security]
+    layout 'application', only: %i[edit update email security subscription close]
+
+    def email
+      if @user
+        render :email
+      else
+        redirect_to edit_user_registration_path
+      end
+    end
+
+    def security
+      if @user
+        @visits = @user.visits.all
+
+        render :security
+      else
+        redirect_to edit_user_registration_path
+      end
+    end
+
+    def subscription
+      if @user
+        render :subscription
+      else
+        redirect_to edit_user_registration_path
+      end
+    end
+
+    def close
+      if @user
+        render :close
+      else  
+        redirect_to edit_user_registration_path
+      end
+    end
 
     private
 
@@ -22,7 +56,8 @@ module Users
       params.require(:user).permit(
         :username, :first_name, :last_name,
         :email, :password, :password_confirmation,
-        :current_password, :image
+        :current_password, :image, :location, :website,
+        :about, :instagram, :twitter, :message, :language
       )
     end
 

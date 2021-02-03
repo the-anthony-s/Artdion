@@ -9,4 +9,4 @@
         %p(class="text text--body")= classification.description.truncate(128)
       %p(class="text text--body fw-medium classification-heading__stats")
         %span(class="text-color-secondary")= icon "fas", "image-polaroid"
-        %span= t('classification.photos', count: classification.photos_count)
+        %span #{formatted_number(classification.photos_count)} #{t('classification.photos', count: classification.photos_count)}

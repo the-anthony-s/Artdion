@@ -1,0 +1,14 @@
+= content_for :title, t('user.settings.title.subscription')
+
+%section(class="section settings-section")
+  %div(class="container container--small")
+    %div(class="settings-grid")
+      
+      %div(class="settings-grid__nav")
+        = render partial: 'users/registrations/shared/nav'
+
+      %div(class="settings-grid__panel")
+        %div(class="settings-heading")
+          %h1(class="text text--h4")= yield(:title) 
+
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolore minima architecto ullam adipisci dolorem hic, voluptatum dicta aspernatur laborum dolor voluptatibus molestiae qui doloribus eaque. Nulla amet quisquam ex quaerat! Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis quos rerum minus, doloremque quas sapiente, porro eligendi officia culpa nihil voluptate fugiat illum. Inventore aliquid, nulla dignissimos quod consequatur nihil. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore aperiam, quia placeat reprehenderit, vero tempora esse cupiditate nesciunt itaque ratione, eveniet provident ut repudiandae numquam animi enim adipisci sequi sunt.
