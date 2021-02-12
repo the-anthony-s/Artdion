@@ -15,70 +15,6 @@ ActiveRecord::Schema.define(version: 2021_02_03_172716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ahoy_events", force: :cascade do |t|
-    t.bigint "visit_id"
-    t.bigint "user_id"
-    t.string "name"
-    t.jsonb "properties"
-    t.datetime "time"
-    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
-    t.index ["properties"], name: "index_ahoy_events_on_properties", opclass: :jsonb_path_ops, using: :gin
-    t.index ["user_id"], name: "index_ahoy_events_on_user_id"
-    t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
-  end
-
-  create_table "ahoy_visits", force: :cascade do |t|
-    t.string "visit_token"
-    t.string "visitor_token"
-    t.bigint "user_id"
-    t.string "ip"
-    t.text "user_agent"
-    t.text "referrer"
-    t.string "referring_domain"
-    t.text "landing_page"
-    t.string "browser"
-    t.string "os"
-    t.string "device_type"
-    t.string "country"
-    t.string "region"
-    t.string "city"
-    t.float "latitude"
-    t.float "longitude"
-    t.string "utm_source"
-    t.string "utm_medium"
-    t.string "utm_term"
-    t.string "utm_content"
-    t.string "utm_campaign"
-    t.string "app_version"
-    t.string "os_version"
-    t.string "platform"
-    t.datetime "started_at"
-    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
-    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
-  end
-
-  create_table "classification_translations", force: :cascade do |t|
-    t.bigint "classification_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.text "description"
-    t.index ["classification_id"], name: "index_classification_translations_on_classification_id"
-    t.index ["locale"], name: "index_classification_translations_on_locale"
-  end
-
-  create_table "classifications", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.boolean "active", default: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "photos_count", default: 0
-    t.integer "users_count", default: 0
-    t.integer "impressions_count"
-  end
-
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "commentable_type", null: false
@@ -187,9 +123,9 @@ ActiveRecord::Schema.define(version: 2021_02_03_172716) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0
     t.integer "comments_count", default: 0
-    t.bigint "classification_id"
+    t.bigint "type_id"
     t.integer "impressions_count"
-    t.index ["classification_id"], name: "index_photos_on_classification_id"
+    t.index ["type_id"], name: "index_photos_on_type_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
@@ -237,6 +173,28 @@ ActiveRecord::Schema.define(version: 2021_02_03_172716) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "type_translations", force: :cascade do |t|
+    t.bigint "type_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "description"
+    t.index ["locale"], name: "index_type_translations_on_locale"
+    t.index ["type_id"], name: "index_type_translations_on_type_id"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "photos_count", default: 0
+    t.integer "users_count", default: 0
+    t.integer "impressions_count"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -253,7 +211,7 @@ ActiveRecord::Schema.define(version: 2021_02_03_172716) do
     t.float "longitude"
     t.float "latitude"
     t.text "image_data"
-    t.boolean "message"
+    t.boolean "message", default: true
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -285,6 +243,6 @@ ActiveRecord::Schema.define(version: 2021_02_03_172716) do
   end
 
   add_foreign_key "comments", "users"
-  add_foreign_key "photos", "classifications"
+  add_foreign_key "photos", "types"
   add_foreign_key "taggings", "tags"
 end

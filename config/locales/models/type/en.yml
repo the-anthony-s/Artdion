@@ -1,0 +1,23 @@
+en:
+  type:
+    index:
+      heading: Collection
+      subheading: Explore the Whitney's collection of over %{photos_count}, created by more than %{users_count} American artists during the twentieth and twenty-first centuries.
+      photos_count:
+        one: "%{count} work"
+        other: "%{count} works"
+      users_count:
+        one: "%{count} user"
+        other: "%{count} users"
+
+    photos:
+      one: work
+      other: works
+    show:
+      subheading: "%{photos_count} from %{users_count}"
+      photos_count:
+        one: work
+        other: works
+      users_count:
+        one: people
+        other: people

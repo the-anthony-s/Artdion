@@ -1,0 +1,12 @@
+%div(class="col")
+  = link_to type, class: 'type' do
+    %div(class="type-cover")
+      = type_cover(type.photos.last)
+    %div(class="type-heading")
+      %div(class="type-heading__heading")
+        %p(class="text text--h4")= type.name
+      %div(class="type-heading__subheading")
+        %p(class="text text--body")= type.description.truncate(128)
+      %p(class="text text--body fw-medium type-heading__stats")
+        %span(class="text-color-secondary")= icon "fas", "image-polaroid"
+        %span #{formatted_number(type.photos_count)} #{t('type.photos', count: type.photos_count)}

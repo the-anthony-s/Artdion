@@ -6,7 +6,7 @@ en:
       placeholder: Search online gallery
     link:
       home: Home
-      gallery: Gallery
+      collection: Collection
       profile: View profile
       profile_settings: Account settings
       profile_logout: Logout

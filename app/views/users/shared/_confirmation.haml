@@ -1,0 +1,5 @@
+%div(class="bannerTop")
+  %div(class="container")
+    %div(class="bannerTop-container")
+      %span(class="bannerTop__icon")= icon 'fas', 'exclamation-square'
+      = t('user.banner.pending_confirmation_html', email: content_tag(:span, user.email, class: 'fw-bold'), change_email: link_to(t('user.banner.change_email'), edit_user_registration_path, class: 'link-decorated'), confirmation_resend: link_to(t('user.banner.confirmation_resend'), user_confirmation_path(user: {email: user.email}), class: 'link-decorated', method: :post))

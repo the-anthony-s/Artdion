@@ -1,0 +1,22 @@
+.bannerTop {
+  background: var(--color-contrast-higher);
+  width: 100%;
+  position: relative;
+}
+
+.bannerTop-container {
+  padding: 9px 0px;
+  color: var(--color-contrast-lower);
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--font-size-body);
+  display: block;
+  
+  @include bp(sm) {
+    text-align: center;
+  }
+}
+
+.bannerTop__icon {
+  padding-right: 6px;
+}

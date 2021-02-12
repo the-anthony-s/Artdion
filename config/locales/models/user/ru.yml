@@ -1,5 +1,15 @@
 ru:
   user:
+
+    profile:
+      action:
+        edit: Редактировать
+
+    banner:
+      pending_confirmation_html: Ваш адрес электронной почты %{email} не подтвержден. %{change_email} или %{confirmation_resend}.
+      change_email: Изменить адрес электронной почты
+      confirmation_resend: повторно отправить подтверждение
+
     tabs:
       works:
         few: работы

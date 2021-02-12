@@ -12,6 +12,7 @@ import 'components/time'
 import 'components/dropDown'
 import 'components/fileUpload'
 import 'components/search'
+import 'components/nav'
 
 // Stimulus JS
 import 'controllers'

@@ -3,7 +3,13 @@
   %head
     = render partial: 'shared/head'
   %body(class="app app--#{controller.action_name}-#{controller.controller_name}" id="container")
-    = render partial: 'shared/nav'
     
+    -# show confirmation banner, if user hasn't confirmed the email
+    -# - if user_signed_in? && !current_user.confirmed_at?
+    -#   = render partial: 'users/shared/confirmation', locals: { user: current_user }
+    
+    -# navbar
+    = render partial: 'shared/nav'
+
     = content_tag :div, class: "app-body", id: "AppContainer" do
       = yield

@@ -1,28 +1,50 @@
 - show_info = true if show_info == nil || show_info != false
 - show_user = true if show_user == nil || show_user != false
 
+
 %div(class="col")
   %div(class="photoCard" itemListElement="itemListElement" itemscope itemtype="http://schema.org/ListItem" id="#{dom_id(photo)}")
     %meta{:content => "#{photo.name}", :itemprop => "name"}/
     %meta{:content => "#{photo_counter}", :itemprop => "position"}/
     %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
 
-    -# display photo
     = link_to photo, class: 'photoCard-media' do
       = photo_card(photo)
     
-    -# display art name, user name + action buttons
     - if show_info
       %div(class="photoCard-info")
-        %div(class="photoCard-info-heading")
-          = link_to photo, class: 'photoCard-link photoCard-link--photo' do
-            %span(class="display-name")= photo.name
-          
+        %div(class="photoCard-info__container")
+          %div(class="photoCard-name")
+            = link_to photo.name, photo, class: 'photoCard-link photoCard-link--name'
           - if show_user
-            = link_to photo.user, class: 'photoCard-link photoCard-link--user' do
-              %span(class="display-name")= user_name(photo.user)
+            %div(class="photoCard-user")
+              = link_to photo.user, class: 'photoCard-link photoCard-link--user' do
+                %span(class="display-nane")= user_name(photo.user)
+
+
+
+-# %div(class="col")
+-#   %div(class="photoCard" itemListElement="itemListElement" itemscope itemtype="http://schema.org/ListItem" id="#{dom_id(photo)}")
+-#     %meta{:content => "#{photo.name}", :itemprop => "name"}/
+-#     %meta{:content => "#{photo_counter}", :itemprop => "position"}/
+-#     %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
+
+-#     -# display photo
+-#     = link_to photo, class: 'photoCard-media' do
+-#       = photo_card(photo)
+    
+-#     -# display art name, user name + action buttons
+-#     - if show_info
+-#       %div(class="photoCard-info")
+-#         %div(class="photoCard-info-heading")
+-#           = link_to photo, class: 'photoCard-link photoCard-link--photo' do
+-#             %span(class="display-name")= photo.name
+          
+-#           - if show_user
+-#             = link_to photo.user, class: 'photoCard-link photoCard-link--user' do
+-#               %span(class="display-name")= user_name(photo.user)
         
-        %div(class="photoCard-info-actions")
-          %ul(class="photoCard-actions")
-            %li(class="photoCard-actions--item" id="PhotoCard#{photo.id}_likes")
-              = render partial: "photos/photo-like", locals: { photo: photo }
+        -# %div(class="photoCard-info-actions")
+        -#   %ul(class="photoCard-actions")
+        -#     %li(class="photoCard-actions--item" id="PhotoCard#{photo.id}_likes")
+        -#       = render partial: "photos/photo-like", locals: { photo: photo }

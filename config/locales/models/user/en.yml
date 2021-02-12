@@ -1,5 +1,14 @@
 en:
   user:
+
+    profile:
+      action:
+        edit: Edit profile
+
+    banner:
+      pending_confirmation_html: Your email %{email} has not been confirmed. %{change_email} or %{confirmation_resend}.
+      change_email: Change email
+      confirmation_resend: resend confirmation
     
     tabs:
       works: 

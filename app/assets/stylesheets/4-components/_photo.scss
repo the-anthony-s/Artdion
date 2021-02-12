@@ -20,90 +20,68 @@
 }
 
 .photoCard-info {
+  display: block;
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+}
+
+.photoCard-info__container {
   margin-top: 12px;
-  padding-left: var(--space-container);
-  padding-right: var(--space-container);
-  
+  padding: 0 var(--space-container);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
   @include bp(sm) {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
   }
 }
 
-.photoCard-info-heading {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  padding-right: 8px;
+.photoCard-grid {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  grid-template-columns: minmax(0,-webkit-min-content) auto;
+  grid-template-columns: minmax(0,min-content) auto;
+}
+
+.photoCard-user {
+  pointer-events: auto;
+  position: relative;
+  display: inline-block;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .photoCard-link {
-  text-decoration: none;
   text-transform: none;
-  appearance: none;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  text-decoration: none;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.photoCard-link--photo {
+.photoCard-link--name {
   color: var(--color-contrast-higher);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-bold);
-  line-height: 1.2;
+  line-height: var(--line-height-body);
+
+  &:hover {
+    color: var(--color-contrast-higher);
+    text-decoration: none;
+  }
 }
 
 .photoCard-link--user {
   color: var(--color-contrast-medium);
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-regular);
-  line-height: 1.2;
-  margin-top: 2px;
-}
+  font-size: var(--font-size-minor);
+  font-weight: var(--font-weight-default);
+  line-height: var(--line-height-minor);
 
-.photoCard-info-actions {
-  flex: none;
-  display: flex;
-}
-
-// Card actions
-.photoCard-actions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin: -4px;
-  position: relative;
-
-  &--item {
-    flex: none;
-  }
-}
-
-.photoCard-action {
-  color: var(--color-contrast-medium);
-  font-size: var(--font-size-large);
-  line-height: 1;
-  text-decoration: none;
-  text-transform: none;
-  padding: 4px;
-  display: inline-block;
-
-  &:hover,
-  &:focus,
-  &:active {
+  &:hover {
     color: var(--color-contrast-higher);
+    text-decoration: none;
   }
-}
-
-.photoCard-action-dislike {
-  color: var(--color-red);
 }
 
 
@@ -189,9 +167,9 @@
 .photoAbout-container {
   width: 100%;
 
-  @include bp(sm) {
-    max-width: 700px;
-  }
+  // @include bp(sm) {
+  //   max-width: 700px;
+  // }
 }
 
 .photoAbout-description {
@@ -201,28 +179,31 @@
 }
 
 .photoAbout-details {
-  padding-top: 16px;
+  padding-top: 20px;
   position: relative;
+  display: grid;
+  grid-gap: var(--space-container);
+  grid-template-columns: repeat(2, 1fr);
+
+  @include bp(sm) {
+    padding-top: 30px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include bp(lg) {
+    grid-template-columns: repeat(6,1fr);
+  }
 }
 
 .photoAbout-detail {
   position: relative;
   display: block;
-
-  &__icon {
-    display: inline-block;
-    width: 20px;
-    padding-right: 4px;
-  }
-
-  & + & {
-    padding-top: 8px;
-  }
 }
 
 // photo related
 .photoRelated {
   position: relative;
+  // border-top: 1px solid var(--color-border);
 }
 
 // Heading

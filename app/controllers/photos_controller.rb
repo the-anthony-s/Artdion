@@ -1,4 +1,4 @@
-class PhotosController < ApplicationController  
+class PhotosController < ApplicationController
   before_action :set_photo, only: %i[show edit update]
   before_action :convert_search, only: %i[show]
 

@@ -1,15 +1,15 @@
-class ClassificationsController < ApplicationController
-  before_action :set_classification, only: :show
+class TypesController < ApplicationController
+  before_action :set_type, only: :show
 
   def index
-    @classifications = Classification.includes([:translations]).default_order.all
+    @types = Type.includes([:translations]).default_order.all
   end
 
   def show
     # Count views
-    impressionist(@classification)
+    impressionist(@type)
 
-    @pagy, @photos = pagy @classification.photos.default_order.includes([:user]).all
+    @pagy, @photos = pagy @type.photos.default_order.includes([:user]).all
 
     respond_to do |format|
       format.html
@@ -28,7 +28,7 @@ class ClassificationsController < ApplicationController
 
   private
 
-  def set_classification
-    @classification = Classification.find(params[:id])
+  def set_type
+    @type = Type.find(params[:id])
   end
 end

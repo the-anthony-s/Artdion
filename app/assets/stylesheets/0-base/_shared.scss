@@ -8,7 +8,7 @@
   --container-width-tight: 642px;
 
   // navigation bar
-  --nav-height: 50px;
+  --nav-height: 54px;
 
   // radius
   --radius-default: 0px;
@@ -47,10 +47,10 @@
 }
 
 
-@supports(--css: variables) {
-  :root {
-    @include bp(sm) {
-      --nav-height: 60px;
-    }
-  }
-}
+// @supports(--css: variables) {
+//   :root {
+//     @include bp(sm) {
+//       --nav-height: 54px;
+//     }
+//   }
+// }

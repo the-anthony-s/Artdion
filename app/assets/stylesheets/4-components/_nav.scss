@@ -5,8 +5,12 @@
   left: 0;
   width: 100%;
   max-width: 100%;
-  box-shadow: 0 0 0 1px var(--color-border);
+  transition: box-shadow 300ms ease-in-out;
   z-index: var(--zindex-nav);
+}
+
+.nav.nav--scrolled {
+  box-shadow: 0 10px 10px -10px rgba(33, 35, 38, .1);
 }
 
 .nav-container {
@@ -70,6 +74,12 @@
 //-----------------
 // ROOT
 //-----------------
+.nav-root {
+  color: var(--color-contrast-higher);
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-large);
+}
 
 
 
@@ -85,8 +95,7 @@
   line-height: var(--line-height-body);
   width: 100%;
   height: 100%;
-  max-height: calc(var(--nav-height) / 1.4);
-  background: var(--color-contrast-lower);
+  background: var(--color-bg);
   border-radius: var(--radius-default);
   position: relative;
   z-index: var(--zindex-nav-search);
@@ -107,7 +116,6 @@
 
   @include bp(sm) {
     position: relative;
-    max-height: calc(var(--nav-height) / 1.4);
   }
 }
 
@@ -141,6 +149,7 @@
   height: 100%;
   width: 37px;
   z-index: 1;
+  visibility: hidden;
 
   @include bp(sm) {
     width: 44px;
@@ -154,8 +163,11 @@
   display: flex;
   align-items: center;
 
-  & .twitter-typeahead {
+  & .twitter-typeahead,
+  & .tt-hint {
     height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
   }
 }
 
@@ -164,18 +176,15 @@
   flex-grow: 1;
   background: none;
   border: none;
+  border-left: 3px solid var(--color-contrast-higher);
   color: var(--color-contrast-higher);
-  font-size: var(--font-size-body);
-  font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-body);
-  height: 100%;
-  padding: 5px 10px 5px 37px;
+  font-size: var(--font-size-large);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-large);
+  height: calc(var(--nav-height) / 1.4);
+  padding: 5px 16px;
   appearance: none;
   position: relative;
-
-  @include bp(sm) {
-    padding: 5px 10px 5px 44px;
-  }
 
   &::placeholder {
     color: var(--color-contrast-medium);
@@ -214,13 +223,14 @@
   justify-content: center;
   text-align: center;
   position: relative;
-  color: var(--color-contrast-higher);
+  color: var(--color-contrast-medium);
   font-size: var(--font-size-body);
-  font-weight: var(--font-weight-default);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-body);
 
+  &:hover,
   &.active {
-    box-shadow: inset 0 -2px var(--color-contrast-higher);
+    color: var(--color-contrast-higher);
   }
 }
 
@@ -252,6 +262,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  height: 100%;
 }
 
 .nav-account__upload {
@@ -273,6 +284,11 @@
     height: calc(var(--nav-height) / 1.8);
     margin-right: 20px;
   }
+}
+
+.nav-account__profile {
+  height: 100%;
+  position: relative;
 }
 
 .nav-profile {
@@ -349,6 +365,19 @@
   }
 }
 
+.nav-btn--upload {
+  color: var(--color-contrast-medium);
+  background: var(--color-contrast-low);
+  border-color: transparent;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-contrast-higher);
+    background: var(--color-contrast-medium);
+  }
+}
+
 
 
 //-----------------
@@ -356,7 +385,7 @@
 //-----------------
 .nav-account__profile .nav-dropdown {
   color: var(--color-white) !important;
-  top: calc(var(--nav-height) / 1.55) !important;
+  top: 100% !important;
   background: var(--color-black);
   box-shadow: 0 8px 16px rgba(0,0,0,.16);
   transform: scale(0.8) translate(10%, -10%);

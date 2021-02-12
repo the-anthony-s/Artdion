@@ -16,11 +16,17 @@
   display: inline-block;
   color: var(--color-contrast-higher);
   font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
   line-height: 26px;
   background: var(--color-contrast-lower);
   border: 0;
   border-radius: var(--radius-default);
   text-decoration: none;
-  padding-left: 8px;
-  padding-right: 8px;
+  // padding-left: 16px;
+  padding: 0px 16px;
+
+  &:hover {
+    color: var(--color-contrast-higher);
+    background: var(--color-contrast-low);
+  }
 }

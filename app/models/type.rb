@@ -1,4 +1,4 @@
-class Classification < ApplicationRecord
+class Type < ApplicationRecord
   translates :name, :description
 
   # Relationships

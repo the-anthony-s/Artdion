@@ -22,8 +22,8 @@ Rails.application.routes.draw do
     resource :like, module: :comments, only: %i[create destroy]
   end
 
-  # Classifications
-  resources :classifications, path: 'gallery', only: %i[index show]
+  # Types
+  resources :types, path: 'gallery', only: %i[index show]
 
 
   # Users Controller

@@ -1,0 +1,32 @@
+ru:
+  type:
+    index:
+      heading: Коллекция
+      subheading: Explore the Whitney's collection of over %{photos_count}, created by more than %{users_count} American artists during the twentieth and twenty-first centuries.
+      photos_count:
+        few: "%{count} работы"
+        many: "%{count} работ"
+        one: "%{count} работа"
+        other: "%{count} работ"
+      users_count:
+        few: "%{count} users"
+        many: "%{count} users"
+        one: "%{count} user"
+        other: "%{count} users"
+    photos:
+      few: работы
+      many: работ
+      one: работа
+      other: работ
+    show:
+      subheading: "%{photos_count} от %{users_count}"
+      photos_count:
+        few: работы
+        many: работ
+        one: работа
+        other: работ
+      users_count:
+        few: человек
+        many: человек
+        one: человека
+        other: человек

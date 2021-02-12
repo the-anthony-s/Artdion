@@ -7,20 +7,18 @@ class Photo < ApplicationRecord
   # Scope
   scope :default_order, -> { order(created_at: :desc).where(private: false, active: true) }
   scope :user_order, -> { order(created_at: :desc) }
-  # scope :search_import, -> { includes(:tags, :user).where(private: false, active: true) }
+  scope :search_import, -> { includes(:tags, :user).where(private: false, active: true) }
 
   # References
   belongs_to :user
-  belongs_to :classification
+  belongs_to :type
 
   # Counters
-  counter_culture :classification, column_name: proc { |model|
+  # counter_culture :user, column_name: ->(model) { "#{model.state}_photos_count" }
+  counter_culture :user
+  counter_culture :type, column_name: proc { |model|
     !model.private? && model.active? ? 'photos_count' : nil
   }
-
-  # Counter cache
-  counter_culture :user
-  # counter_culture :user, column_name: ->(model) { "#{model.state}_photos_count" }
 
   has_many :likes, as: :likable
   has_many :comments, as: :commentable
@@ -31,10 +29,23 @@ class Photo < ApplicationRecord
   # Impressions -> Count views
   is_impressionable counter_cache: true, unique: true
 
+  # Geocoder
+  geocoded_by :address
+  after_validation :geocode, if: ->(obj) { obj.address_changed? }
+
+  def address
+    location
+  end
+
+  def address_changed?
+    location_changed?
+  end
+
   # Validation
   include ImageUploader::Attachment(:image)
+
   validates_presence_of :image
-  validates_presence_of :classification_id
+  validates_presence_of :type_id
 
   # Search -> Searchkick gem
   extend Pagy::Search

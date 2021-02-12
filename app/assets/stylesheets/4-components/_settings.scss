@@ -74,10 +74,15 @@
     padding-left: 8px;
   }
 
-  &:hover,
-  &.active {
+  &:hover {
     color: var(--color-contrast-higher);
     text-decoration: underline;
+  }
+
+  &.active {
+    color: var(--color-contrast-higher);
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
   }
 }
 

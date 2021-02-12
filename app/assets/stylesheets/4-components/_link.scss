@@ -2,7 +2,7 @@
   color: inherit;
   font-weight: var(--text-weight-medium);
 	text-decoration: none;
-  text-transform: none;
+  text-transform: inherit;
   display: inline-flex;
   align-items: center;
 
@@ -18,6 +18,20 @@
     transition-property: fill;
     transition-duration: .1s;
     margin-right: 7px;
+  }
+}
+
+.link-decorated {
+  color: inherit;
+  font-weight: var(--text-weight-medium);
+  text-decoration: underline;
+  text-transform: inherit;
+  display: inline-block;
+
+  &:hover, 
+  &:focus, 
+  &:active {
+  	text-decoration: none;
   }
 }
 

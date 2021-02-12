@@ -9,7 +9,7 @@
   %br/
   = f.input :name
   %br/
-  = f.collection_select :classification_id, Classification.selection_order.includes([:translations]).all, :id, :name, { class: 'chosen-select'}
+  = f.collection_select :type_id, Type.selection_order.includes([:translations]).all, :id, :name, { class: 'chosen-select'}
   %br/
   = f.input :description
   %br/

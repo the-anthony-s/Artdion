@@ -1,4 +1,12 @@
-%div{:class => "section", :"data-controller" => "infinite-scroll"}
+-# %section(class="intro root-intro")
+-#   %div(class="root-intro-media")
+-#   %div(class="root-intro-container")
+-#     %div(class="root-intro-footer")
+-#       %div(class="root-intro-footer__credit") Art of the day by Anthony Sergeyev
+-#       %div(class="root-intro-footer__legal") legal
+-#       %div(class="root-intro-footer__ad") advertising
+
+%section{:class => "section", :"data-controller" => "infinite-scroll"}
   %div(class="container container--media")
     %div{:class => "grid grid--photos", :"data-target" => "infinite-scroll.entries"}
       -# = turbo_stream_from "photos"

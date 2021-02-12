@@ -1,9 +1,9 @@
 .btn {
 	color: var(--color-contrast-lower);
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-medium);
   letter-spacing: none;
-  line-height: var(--line-height-small);
+  line-height: var(--line-height-body);
   text-decoration: none;
   text-transform: none;
   text-align: center;
@@ -19,6 +19,7 @@
   cursor: pointer;
   white-space: nowrap;
   touch-action: manipulation;
+  fill: currentColor;
   outline: none;
 
   &:hover, 
@@ -101,27 +102,38 @@
 // ACTION BUTTON
 //-----------------
 :root {
-  --btnAction-shadow: rgba(0,0,0,.04);  
+  --btnAction-shadow: 0 1px 1px rgb(0 0 0 / 4%); 
 }
 
-
 .btnAction {
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-default);
-  position: relative;
-  background: none;
-  color: var(--color-contrast-medium);
-  font-size: var(--font-size-body);
-  font-weight: var(--font-weight-medium);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 32px;
+  padding: 0 11px;
+  font-size: var(--font-size-small);
+  font-weight: var(--font-weight-medium);
   line-height: 30px;
-  padding: 0 10px;
+  fill: currentColor;
+  user-select: none;
+  text-decoration: none;
+  text-transform: none;
+  border: 1px solid var(--color-contrast-medium);
+  border-radius: var(--radius-default);
+  background: var(--color-bg);
+  color: var(--color-contrast-medium);
   box-shadow: 0 1px 1px var(--btnAction-shadow);
   cursor: pointer;
+  appearance: none;
 
   &:hover {
     color: var(--color-contrast-higher);
+    border-color: var(--color-contrast-higher);
   }
+}
+
+.btnAction-icon + .btnAction-text {
+  margin-left: 8px;
 }
 
 

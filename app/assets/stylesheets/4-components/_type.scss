@@ -1,4 +1,4 @@
-.classification {
+.type {
   position: relative;
   display: block;
   user-select: none;
@@ -8,7 +8,7 @@
   height: 100%;
 }
 
-.classification-cover {
+.type-cover {
   position: relative;
   padding-bottom: 30%;
   display: block;
@@ -26,7 +26,7 @@
   }
 }
 
-.classification-heading {
+.type-heading {
   padding: 16px 20px 20px;
   position: relative;
   text-align: left;
@@ -37,11 +37,11 @@
   }
 }
 
-.classification-heading__subheading {
+.type-heading__subheading {
   padding-top: 8px;
 }
 
-.classification-heading__stats {
+.type-heading__stats {
   padding-top: 8px;
 
   & > span + span {

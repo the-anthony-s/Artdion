@@ -21,7 +21,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.float :longitude
       t.float :latitude
       t.text :image_data
-      t.boolean :message
+      t.boolean :message, default: true
 
       ## Recoverable
       t.string   :reset_password_token

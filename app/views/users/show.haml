@@ -16,7 +16,7 @@
     %div{:class => "grid grid--photos", :"data-target" => "infinite-scroll.entries"}
       -# = turbo_stream_from "photos"
       -# = turbo_frame_tag "photos" do
-      = render @photos, locals: { show_user: false }
+      = render partial: 'photos/photo', collection: @photos, locals: { show_user: false }
 
     %div(class="pagination-container" id="PaginationContainer")
       %div{:"data-target" => "infinite-scroll.pagination"}

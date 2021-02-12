@@ -7,12 +7,21 @@
         %div(class="user-body__name")
           %h1(class="text text--h2")= user_name(user)
           %div(class="user-body__actions")
+            
             - if user_signed_in? && (current_user == user)
               %div(class="user-body__action")
-                = link_to "Edit", edit_user_registration_path, class: 'btn btn--small'
+                = link_to edit_user_registration_path, class: 'btnAction' do
+                  %span(class="btnAction-icon")= icon 'fas', 'pen'
+                  %span(class="btnAction-text")= t('user.profile.action.edit')
+            
             - if user_signed_in? && (current_user != user)
               %div(class="user-body__action")
                 = render partial: "users/shared/follows", locals: { user: user }
+            
+            - if user_signed_in? && (current_user != user) && user.message?
+              %div(class="user-body__action")
+                = link_to user, class: 'btnAction' do
+                  = icon 'fas', 'envelope'
 
         - if user.about?
           %div(class="user-body__about")

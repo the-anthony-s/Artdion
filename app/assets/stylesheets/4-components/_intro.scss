@@ -3,11 +3,6 @@
   display: block;
   padding-top: 48px;
   padding-bottom: 48px;
-
-  @include bp(sm) {
-    padding-top: 68px;
-    padding-bottom: 68px;
-  }
 }
 
 

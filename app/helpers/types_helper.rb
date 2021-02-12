@@ -1,5 +1,5 @@
-module ClassificationsHelper
-  def classification_cover(photo)
+module TypesHelper
+  def type_cover(photo)
     image_tag(
       photo.image_url(:S100),
       class: 'media art-media lazy',
