@@ -30,7 +30,7 @@ export default class extends Controller {
   loadMore() {
     let next_page = this.paginationTarget.querySelector("a[rel='next']")
     if (next_page == null) {
-      $('#PaginationContainer').toggle("display-none")
+      $('#PaginationContainer').toggleClass("display-none")
       return
     }
     let url = next_page.href

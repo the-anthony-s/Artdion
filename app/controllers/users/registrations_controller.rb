@@ -15,7 +15,7 @@ module Users
 
     def security
       if @user
-        @visits = @user.visits.all
+        # @visits = @user.visits.all
 
         render :security
       else

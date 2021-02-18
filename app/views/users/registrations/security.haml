@@ -27,19 +27,19 @@
                 %div(class="form-row")
                   = button_tag t('user.settings.security.form.submit'), class: "btn btn--wide", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}
 
-        %div(class="settings-body")
-          %div(class="settings-heading")
-            %h5(class="text text--h5")= t('user.settings.security.form.heading.sessions')
-          %div(class="settings-body")
-            %table(class="settings-sessions")
-              %thead
-                %tr
-                  %th= t('user.settings.security.sessions.platform')
-                  %th= t('user.settings.security.sessions.date')
-              %tbody
-                - current_user.visits.order(started_at: :asc).take(10).each do |visit|
-                  %tr
-                    %td
-                      %p(class="text text--small")= visit.browser + " (#{visit.os})"
-                    %td
-                      %p(class="text text--small")= I18n.l(visit.started_at)
+        -# %div(class="settings-body")
+        -#   %div(class="settings-heading")
+        -#     %h5(class="text text--h5")= t('user.settings.security.form.heading.sessions')
+        -#   %div(class="settings-body")
+        -#     %table(class="settings-sessions")
+        -#       %thead
+        -#         %tr
+        -#           %th= t('user.settings.security.sessions.platform')
+        -#           %th= t('user.settings.security.sessions.date')
+        -#       %tbody
+        -#         - current_user.visits.order(started_at: :asc).take(10).each do |visit|
+        -#           %tr
+        -#             %td
+        -#               %p(class="text text--small")= visit.browser + " (#{visit.os})"
+        -#             %td
+        -#               %p(class="text text--small")= I18n.l(visit.started_at)

@@ -9,8 +9,20 @@
   z-index: var(--zindex-nav);
 }
 
+:root {
+  --nav-scrolled-shadow: 0 10px 10px -10px rgba(33, 35, 38, .1);
+}
+
+@supports(--css: variabales) {
+  :root {
+    @media (prefers-color-scheme: dark) {
+      --nav-scrolled-shadow: 0 10px 10px -10px rgb(255 255 255 / 10%);
+    }
+  }
+}
+
 .nav.nav--scrolled {
-  box-shadow: 0 10px 10px -10px rgba(33, 35, 38, .1);
+  box-shadow: var(--nav-scrolled-shadow);
 }
 
 .nav-container {
@@ -176,10 +188,10 @@
   flex-grow: 1;
   background: none;
   border: none;
-  border-left: 3px solid var(--color-contrast-higher);
+  border-left: 2px solid var(--color-contrast-higher);
   color: var(--color-contrast-higher);
   font-size: var(--font-size-large);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-medium);
   line-height: var(--line-height-large);
   height: calc(var(--nav-height) / 1.4);
   padding: 5px 16px;
@@ -225,7 +237,7 @@
   position: relative;
   color: var(--color-contrast-medium);
   font-size: var(--font-size-body);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-regular);
   line-height: var(--line-height-body);
 
   &:hover,
@@ -324,8 +336,12 @@
   text-decoration: none;
   text-transform: none;
   padding: 4px 12px;
-  display: inline-block;
+  display: flex;
   white-space: pre;
+
+  & > span + span {
+    padding-left: 8px;
+  }
 
   &:hover,
   &:focus,
@@ -385,7 +401,7 @@
 //-----------------
 .nav-account__profile .nav-dropdown {
   color: var(--color-white) !important;
-  top: 100% !important;
+  top: calc(var(--nav-height) / 1.15);
   background: var(--color-black);
   box-shadow: 0 8px 16px rgba(0,0,0,.16);
   transform: scale(0.8) translate(10%, -10%);

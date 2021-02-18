@@ -1,6 +1,6 @@
 .dropdown {
   width: 250px;
-  border: 0;
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-default);
   visibility: hidden;
   opacity: 0;

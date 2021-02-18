@@ -210,3 +210,51 @@
 .photoHeading {
   padding: 72px 0 24px;
 }
+
+
+
+//--------------------
+// NEW/EDIT PHOTO
+//--------------------
+.photoNew-form {
+  position: relative;
+  display: block;
+  padding-top: 16px;
+}
+
+.photoNew-upload {
+  position: relative;
+  display: block;
+  overflow: overflow;
+}
+
+.photoNew-background {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  width: 100%;
+
+  background: var(--color-contrast-lower);
+  border-radius: var(--radius-default);
+  border: .3rem dashed var(--color-border);
+
+  & > img {
+    position: relative;
+    display: block;
+    object-fit: contain;
+    height: 100%;
+    width: auto;
+  }
+}
+
+input.uppy-FileInput-input[type="file"] {
+  width: auto !important;
+  height: auto !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 1 !important;
+  appearance: none !important;
+}

@@ -20,6 +20,18 @@ class User < ApplicationRecord
   ## Impressions -> Count views
   is_impressionable counter_cache: true, unique: true
 
+  ## Geocoder
+  geocoded_by :address
+  after_validation :geocode, if: ->(obj) { obj.address_changed? }
+
+  def address
+    location
+  end
+
+  def address_changed?
+    location_changed?
+  end
+
   ## Fields
   include ImageUploader::Attachment(:image)
 

@@ -16,7 +16,9 @@
           = active_link_to t('nav.link.collection'), types_path, active: :exact, class: "nav-link"
       %div(class="nav-account")
         %div(class="nav-account__upload")
-          = active_link_to t('nav.button.new_photo'), new_photo_path, class: 'nav-btn nav-btn--upload'
+          = active_link_to new_photo_path, class: 'nav-btn nav-btn--upload' do
+            %span= icon "far", "plus"
+            %span= t('nav.button.new_photo')
         - if user_signed_in?
           %div(class="nav-account__profile dropdown-item")
             = button_tag(class: 'nav-profile dropdown-trigger') do

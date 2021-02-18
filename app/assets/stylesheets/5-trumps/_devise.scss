@@ -162,11 +162,11 @@
   padding: 8px var(--space-container);
   color: var(--color-white);
   font-size: var(--font-size-large);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-medium);
   line-height: var(--line-height-large);
   background: transparent;
-  border: 0.2rem solid rgba(255,255,255,.3);
-  border-radius: 0;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: var(--radius-default);
   box-shadow: none;
   appearance: none;
 
@@ -194,7 +194,8 @@
   text-align: center;
   display: inline-block;
   box-shadow: none;
-  border: .2rem solid var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-default);
   padding: 8px var(--space-container);
   width: 100%;
   background: var(--color-accent);
