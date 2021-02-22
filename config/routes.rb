@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'talks/index'
+  get 'talks/show'
   # scope '/(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
   # end
 
@@ -24,6 +26,11 @@ Rails.application.routes.draw do
 
   # Types
   resources :types, path: 'gallery', only: %i[index show]
+
+  # Talks
+  resources :talks, path: 'talks' do
+    resources :comments, module: :talks
+  end
 
 
   # Users Controller

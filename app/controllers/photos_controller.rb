@@ -10,17 +10,23 @@ class PhotosController < ApplicationController
     # Count views
     impressionist(@photo)
 
-    @related = Photo.default_order.tagged_with(
-      @photo.tags, any: true
+    @related = Photo.default_order.where(
+      type_id: @photo.type_id
     ).where.not(
       id: @photo.id
+    ).tagged_with(
+      @photo.tags, any: true
     ).take(20)
 
-    @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
-      taggings: {
-        taggable_type: 'Photo', taggable_id: @related.pluck(:id)
-      }
-    ).take(30).uniq
+    if @related.any?
+      @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
+        taggings: {
+          taggable_type: 'Photo', taggable_id: @related.pluck(:id)
+        }
+      ).take(30).uniq
+    else
+      @tags = @photo.tags.all
+    end
   end
 
   private

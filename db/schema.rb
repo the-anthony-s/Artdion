@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_03_172716) do
+ActiveRecord::Schema.define(version: 2021_02_20_073024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -173,6 +173,20 @@ ActiveRecord::Schema.define(version: 2021_02_03_172716) do
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
+  create_table "talks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "talkable_type", null: false
+    t.bigint "talkable_id", null: false
+    t.string "name"
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "comments_count", default: 0
+    t.integer "impressions_count"
+    t.index ["talkable_type", "talkable_id"], name: "index_talks_on_talkable"
+    t.index ["user_id"], name: "index_talks_on_user_id"
+  end
+
   create_table "type_translations", force: :cascade do |t|
     t.bigint "type_id", null: false
     t.string "locale", null: false
@@ -245,4 +259,5 @@ ActiveRecord::Schema.define(version: 2021_02_03_172716) do
   add_foreign_key "comments", "users"
   add_foreign_key "photos", "types"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "talks", "users"
 end

@@ -11,13 +11,13 @@ class Comment < ApplicationRecord
   belongs_to :commentable, polymorphic: true
   belongs_to :parent, optional: true, class_name: 'Comment'
 
+  has_many :likes, as: :likable
+
   # Counter cache
   counter_culture :user
   counter_culture :commentable
   counter_culture :parent
   # counter_culture :user, column_name: ->(model) { "#{model.state}_photos_count" }
-
-  has_many :likes, as: :likable
 
   # Validation
   validates :body, presence: true

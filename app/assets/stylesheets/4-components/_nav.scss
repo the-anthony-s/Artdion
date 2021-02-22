@@ -354,15 +354,15 @@
 
 .nav-btn--signup {
   color: var(--color-white);
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
 
   &:hover,
   &:active,
   &:focus {
     color: var(--color-white);
-    background: var(--color-primary-dark);
-    border-color: var(--color-primary-dark);
+    background: var(--color-accent-dark);
+    border-color: var(--color-accent-dark);
   }
 }
 
@@ -375,7 +375,7 @@
   &:hover,
   &:focus,
   &:active {
-    color: var(--color-primary);
+    color: var(--color-accent);
     background: transparent;
     border-color: transparent;
   }
@@ -383,14 +383,15 @@
 
 .nav-btn--upload {
   color: var(--color-contrast-medium);
-  background: var(--color-contrast-low);
+  background: var(--color-contrast-lower);
   border-color: transparent;
 
   &:hover,
   &:focus,
   &:active {
     color: var(--color-contrast-higher);
-    background: var(--color-contrast-medium);
+    background: var(--color-contrast-lower);
+    border-color: transparent;
   }
 }
 

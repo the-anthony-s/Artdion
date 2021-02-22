@@ -1,0 +1,191 @@
+//----------------
+// CONTAINER
+//----------------
+.talk-section {
+  position: relative;
+  display: block;
+  padding-top: 16px;
+
+  @include bp(sm) {
+    padding-top: 48px;
+  }
+}
+
+.talk-grid {
+  display: grid;
+  position: relative;
+  grid-gap: var(--space-container);
+  grid-template-columns: repeat(1, 1fr);
+
+  @include bp(md) {
+    grid-template-columns: repeat(3,[col-start] 1fr);
+  }
+}
+
+.talk-grid__main {
+  @include bp(md) {
+    grid-column: col-start 1/span 2;
+  }
+}
+
+.talk-grid__sidebar > div {
+  @include bp(md) {
+    position: sticky;
+    top: calc(var(--nav-height) + 48px);
+  }
+}
+
+
+
+//----------------
+// TALK PARTIAL LIST
+//----------------
+.talkPartial-list {
+  position: relative;
+  display: block;
+}
+
+.talkPartial + .talkPartial {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border-default);
+
+  @include bp(sm) {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+}
+
+.talkPartial {
+  position: relative;
+  display: block;
+}
+
+.talkPartial-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+.talkPartial-user__avatar {
+  position: relative;
+  flex: none;
+  margin-right: 12px;
+  height: 32px;
+  width: 32px;
+
+  @include bp(sm) {
+    margin-righ: 24px;
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.talkPartial-description {
+  position: relative;
+  padding-top: 8px;
+
+  @include bp(sm) {
+    padding-top: 12px;
+  }
+}
+
+.talkPartial-panel {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-top: 12px;
+  margin-left: -12px;
+  margin-bottom: -12px;
+
+  &__item {
+    flex: none;
+    padding-left: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+
+
+//----------------
+// INTRODUCTION aka HEADING
+//----------------
+.talkHeading {
+  position: relative;
+  display: block;
+  padding-bottom: 24px;
+}
+
+.talkHeading-action {
+  padding-bottom: 8px;
+}
+
+
+
+//----------------
+// PHOTO PARTIAL
+//----------------
+.talkPhoto {
+  position: relative;
+  display: block;
+}
+
+.talkPhoto-media {
+  width: 100%;
+  max-width: 282px;
+  display: block;
+  position: relative;
+  border: 0;
+  border-radius: 0px;
+}
+
+.talkPhoto-description {
+  padding-top: 12px;
+}
+
+
+//----------------
+// ACTIONS
+//----------------
+.talkPanel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  margin-left: -12px;
+  margin-bottom: -12px;
+}
+
+.talkPanel-item {
+  padding-left: 12px;
+  padding-bottom: 12px;
+  position: relative;
+  flex: none;
+}
+
+
+
+//----------------
+// REPLY
+//----------------
+.talkReply {
+  padding-top: 24px;
+  position: relative;
+}
+
+
+
+//----------------
+// THREAD
+//----------------
+.talkThread {
+  border-top: 1px solid var(--color-border-default);
+  padding-top: 12px;
+  margin-top: 12px;
+  position: relative;
+
+  @include bp(sm) {
+    margin-top: 24px;
+    padding-top: 24px;
+  }
+}

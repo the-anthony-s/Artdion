@@ -8,18 +8,22 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable,
          authentication_keys: [:login]
-
+  
+  #####################################
   ## References
   has_many :photos, dependent: :destroy
+  has_many :talks
   has_many :comments
   has_many :likes
   has_many :followers, as: :follower, dependent: :delete_all, class_name: 'Follow'
   has_many :following, as: :followable, dependent: :delete_all, class_name: 'Follow'
   # has_many :visits, class_name: 'Ahoy::Visit'
 
+  #####################################
   ## Impressions -> Count views
   is_impressionable counter_cache: true, unique: true
 
+  #####################################
   ## Geocoder
   geocoded_by :address
   after_validation :geocode, if: ->(obj) { obj.address_changed? }
@@ -32,6 +36,7 @@ class User < ApplicationRecord
     location_changed?
   end
 
+  #####################################
   ## Fields
   include ImageUploader::Attachment(:image)
 
@@ -48,20 +53,24 @@ class User < ApplicationRecord
     t.boolean :email_tips, default: true, null: false
   end
 
+  #####################################
   ## Friendly ID
   extend FriendlyId
   friendly_id :username, use: %i[slugged finders]
 
+  #####################################
   ## Check if model liked
   def likes?(likable)
     likable.likes.where(user_id: id).exists?
   end
 
+  #####################################
   ## Check if model follows
   def follows?(user)
     user.following.where(user_id: id).exists?
   end
 
+  #####################################
   ## User Email and Nickname for login
   attr_writer :login
 
@@ -84,6 +93,7 @@ class User < ApplicationRecord
     errors.add(:username, :invalid) if User.where(email: username).exists?
   end
 
+  #####################################
   ## Friendly_id: change slug if user's username updated or slug is blank
   def should_generate_new_friendly_id?
     username_changed?

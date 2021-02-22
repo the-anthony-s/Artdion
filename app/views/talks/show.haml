@@ -1,0 +1,67 @@
+= content_for :title, @talk.name
+
+%section(class="talk-section")
+  %div(class="container container--small")
+    %div(class="talk-grid")
+      %div(class="talk-grid__main")
+
+        %div(class="talkHeading")
+          %div(class="talkHeading-action")
+            = link_to talks_path, class: 'link link--secondary' do
+              %span= icon "far", "long-arrow-left"
+              %span Back to Talks
+          %div(class="talkHeading-heading")
+            %h1(class="text text--h3") [Photo name] discussion
+          %div(class="talkHeading-user")
+            %p(class="text text--body text-color-secondary") USER BLOCK -> Discussion for #{link_to @talk.talkable.name, @talk.talkable, class: 'link'}
+
+        
+        %div(class="talkPhoto")
+          %div(class="talkPhoto-media")
+            = image_tag @talk.talkable.image_url
+          %div(class="talkPhoto-description")
+            = simple_format(@talk.talkable.description, class: 'text text--body text-paragraph')
+
+        
+        %div(class="talkPanel")
+          %div(class="talkPanel-item")
+            %p(class="text text--minor text-color-secondary")= @talk.comments_count.to_s + " comments"
+          %div(class="talkPanel-item")
+            %p(class="text text--minor text-color-secondary")= @talk.impressions_count.to_s + " views"
+          %div(class="talkPanel-item")
+            %p(class="text text--minor text-color-secondary") Posted #{time_ago_in_words(@talk.created_at)}
+          %div(class="talkPanel-item")
+            %p(class="text text--minor")= link_to "Follow", "", class: 'link link--secondary'
+          %div(class="talkPanel-item")
+            %p(class="text text--minor")= link_to "Edit", edit_photo_path(@talk.talkable), class: 'link link--secondary'
+
+
+        -# -# TOPIC
+        -# %section(class="talk-topic")
+        -#   = render partial: "talks/#{@talk.talkable_type.underscore.pluralize.downcase}", locals: { talk: @talk}, formats: [:html]
+
+
+        
+        
+        -# COMMENTS
+        %section(class="talkReply")
+          %div(class="comments-form")
+            = render partial: 'comments/form', locals: { commentable: @talk }
+
+
+        %section(class="talkThread")
+          %div(class="comments")
+            = render @talk.comments.default_order.where(parent_id: nil), max_nesting: 2
+
+
+      
+      
+      -# SIDEBAR
+      %div(class="talk-grid__sidebar")
+        %div
+          %div(class="talkRecommended")
+            - @recommended.each do |rec|
+              %div= link_to rec.name, rec
+          
+          %div(class="talkUnanswered")
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid maxime voluptatum reiciendis soluta illum at molestiae aperiam non autem optio omnis unde nam voluptate vel eius harum, impedit consequuntur tempore.

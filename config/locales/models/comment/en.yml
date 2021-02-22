@@ -3,7 +3,7 @@ en:
     deleted: Comment was deleted
     form:
       placeholder:
-        body: Add a comment
+        body: Add your thoughts
       error:
         body: Comment is required.
       submit: Post

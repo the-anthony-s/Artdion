@@ -1,17 +1,14 @@
 %section(class="section")
   %div(class="container container--small")
     
-    = simple_form_for(photo, local: false, html: { class: 'form photoNew-form' }) do |f|
+    = simple_form_for(photo, local: true, html: { class: 'form photoNew-form' }) do |f|
       
 
       %div(class="photoNew-upload")
-        -# = f.label :image, 'Upload your file'
-
-        -# %div(class="photoNew-background")
-        -#   = image_tag photo.image_url(:S300).to_s, 'data-src': photo.image_url, class: "lazy file-upload-preview photo-upload__view__photo", id: "NewPhoto"
-        -# = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }
+        = f.label :image, 'Upload your file'
+        = image_tag photo.image_url(:S300).to_s, 'data-src': photo.image_url, class: "lazy file-upload-preview photo-upload__view__photo", id: "NewPhoto"	    
+        = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }	
         = f.hidden_field :image, value: photo.cached_image_data, id: "photo-image-upload-result"
-        = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }, multiple: false
       
       
       %br/

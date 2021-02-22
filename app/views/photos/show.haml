@@ -29,8 +29,11 @@
             %span(class="btnAction-icon")= icon "fas", "download"
             %span(class="btnAction-text") Download
         %div(class="photoNav-action")
-          = button_tag class: 'btnAction' do
-            Buy
+          -# = button_tag class: 'btnAction' do
+          -#   Buy
+          = link_to @photo.talk, class: 'btnAction' do
+            %span= icon "far", "envelope"
+            %span= @photo.talk.comments_count
 
 %section(class="photoAbout")
   %div(class="container")
@@ -38,7 +41,7 @@
       %div(class="photoAbout-name")
         %h1(class="text text--h3")= @photo.name
       %div(class="photoAbout-description")
-        = simple_format(@photo.description, class: 'text text--paragraph text--small')
+        = simple_format(@photo.description, class: 'text text-paragraph text--small')
       
       %div(class="photoAbout-details")
         %div(class="photoAbout-detail")
@@ -74,22 +77,3 @@
     %div(class="container")
       %div(class="tags")
         = render partial: 'tags/tag', collection: @tags
-
-
-
--# %section(class="photoDetails")
--#   %div(class="container")
--#     -# = turbo_stream_from 'comments'
-    
--#     -# = turbo_frame_tag 'comment_form' do
--#     %div(class="comments-form")
--#       = render partial: 'comments/form', locals: { commentable: @photo }
-    
--#     -# = turbo_frame_tag 'comments' do
-
-
--# %section(class="comments-section")
--#   %div(class="container")
-
--#     %div(class="comments")
--#       = render @photo.comments.default_order.where(parent_id: nil), max_nesting: 2

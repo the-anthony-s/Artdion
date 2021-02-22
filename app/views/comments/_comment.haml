@@ -22,14 +22,12 @@
       
       %div(class="comment-body")
         %div(class="comment-body__heading")
-          -# - if comment.user.deleted_at?
-          -#   %span(class="comment-body__heading-user text-color-muted")= user_username(comment.user)
-          = link_to user_username(comment.user), comment.user, class: comment.user.deleted_at? ? "comment-body__heading-user text-color-muted" : "comment-body__heading-user"
+          = link_to user_name(comment.user), comment.user, class: comment.user.deleted_at? ? "comment-body__heading-user text-color-muted" : "comment-body__heading-user"
           %div(class="comment-body__heading-timestamp")
             %span(class="timeago text text--minor text-color-secondary")= time_ago_in_words(comment.created_at)
         -# comment content
         %div(class="comment-body__text")
-          = auto_link(simple_format(h(comment.body), class: 'text text--small'), :html => { target: '_blank', class: 'link', rel: "noopener noreferrer nofollow" })
+          = auto_link(simple_format(h(comment.body), class: 'text text-paragraph text--small'), :html => { target: '_blank', class: 'link', rel: "noopener noreferrer nofollow" })
         -# comment actions
         %div(class="comment-body__actions")
           %div(class="comment-body__action" id="Comment#{comment.id}_likes")
@@ -44,7 +42,8 @@
                 = icon "far", "trash"
 
         -# reply form
-        = render partial: 'comments/form', locals: { commentable: comment.commentable, class: "display-none comment-form--reply", parent_id: reply_to_comment_id(comment, nesting, max_nesting), user_id: reply_to_user_id(comment, comment.user_id), target: "reply.form" }
+        - if user_signed_in?
+          = render partial: 'comments/form', locals: { commentable: comment.commentable, class: "display-none commentForm--reply", parent_id: reply_to_comment_id(comment, nesting, max_nesting), user_id: reply_to_user_id(comment, comment.user_id), target: "reply.form" }
 
 
 

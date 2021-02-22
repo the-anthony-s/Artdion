@@ -1,0 +1,24 @@
+%div(class="talkPartial")
+  = link_to talk, class: 'talkPartial-link' do
+    %div(class="talkPartial-container")
+      %div(class="talkPartial-user__avatar")
+        = render partial: 'users/shared/avatar', locals: { user: talk.user }
+
+      %div(class="talkPartial-body")
+        
+        %div(class="talkPartial-name")
+          %h4(class="text text--h4")= talk.name
+        
+        %div(class="talkPartial-user__name")
+          %p(class="text text--small text-color-secondary") by #{user_name(talk.user)}
+        
+        - if talk.talkable.description?
+          %div(class="talkPartial-description")
+            %p(class="text text--small")= talk.talkable.description.truncate(128)
+        
+        %div(class="talkPartial-panel")
+          %div(class="talkPartial-panel__item")
+            %p(class="text text--minor text-color-secondary") #{talk.comments_count} comments
+          %div(class="talkPartial-panel__item")
+            %p(class="text text--minor text-color-secondary") Posted #{time_ago_in_words(talk.created_at)}
+          

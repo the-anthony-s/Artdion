@@ -60,6 +60,19 @@
   }
 }
 
+.link--minor {
+  color: var(--color-contrast-medium);
+  font-size: var(--font-size-minor);
+  line-height: var(--line-height-minor);
+
+  &:hover, 
+  &:focus, 
+  &:active {
+    color: var(--color-contrast-higher);
+  	text-decoration: none;
+  }
+}
+
 
 .link--url {
   display: flex;

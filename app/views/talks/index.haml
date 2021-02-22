@@ -1,0 +1,26 @@
+%section(class="intro")
+  %div(class="container container--small")
+    %div(class="intro-heading")
+      %div(class="intro-heading__heading")
+        %h1(class="text text--h2") Talks
+      %div(class="intro-heading__subheading")
+        %p(class="text text--body") Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi, quasi tempora impedit repudiandae tenetur dolores et ipsam quo ab blanditiis laborum sapiente. Adipisci natus laboriosam vel neque asperiores inventore ducimus.
+
+%section(class="section")
+  %div(class="container container--small")
+    %div(class="talk-grid")
+      %div(class="talk-grid__main")
+        
+        %div(class="talkPartial-list")
+          = render partial: 'talks/talk', collection: @talks
+          
+
+      %div(class="talk-grid__sidebar")
+        %div
+          %div
+            %p.text.text--body.fw-medium Top Contributors
+            %p.text.text--minor.text-color-secondary People who started the most discussions on Talks.
+          
+          %div
+            %p.text.text--body.fw-medium Unanswered Talks
+            %p.text.text--minor.text-color-secondary Discussions with no comments. Be first to post a comment.

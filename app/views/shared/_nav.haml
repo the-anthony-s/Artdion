@@ -13,7 +13,9 @@
         %li(class="nav-menu__item")
           = active_link_to t('nav.link.home'), root_path, active: :exact, class: "nav-link"
         %li(class="nav-menu__item")
-          = active_link_to t('nav.link.collection'), types_path, active: :exact, class: "nav-link"
+          = active_link_to t('nav.link.collection'), types_path, class: "nav-link"
+        %li(class="nav-menu__item")
+          = active_link_to "Talks", talks_path, class: "nav-link"
       %div(class="nav-account")
         %div(class="nav-account__upload")
           = active_link_to new_photo_path, class: 'nav-btn nav-btn--upload' do
