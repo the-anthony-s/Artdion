@@ -14,4 +14,8 @@ module CommentsHelper
   def reply_to_user_id(comment, _user)
     comment.user_id if comment.user_id? && comment.user_id != current_user.id
   end
+
+  def related_to_comment_id(comment)
+    comment.id
+  end
 end

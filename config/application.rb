@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module Art
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 6.0
+    config.load_defaults 6.1
 
     # Use SuckerPunch for background jobs.
     config.active_job.queue_adapter = :sucker_punch

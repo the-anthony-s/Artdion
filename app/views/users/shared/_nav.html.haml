@@ -9,5 +9,5 @@
       %div(class="user-tab")
         = active_link_to likes_user_path, class: 'user-tab-link', active: :exact do
           %span(class="user-tab-link__icon")= icon "fas", "heart"
-          %span(class="user-tab-link__name")= t('user.tabs.likes', count: user.likes_count).capitalize
-          %span(class="user-tab-link__count")= formatted_number(user.likes_count)
+          %span(class="user-tab-link__name")= t('user.tabs.likes', count: user.photos_likes_count).capitalize
+          %span(class="user-tab-link__count")= formatted_number(user.photos_likes_count)

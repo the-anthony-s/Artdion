@@ -30,8 +30,13 @@
           = auto_link(simple_format(h(comment.body), class: 'text text-paragraph text--small'), :html => { target: '_blank', class: 'link', rel: "noopener noreferrer nofollow" })
         -# comment actions
         %div(class="comment-body__actions")
+          
+          -# ########################
           %div(class="comment-body__action" id="Comment#{comment.id}_likes")
-            = render partial: 'comments/like', locals: { comment: comment }
+            = render partial: 'comments/likes', locals: { comment: comment }
+          -# ########################
+
+
           %div(class="comment-body__action")
             = link_to "#", class: 'comment-action', data: { action: "click->reply#toggle" } do
               = icon "far", "reply"
@@ -43,7 +48,7 @@
 
         -# reply form
         - if user_signed_in?
-          = render partial: 'comments/form', locals: { commentable: comment.commentable, class: "display-none commentForm--reply", parent_id: reply_to_comment_id(comment, nesting, max_nesting), user_id: reply_to_user_id(comment, comment.user_id), target: "reply.form" }
+          = render partial: 'comments/form', locals: {comment_id: related_to_comment_id(comment),commentable: comment.commentable, class: "display-none commentForm--reply", parent_id: reply_to_comment_id(comment, nesting, max_nesting), user_id: reply_to_user_id(comment, comment.user_id), target: "reply.form" }
 
 
 

@@ -16,14 +16,27 @@
           = active_link_to t('nav.link.collection'), types_path, class: "nav-link"
         %li(class="nav-menu__item")
           = active_link_to "Talks", talks_path, class: "nav-link"
+
       %div(class="nav-account")
+
+        -# UPLOAD BUTTON
         %div(class="nav-account__upload")
           = active_link_to new_photo_path, class: 'nav-btn nav-btn--upload' do
             %span= icon "far", "plus"
             %span= t('nav.button.new_photo')
+
         - if user_signed_in?
+          -# NOTIFICATIONS
+          %div(class="nav-account__notification dropdown-item" data-behavior="notifications")
+            = button_tag(class: 'nav-action nav-action--notifications dropdown-trigger', 'data-behavior': "notifications-link") do
+              = icon "fal", "bell"
+              %span(class="nav-action__counter" data-behavior="unread-count")
+            %div(class="nav-dropdown dropdown" tabindex="-1")
+              %ul(data-behavior="notification-group" class="notification-group")
+          
+          -# USER PROFILE
           %div(class="nav-account__profile dropdown-item")
-            = button_tag(class: 'nav-profile dropdown-trigger') do
+            = button_tag(class: 'nav-action dropdown-trigger') do
               %span(class="avatar")
                 = render partial: 'users/shared/avatar', locals: { user: current_user }
             %div(class="nav-dropdown dropdown" tabindex="-1")
@@ -34,10 +47,14 @@
                   = active_link_to t('nav.link.profile_settings'), edit_user_registration_path, class: 'dropdown-link'
                 %li(class="dropdown-links__item dropdown-links__item--separator")
                   = active_link_to t('nav.link.profile_logout'), destroy_user_session_path, method: :delete, class: 'dropdown-link dropdown-link--logout'
+
         - else
+          -# SIGN IN | SING UP -> BUTTONS
           %div(class="nav-account__login")
             = active_link_to t('nav.button.signin'), new_user_session_path, class: 'nav-btn nav-btn--login'
             = active_link_to t('nav.button.signup'), new_user_registration_path, class: 'nav-btn nav-btn--signup'
+    
+    -# MOBILE NAVIGATION
     %div(class="nav-mobile dropdown-item")
       = button_tag(class: 'nav-toggle dropdown-trigger') do
         = icon "far", "bars"

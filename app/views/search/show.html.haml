@@ -5,11 +5,11 @@
         %h3(class="text text--h3 text-color-secondary") Search for
         %h1(class="text text--h1")= params[:q].capitalize
       
-      -# - if @photos.suggestions.any?
-      -#   %div(class="intro-heading__suggestions")
-      -#     %p(class="text text--large text-color-secondary")
-      -#       Did you mean: 
-      -#       %div= @photos.suggestions.first
+      - if @photos.suggestions.any?
+        %div(class="intro-heading__suggestions")
+          %p(class="text text--large text-color-secondary")
+            Did you mean: 
+            %div= @photos.suggestions.first
 
       %div(class="intro-heading__tags")
         %div(class="intro-tags")

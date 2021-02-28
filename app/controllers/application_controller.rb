@@ -9,13 +9,6 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   # before_action :default_format_html
 
-  # Turbo fix
-  # courses AJAX to work incorrectly
-  ## HAS BUGS - NOT A GOOD OPTION
-  def default_format_html
-    request.format = :html
-  end
-
   # Set user's prefered locale (website translation)
   def set_locale
     return I18n.locale = current_user.language if user_signed_in? && current_user.language?

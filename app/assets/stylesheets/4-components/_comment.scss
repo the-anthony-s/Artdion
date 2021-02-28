@@ -82,40 +82,11 @@
   }
 }
 
-// .comment-form textarea {
-//   width: 100%;
-//   background-clip: padding-box;
-//   background-color: var(--color-contrast-lower);
-//   border-radius: var(--radius-default);
-//   border: .0625rem solid var(--color-border);
-//   box-shadow: none;
-//   box-sizing: border-box;
-//   color: var(--color-contrast-higher);
-//   display: block;
-//   font-size: var(--font-size-small);
-//   line-height: var(--line-height-small);
-//   padding: .5rem .9375rem;
-//   transition: background-color .15s,
-//               box-shadow .15s,
-//               border-color .15s,
-//               color .15s;
-// }
-
-// .comment-form--reply {
-//   margin-top: .5rem;
-//   margin-bottom: .5rem;
-// }
-
-// .comment-form--reply textarea {
-//   overflow: hidden;
-//   overflow-wrap: break-word;
-//   resize: none;
-//   height: 36px;
-// }
-
-// .comment-form__action {
-//   margin-top: .5rem;
-// }
+.commentForm-submit {
+  position: relative;
+  display: block;
+  margin-top: 8px;
+}
 
 
 

@@ -1,7 +1,11 @@
-require("@rails/ujs").start()
-require("@rails/activestorage").start()
-require("channels")
-require("@hotwired/turbo-rails")
+import Rails from "@rails/ujs"
+import Turbolinks from "turbolinks"
+import * as ActiveStorage from "@rails/activestorage"
+import "channels"
+
+Rails.start()
+Turbolinks.start()
+ActiveStorage.start()
 
 // window.Rails = Rails
 window.jQuery = $;
@@ -13,6 +17,8 @@ import 'components/dropDown'
 import 'components/fileUpload'
 import 'components/search'
 import 'components/nav'
+import 'components/form'
+import 'components/notification'
 
 // Stimulus JS
 import 'controllers'
@@ -23,7 +29,7 @@ window.matchMedia('(prefers-color-scheme: dark)').matches
 // Use 'DOMContentLoaded' event if not using Turbolinks
 import { singleFileUpload, multipleFileUpload } from 'components/fileUpload'
 
-document.addEventListener('turbo:load', () => {
+document.addEventListener('turbolinks:load', () => {
   document.querySelectorAll('input[type=file]').forEach(fileInput => {
     if (fileInput.multiple) {
       multipleFileUpload(fileInput)

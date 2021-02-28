@@ -32,6 +32,13 @@ Rails.application.routes.draw do
     resources :comments, module: :talks
   end
 
+  # Notifications
+  resources :notifications do
+    collection do
+      post :mark_as_read
+    end
+  end
+
 
   # Users Controller
   devise_for :users, path: 'account', path_names: {

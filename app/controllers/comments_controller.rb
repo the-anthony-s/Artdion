@@ -5,8 +5,12 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
 
+    # Create notification
+
     respond_to do |format|
       if @comment.save
+        Notification.notify(current_user, @commentable.user, @comment, 'replied')
+
         format.html { redirect_to @commentable, notice: 'Cool!' }
         format.json { render :show, status: :created, location: @commentable }
       else
@@ -15,12 +19,6 @@ class CommentsController < ApplicationController
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
-
-    # if @comment.save
-    #   redirect_to @commentable
-    # else
-    #   redirect_to @commentable, alert: 'Something went wrong'
-    # end
   end
 
   def destroy
@@ -33,6 +31,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :parent_id)
+    params.require(:comment).permit(:body, :parent_id, :comment_id)
   end
 end

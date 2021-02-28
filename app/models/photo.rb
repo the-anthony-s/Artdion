@@ -100,7 +100,7 @@ class Photo < ApplicationRecord
   #####################################
   # Create talk after save
   after_create :create_talk
-  before_save :change_talk_name
+  before_update :change_talk_name
 
   def create_talk
     Talk.create(

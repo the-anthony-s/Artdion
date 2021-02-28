@@ -1,5 +1,5 @@
 // Dropdown container
-document.addEventListener('turbo:load', () => {
+document.addEventListener('turbolinks:load', () => {
   $('.dropdown-item').each(function () {
     var $dropdown = $(this);
     var $dropdownDrop = $dropdown.find('.dropdown');

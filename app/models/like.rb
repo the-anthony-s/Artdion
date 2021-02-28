@@ -4,7 +4,9 @@ class Like < ApplicationRecord
   belongs_to :likable, polymorphic: true
 
   # Counter cache
-  counter_culture :user
+  counter_culture :user, column_name: proc { |model|
+    "#{model.likable.model_name.plural}_likes_count"
+  }
   counter_culture :likable
 
   # Scopes

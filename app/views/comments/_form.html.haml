@@ -11,10 +11,12 @@
         = render partial: 'users/shared/avatar', locals: { user: current_user }
       %div(class="commentForm-body")
         %div(class="commentForm-input")
-          = f.input :body, placeholder: t('comment.form.placeholder.body'), input_html: { class: 'commentForm-control' }, label: false, error: t('comment.form.error.body')
-          = f.hidden_field :parent_id, value: local_assigns[:parent_id], html: { class: 'commentForm-control display-none' }
+          = f.input :body, placeholder: t('comment.form.placeholder.body'), input_html: { class: 'commentForm-control textarea-js' }, label: false, error: t('comment.form.error.body')
+          -# = f.hidden_field :parent_id, value: local_assigns[:parent_id], input_html: { class: 'commentForm-control display-none' }
+          = f.hidden_field :parent_id, value: local_assigns[:parent_id], input_html: { class: 'commentForm-control display-none' }
+          = f.hidden_field :comment_id, value: local_assigns[:comment_id], input_html: { class: 'commentForm-control display-none' }
         %div(class="commentForm-submit")
-          = button_tag t('comment.form.submit'), class: "btn btn--small btn--accent", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"
+          = button_tag t('comment.form.submit'), class: "btn btn--small", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"
 
   - else
     Sign up to leave a comment

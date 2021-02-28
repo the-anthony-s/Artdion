@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_20_073024) do
+ActiveRecord::Schema.define(version: 2021_02_22_235418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_073024) do
     t.bigint "user_id", null: false
     t.string "commentable_type", null: false
     t.bigint "commentable_id", null: false
+    t.bigint "comment_id"
     t.integer "parent_id"
     t.text "body"
     t.datetime "created_at", precision: 6, null: false
@@ -26,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_02_20_073024) do
     t.integer "likes_count", default: 0
     t.integer "comments_count", default: 0
     t.datetime "deleted_at"
+    t.index ["comment_id"], name: "index_comments_on_comment_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["deleted_at"], name: "index_comments_on_deleted_at"
     t.index ["user_id"], name: "index_comments_on_user_id"
@@ -104,6 +106,17 @@ ActiveRecord::Schema.define(version: 2021_02_20_073024) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "actor_id"
+    t.datetime "read_at"
+    t.string "action"
+    t.integer "notifiable_id"
+    t.string "notifiable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "photos", force: :cascade do |t|
@@ -242,7 +255,8 @@ ActiveRecord::Schema.define(version: 2021_02_20_073024) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug"
     t.integer "photos_count", default: 0
-    t.integer "likes_count", default: 0
+    t.integer "comments_likes_count", default: 0
+    t.integer "photos_likes_count", default: 0
     t.datetime "deleted_at"
     t.integer "comments_count", default: 0
     t.integer "followers_count", default: 0

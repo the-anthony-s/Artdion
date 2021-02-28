@@ -2,19 +2,21 @@ class User < ApplicationRecord
   acts_as_tagger
   acts_as_paranoid without_default_scope: true
 
+  #####################################
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :trackable,
          authentication_keys: [:login]
-  
+
   #####################################
   ## References
   has_many :photos, dependent: :destroy
   has_many :talks
   has_many :comments
   has_many :likes
+  has_many :notifications, foreign_key: :recipient_id
   has_many :followers, as: :follower, dependent: :delete_all, class_name: 'Follow'
   has_many :following, as: :followable, dependent: :delete_all, class_name: 'Follow'
   # has_many :visits, class_name: 'Ahoy::Visit'

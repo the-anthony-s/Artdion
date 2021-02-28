@@ -246,7 +246,7 @@
   }
 }
 
-.nav-profile {
+.nav-action {
   cursor: pointer;
   height: 100%;
   display: flex;
@@ -258,11 +258,18 @@
   background: transparent;
   padding: 0;
   margin: 0;
+  color: var(--color-contrast-higher);
+  font-size: var(--font-size-body);
 
   & .avatar {
     height: 32px;
     width: 32px;
   }
+}
+
+.nav-action--notifications {
+  position: relative;
+  padding: 10px 12px;
 }
 
 
@@ -283,6 +290,11 @@
   padding-right: 20px;
 }
 
+.nav-account__notification {
+  position: relative;
+  height: 100%;
+}
+
 .nav-account__login {
   display: flex;
   flex-direction: row;
@@ -299,8 +311,9 @@
 }
 
 .nav-account__profile {
-  height: 100%;
   position: relative;
+  margin-left: 6px;
+  height: 100%;
 }
 
 .nav-profile {
@@ -400,9 +413,10 @@
 //-----------------
 // DROPDOWN
 //-----------------
-.nav-account__profile .nav-dropdown {
+.nav-account__profile .nav-dropdown,
+.nav-account__notifications .nav-dropdown {
   color: var(--color-white) !important;
-  top: calc(var(--nav-height) / 1.15);
+  top: var(--nav-height);
   background: var(--color-black);
   box-shadow: 0 8px 16px rgba(0,0,0,.16);
   transform: scale(0.8) translate(10%, -10%);

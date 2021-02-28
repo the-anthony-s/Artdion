@@ -2,7 +2,7 @@
 import Bloodhound from "typeahead.js";
 import Handlebars from "handlebars";
 
-document.addEventListener('turbo:load', (e) => {
+document.addEventListener('turbolinks:load', (e) => {
   var $search = $('#searchControl');
   var $form = $('.search');
   var $html = $('html');
