@@ -30,6 +30,10 @@ Shrine.plugin :restore_cached_data
 Shrine.plugin :derivatives          # up front processing
 Shrine.plugin :derivation_endpoint, # on-the-fly processing
               secret_key: Rails.application.secret_key_base
+# Shrine.plugin :imgix, purge: true, client: {
+#   host: 'artdion.imgix.net',
+#   secure_url_token: 'gtVrV6dParFc9stC'
+# }
 
 case Rails.configuration.upload_server
 when :s3

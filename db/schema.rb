@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(version: 2021_02_22_235418) do
     t.string "action"
     t.integer "notifiable_id"
     t.string "notifiable_type"
+    t.integer "relatable_id"
+    t.string "relatable_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

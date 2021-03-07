@@ -2,7 +2,8 @@ class NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notifications = Notification.where(recipient: current_user).recent
+    # @notifications = Notification.where(recipient: current_user).recent
+    @notifications = Notification.where(recipient: current_user).includes(%i[actor notifiable relatable]).recent
   end
 
   def mark_as_read

@@ -414,7 +414,7 @@
 // DROPDOWN
 //-----------------
 .nav-account__profile .nav-dropdown,
-.nav-account__notifications .nav-dropdown {
+.nav-account__notification .nav-dropdown {
   color: var(--color-white) !important;
   top: var(--nav-height);
   background: var(--color-black);
@@ -422,6 +422,11 @@
   transform: scale(0.8) translate(10%, -10%);
   min-width: 135px;
   max-width: 180px;
+}
+
+.nav-account__notification .dropdown.nav-dropdown {
+  min-width: 348px !important;
+  max-width: 480px !important;
 }
 
 .nav-account__profile .nav-dropdown .dropdown-link {

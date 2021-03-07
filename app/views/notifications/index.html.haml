@@ -1,4 +1,4 @@
-.intro
-  .container
+%div.intro
+  %div.container.container--tight
     - @notifications.each do |notification|
       = render partial: "notifications/#{notification.notifiable_type.underscore.pluralize}/#{notification.action}", locals: {notification: notification}, formats: [:html]

@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     if ALLOWED_LOCALES.include?(browser_locale)
       browser_locale
     else
-      DEFAULT_LOCALE
+      DEFAULT_LOCALES
     end
   end
 

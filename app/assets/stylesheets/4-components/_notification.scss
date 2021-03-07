@@ -1,0 +1,64 @@
+.notification {
+  display: flex;
+  align-items: flex-start;
+  position: relative;
+  padding: 8px 12px;
+
+  &:hover {
+    background: var(--color-contrast-lower);
+  }
+}
+
+.notification-actor {
+  height: 22px;
+  width: 22px;
+  position: relative;
+  flex: none;
+  display: block;
+  margin-right: 12px;
+  
+  @include bp(sm) {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+.notification-body {
+  height: 100%;
+  display: block;
+  position: relative;
+  flex: 1;
+}
+
+.notification-stats {
+  padding-top: 6px;
+  margin: -8px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.notification-stats__item {
+  padding: 8px;
+}
+
+.notification-content {
+  margin-top: 12px;
+}
+
+// .notification-photo {
+//   height: 22px;
+//   width: 22px;
+//   position: relative;
+//   flex: none;
+//   display: block;
+//   margin-left: 12px;
+//   background: var(--color-contrast-lower);
+  
+//   @include bp(sm) {
+//     height: 32px;
+//     width: 32px;
+//   }
+// }

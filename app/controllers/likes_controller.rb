@@ -3,6 +3,7 @@ class LikesController < ApplicationController
 
   def create
     @like = @likable.likes.where(user_id: current_user.id).first_or_create
+    Notification.notify(current_user, @likable.user, @likable, @like, 'liked')
 
     respond_to do |format|
       format.html { redirect_to @likable }

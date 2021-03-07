@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        Notification.notify(current_user, @commentable.user, @comment, 'replied')
+        Notification.notify(current_user, @commentable.user, @comment, @commentable, 'replied')
 
         format.html { redirect_to @commentable, notice: 'Cool!' }
         format.json { render :show, status: :created, location: @commentable }

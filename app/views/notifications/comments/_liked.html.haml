@@ -1,15 +1,15 @@
-= link_to notification.relatable, class: 'notification talk-notification--replied' do
+= link_to notification.notifiable.commentable, class: 'notification talk-notification--replied' do
   %div.notification-actor
     = render partial: 'users/shared/avatar', locals: { user: notification.actor }
   %div.notification-message
     %div.notification-reason
       %p.text.text--small.text-color-secondary
         %span.fw-medium.text-color-main= user_name(notification.actor)
-        replied to your comment in #{notification.relatable.name}.
+        liked your comment.
     %div.notification-stats
       %div.notification-stats__item
-        %p.text.text--minor.text-color-secondary= icon 'far', 'reply'
+        %p.text.text--minor.text-color-secondary= icon 'far', 'heart'
       %div.notification-stats__item
         %p.text.text--minor.text-color-secondary= time_ago_in_words(notification.created_at)
     %div.notification-content
-      %p.text.text--small= notification.notifiable.body.truncate(68)
+      %p.text.text--small= notification.notifiable.body
