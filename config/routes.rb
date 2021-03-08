@@ -81,7 +81,7 @@ Rails.application.routes.draw do
   # Root
   root 'pages#index'
 
-  # File Upload
+  # Shrine
   case Rails.configuration.upload_server
   when :s3
     # By default in production we use s3, including upload directly to S3 with

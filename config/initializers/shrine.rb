@@ -5,13 +5,21 @@ case Rails.configuration.upload_server
 when :s3, :s3_multipart
   require 'shrine/storage/s3'
 
-  s3_options = Rails.application.credentials[:s3]
+  # s3_options = Rails.application.credentials[:s3]
+  s3_options = {
+    access_key_id: Rails.application.credentials[:s3][:access_key_id],
+    secret_access_key: Rails.application.credentials[:s3][:secret_access_key],
+    region: Rails.application.credentials[:s3][:region],
+    bucket: Rails.application.credentials[:s3][:bucket],
+    endpoint: Rails.application.credentials[:s3][:end_point]
+  }
 
   # both `cache` and `store` storages are needed
   Shrine.storages = {
-    cache: Shrine::Storage::S3.new(prefix: 'cache', **s3_options),
-    store: Shrine::Storage::S3.new(**s3_options)
+    cache: Shrine::Storage::S3.new(prefix: 'cache', upload_options: { acl: 'public-read' }, **s3_options),
+    store: Shrine::Storage::S3.new(prefix: 'store', upload_options: { acl: 'public-read' }, **s3_options)
   }
+
 when :app
   require 'shrine/storage/file_system'
 
@@ -30,10 +38,6 @@ Shrine.plugin :restore_cached_data
 Shrine.plugin :derivatives          # up front processing
 Shrine.plugin :derivation_endpoint, # on-the-fly processing
               secret_key: Rails.application.secret_key_base
-# Shrine.plugin :imgix, purge: true, client: {
-#   host: 'artdion.imgix.net',
-#   secure_url_token: 'gtVrV6dParFc9stC'
-# }
 
 case Rails.configuration.upload_server
 when :s3
@@ -45,7 +49,7 @@ when :s3
     {
       content_disposition: ContentDisposition.inline(filename), # set download filename
       content_type: type, # set content type
-      content_length_range: 0..(20 * 1024 * 1024) # limit upload size to 20 MB
+      content_length_range: 0..(30 * 1024 * 1024) # limit upload size to 10 MB
     }
   }
 when :s3_multipart

@@ -9,21 +9,10 @@ module Users
     def create
       @photo = current_user.photos.build(photo_params)
 
-      respond_to do |format|
-        if @photo.save
-          format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-          format.json { render :show, status: :created, location: @photo }
-        else
-          format.turbo_stream {
-            render turbo_stream: turbo_stream.replace(
-              @photo,
-              partial: 'photos/form',
-              locals: { photo: @photo }
-            )
-          }
-          format.html { render :new }
-          format.json { render json: @photo.errors, status: :unprocessable_entity }
-        end
+      if @photo.save
+        redirect_to @photo, notice: 'Photo was successfully created.'
+      else
+        render :new, notice: 'Something went wrong'
       end
     end
 

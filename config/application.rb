@@ -17,13 +17,14 @@ module Art
     config.autoload_paths += %w[lib]
 
     # supports :s3, :s3_multipart, or :app
-    config.upload_server = if ENV['UPLOAD_SERVER'].present?
-                             ENV['UPLOAD_SERVER'].to_sym
-                           elsif Rails.env.production?
-                             :s3
-                           else
-                             :app
-                           end
+    # config.upload_server = if ENV['UPLOAD_SERVER'].present?
+    #                          ENV['UPLOAD_SERVER'].to_sym
+    #                        elsif Rails.env.production?
+    #                          :s3
+    #                        else
+    #                          :app
+    #                        end
+    config.upload_server = :s3
 
     config.imgix = {
       use_https: true,
