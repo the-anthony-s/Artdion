@@ -5,7 +5,7 @@ case Rails.configuration.upload_server
 when :s3, :s3_multipart
   require 'shrine/storage/s3'
 
-  s3_options = Rails.application.credentials.s3
+  s3_options = Rails.application.credentials[:s3]
 
   # both `cache` and `store` storages are needed
   Shrine.storages = {
