@@ -9,7 +9,7 @@
         
         = image_tag photo.image_url(:S300).to_s, 'data-src': photo.image_url, class: "lazy file-upload-preview photo-upload__view__photo", id: "NewPhoto"	    
         
-        = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }	
+        = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }
         
         = f.hidden_field :image, value: photo.cached_image_data, id: "photo-image-upload-result"
       
