@@ -67,12 +67,4 @@ class ApplicationController < ActionController::Base
       DEFAULT_LOCALES
     end
   end
-
-  protected
-
-  # Track users' actions
-  # Not using it due to a lack of performance
-  def track_action
-    ahoy.track 'Ran action', request.path_parameters
-  end
 end
