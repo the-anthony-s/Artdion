@@ -1,9 +1,4 @@
 class Photo < ApplicationRecord
-  # TURBO
-  # after_create_commit { broadcast_prepend_to 'photos' }
-  # after_update_commit { broadcast_replace_to 'photos' }
-  # after_destroy_commit { broadcast_remove_to 'photos' }
-
   #####################################
   # Scope
   scope :default_order, -> { order(created_at: :desc).where(private: false, active: true) }
