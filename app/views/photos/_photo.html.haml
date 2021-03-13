@@ -9,7 +9,8 @@
     %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
 
     = link_to photo, class: 'photoCard-media' do
-      = ix_image_tag URI(photo.image_url).path, url_params: { auto: 'format', fit: 'crop', q: 60 }, attribute_options: {src: "data-src", srcset: "data-srcset", sizes: "data-sizes"}, tag_options: {src: photo.image_url, class: 'lazyload'}
+      = photo(photo, type = :card)
+
     
     - if show_info
       %div(class="photoCard-info")
@@ -19,32 +20,4 @@
           - if show_user
             %div(class="photoCard-user")
               = link_to photo.user, class: 'photoCard-link photoCard-link--user' do
-                %span(class="display-nane")= user_name(photo.user)
-
-
-
--# %div(class="col")
--#   %div(class="photoCard" itemListElement="itemListElement" itemscope itemtype="http://schema.org/ListItem" id="#{dom_id(photo)}")
--#     %meta{:content => "#{photo.name}", :itemprop => "name"}/
--#     %meta{:content => "#{photo_counter}", :itemprop => "position"}/
--#     %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
-
--#     -# display photo
--#     = link_to photo, class: 'photoCard-media' do
--#       = photo_card(photo)
-    
--#     -# display art name, user name + action buttons
--#     - if show_info
--#       %div(class="photoCard-info")
--#         %div(class="photoCard-info-heading")
--#           = link_to photo, class: 'photoCard-link photoCard-link--photo' do
--#             %span(class="display-name")= photo.name
-          
--#           - if show_user
--#             = link_to photo.user, class: 'photoCard-link photoCard-link--user' do
--#               %span(class="display-name")= user_name(photo.user)
-        
-        -# %div(class="photoCard-info-actions")
-        -#   %ul(class="photoCard-actions")
-        -#     %li(class="photoCard-actions--item" id="PhotoCard#{photo.id}_likes")
-        -#       = render partial: "photos/photo-like", locals: { photo: photo }
+                %span(class="display-nane")= name(photo.user)

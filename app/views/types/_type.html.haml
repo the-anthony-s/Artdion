@@ -1,7 +1,8 @@
 %div(class="col")
   = link_to type, class: 'type' do
     %div(class="type-cover")
-      = type_cover(type.photos.last)
+      -# crop photo
+      = photo(type.photos.first)
     %div(class="type-heading")
       %div(class="type-heading__heading")
         %p(class="text text--h4")= type.name

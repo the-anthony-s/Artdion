@@ -2,10 +2,11 @@
   %div(class="container")
     %div(class="user")
       %div(class="user-avatar")
-        = render partial: 'users/shared/avatar', locals: { user: user }
+        -# = render partial: 'users/shared/avatar', locals: { user: user }
+        = avatar(user)
       %div(class="user-body")
         %div(class="user-body__name")
-          %h1(class="text text--h2")= user_name(user)
+          %h1(class="text text--h2")= name(user)
           %div(class="user-body__actions")
             
             - if user_signed_in? && (current_user == user)

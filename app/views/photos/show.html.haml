@@ -7,7 +7,7 @@
 %section(class="photoView" id="Photo#{@photo.id}")
   %div(class="photoView-container")
     %div(class="photoView-media")
-      = ix_image_tag URI(@photo.image_url).path, url_params: { auto: 'format', fit: 'crop', q: 60 }, attribute_options: {src: "data-src", srcset: "data-srcset", sizes: "data-sizes"}, tag_options: {src: @photo.image_url, class: 'lazyload'}
+      = photo(@photo)
 
 %section(class="photoNav")
   %div(class="container")

@@ -6,17 +6,14 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
-    "@uppy/image-editor": "^0.2.0",
     "handlebars": "^4.7.6",
     "jquery": "^3.5.1",
     "jstz": "^2.1.1",
     "lazysizes": "^5.3.0",
     "rails-erb-loader": "^5.5.2",
-    "randomstring": "^1.1.5",
     "stimulus": "^2.0.0",
     "turbolinks": "^5.2.0",
-    "typeahead.js": "^0.11.1",
-    "uppy": "^1.24.0"
+    "typeahead.js": "^0.11.1"
   },
   "version": "0.1.0",
   "devDependencies": {

@@ -18,7 +18,7 @@
         
         %div(class="talkPhoto")
           %div(class="talkPhoto-media")
-            = image_tag @talk.talkable.image_url
+            = photo(@talk.talkable, type=:card)
           %div(class="talkPhoto-description")
             = simple_format(@talk.talkable.description, class: 'text text--body text-paragraph')
 

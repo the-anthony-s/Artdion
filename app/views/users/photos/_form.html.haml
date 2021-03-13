@@ -1,30 +1,50 @@
-%section(class="section")
-  %div(class="container container--small")
+%section.section
+  %div.container.container--small
+
+    = simple_form_for(photo, html: { class: 'photoNew form' }) do |f|
+      
+      %div.photoNew-view
+        = f.input  :image
+
+      
+      %div.photoNew-details
+        = f.input :name, label: "Name"
+        = f.input :description, placeholder: 'Tell everyone about your process and how you came up with this idea', label: "Description", input_html: { class: 'textarea-js' }
+        = f.input :location, label: 'Place or City'
+        = f.input :tag_list, input_html: { value: f.object.tag_list.join(',') }
+        = f.submit "Upload", class: 'btn btn--primary btn--wide'
+
+
+
+-# %section(class="section")
+-#   %div(class="container container--small")
     
-    = simple_form_for(photo, html: { class: 'form photoNew-form' }) do |f|
+-#     = simple_form_for(photo, html: { class: 'form photoNew-form' }) do |f|
       
 
-      %div(class="photoNew-upload")
-        = f.label :image
-        = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "preview-cover-photo", upload_result_element: "album-cover-photo-upload-result" }
-        = f.hidden_field :image, value: @photo.image_data, id: "album-cover-photo-upload-result"
-        = image_tag @photo.image_url(:S300).to_s, width: 300, class: "img-thumbnail file-upload-preview", id: "preview-cover-photo"
+-#       %div(class="photoNew-upload")
+-#         = f.label :image
+-#         = f.file_field :image
+
+-#         -# = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "preview-cover-photo", upload_result_element: "album-cover-photo-upload-result" }
+-#         -# = f.hidden_field :image, value: @photo.image_data, id: "album-cover-photo-upload-result"
+-#         -# = image_tag @photo.image_url(:S300).to_s, width: 300, class: "img-thumbnail file-upload-preview", id: "preview-cover-photo"
 
       
       
-      %br/
-      %br/
-      %br/
-      = f.input :name
-      %br/
-      = f.collection_select :type_id, Type.selection_order.includes([:translations]).all, :id, :name, { class: 'chosen-select'}
-      %br/
-      = f.input :description
-      %br/
-      = f.input :location
-      %br/
-      = f.input :tag_list, input_html: {value: f.object.tag_list.join(",")}
-      %br/
-      %br/
-      %br/
-      = f.submit
+-#       %br/
+-#       %br/
+-#       %br/
+-#       = f.input :name
+-#       %br/
+-#       = f.collection_select :type_id, Type.selection_order.includes([:translations]).all, :id, :name, { class: 'chosen-select'}
+-#       %br/
+-#       = f.input :description
+-#       %br/
+-#       = f.input :location
+-#       %br/
+-#       = f.input :tag_list, input_html: {value: f.object.tag_list.join(",")}
+-#       %br/
+-#       %br/
+-#       %br/
+-#       = f.submit

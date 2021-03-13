@@ -1,13 +1,13 @@
 .auth-body {
   width: 100%;
   position: relative;
-  background: var(--color-black);
   min-height: 100vh;
+  background: var(--color-bg);
 
   @include bp(sm) {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
   }
 }
 
@@ -28,7 +28,7 @@
 }
 
 .auth-nav__root {
-  color: var(--color-white);
+  color: var(--color-contrast-higher);
   font-size: var(--font-size-h4);
   height: 100%;
   display: flex;
@@ -103,7 +103,7 @@
 }
 
 .auth-link {
-  color: var(--color-white);
+  color: var(--color-contrast-higher);
   font-weight: var(--font-weight-bold);
   text-decoration: none;
 
@@ -160,12 +160,12 @@
   position: relative;
   display: block;
   padding: 8px var(--space-container);
-  color: var(--color-white);
+  color: var(--color-contrast-higher);
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-large);
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.3);
+  background: var(--color-contrast-lower);
+  border: 1px solid var(--color-border-default);
   border-radius: var(--radius-default);
   box-shadow: none;
   appearance: none;
@@ -175,11 +175,12 @@
   }
 
   &:focus {
-    border-color: var(--color-white);
+    border-color: var(--color-border-dark);
+    background: var(--color-bg);
   }
 
   &::placeholder {
-    color: var(--color-white-darker);
+    color: var(--color-contrast-medium);
   }
 }
 

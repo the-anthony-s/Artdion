@@ -2,7 +2,8 @@ module Attachment
   class PromoteJob < ApplicationJob
     def perform(record, name, file_data)
       attacher = Shrine::Attacher.retrieve(model: record, name: name, file: file_data)
-      attacher.create_derivatives if [Photo, User].any? { |x| record.is_a? x }
+      # create thumbnails if on development only
+      attacher.create_derivatives if [Photo, User].any? { |x| record.is_a? x } && Rails.env.development?
       attacher.atomic_promote
     rescue Shrine::AttachmentChanged, ActiveRecord::RecordNotFound
       # attachment has changed or the record has been deleted, nothing to do

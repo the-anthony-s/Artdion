@@ -1,3 +1,23 @@
+.photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  vertical-align: top;
+}
+
+.photo-container[style*="--aspect-ratio"] {
+  position: relative;
+}
+
+.photo-container[style*="--aspect-ratio"]::before {
+  content: "";
+  display: block;
+  padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+
 //--------------------
 // PHOTO CARD
 //--------------------
@@ -19,6 +39,7 @@
     width: 100%;
     max-width: 100%;
     background: var(--color-contrast-lower);
+    object-fit: contain;
     display: block;
     height: auto;
   }
@@ -80,9 +101,9 @@
 
 .photoCard-link--user {
   color: var(--color-contrast-medium);
-  font-size: var(--font-size-minor);
+  font-size: var(--font-size-small);
   font-weight: var(--font-weight-default);
-  line-height: var(--line-height-minor);
+  line-height: var(--line-height-small);
 
   &:hover {
     color: var(--color-contrast-higher);
@@ -114,20 +135,18 @@
 }
 
 .photoView-media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.photoView-media > .photo-container {
   text-align: center;
   display: block;
   overflow: hidden;
-
-  & > img {
-    width: 100%;
-    vertical-align: top;
-    object-fit: contain;
-
-    @include bp(sm) {
-      max-width: 100%;
-      max-height: calc(100vh - ((var(--nav-height) * 2) + (20px * 3)));
-    }
-  }
+  margin: 0 auto;
+  width: 100%;
+  max-width: calc((100vh - ((var(--nav-height) * 2) + (20px * 3))) * var(--aspect-ratio));
 }
 
 .photoNav {
@@ -222,45 +241,31 @@
 //--------------------
 // NEW/EDIT PHOTO
 //--------------------
-.photoNew-form {
+.photoNew {
   position: relative;
-  display: block;
-  padding-top: 16px;
-}
+  display: grid;
+  grid-gap: 24px;
+  grid-template-columns: repeat(1, 1fr);
 
-.photoNew-upload {
-  position: relative;
-  display: block;
-  overflow: overflow;
-}
-
-.photoNew-background {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 30vh;
-  width: 100%;
-
-  background: var(--color-contrast-lower);
-  border-radius: var(--radius-default);
-  border: .3rem dashed var(--color-border);
-
-  & > img {
-    position: relative;
-    display: block;
-    object-fit: contain;
-    height: 100%;
-    width: auto;
+  @include bp(md) {
+    grid-template-columns: repeat(3,[col-start] 1fr);
   }
 }
 
-// input.uppy-FileInput-input[type="file"] {
-//   width: auto !important;
-//   height: auto !important;
-//   opacity: 1 !important;
-//   overflow: visible !important;
-//   position: relative !important;
-//   z-index: 1 !important;
-//   appearance: none !important;
-// }
+.photoNew .photoNew-view {
+
+  @include bp(md) {
+    grid-column: col-start 1/span 2;
+  }
+}
+
+.photoNew-details .input {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.photoNew-details  .input + .input {
+  margin-top: 24px;
+}

@@ -126,14 +126,15 @@ ActiveRecord::Schema.define(version: 2021_02_22_235418) do
     t.string "name"
     t.text "description"
     t.text "image_data"
+    t.string "alt_text"
     t.string "location"
     t.float "longitude"
     t.float "latitude"
-    t.datetime "awarded_at"
     t.boolean "download", default: true
     t.boolean "private", default: false
     t.boolean "active", default: true
     t.boolean "on_sale", default: true
+    t.datetime "photo_of_the_day"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0

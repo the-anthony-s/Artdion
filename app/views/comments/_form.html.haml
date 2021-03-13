@@ -8,7 +8,7 @@
   - if user_signed_in?
     = simple_form_for([commentable, Comment.new], local: true, html: { class: "commentForm #{local_assigns[:class]}", data: { target: local_assigns[:target]} }) do |f|
       %div(class="commentForm-user")
-        = render partial: 'users/shared/avatar', locals: { user: current_user }
+        = avatar(current_user, url_params: {w: 48, h: 48, auto: 'format', fit: 'crop', crop: 'faces', bg: 'fff', fm: 'webp'}, tag_options: {class: 'lazyload', alt: "Avatar of user #{name(current_user)}"})
       %div(class="commentForm-body")
         %div(class="commentForm-input")
           = f.input :body, placeholder: t('comment.form.placeholder.body'), input_html: { class: 'commentForm-control textarea-js' }, label: false, error: t('comment.form.error.body')

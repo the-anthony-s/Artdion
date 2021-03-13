@@ -2,7 +2,7 @@
   = link_to talk, class: 'talkPartial-link' do
     %div(class="talkPartial-container")
       %div(class="talkPartial-user__avatar")
-        = render partial: 'users/shared/avatar', locals: { user: talk.user }
+        = avatar(talk.user, url_params: {w: 48, h: 48, auto: 'format', fit: 'crop', crop: 'faces', bg: 'fff', fm: 'webp'}, tag_options: {class: 'lazyload', alt: "Go to #{name(talk.user)} profile"})
 
       %div(class="talkPartial-body")
         
@@ -10,7 +10,7 @@
           %h4(class="text text--h4")= talk.name
         
         %div(class="talkPartial-user__name")
-          %p(class="text text--small text-color-secondary") by #{user_name(talk.user)}
+          %p(class="text text--small text-color-secondary") by #{name(talk.user)}
         
         - if talk.talkable.description?
           %div(class="talkPartial-description")
@@ -21,4 +21,3 @@
             %p(class="text text--minor text-color-secondary") #{talk.comments_count} comments
           %div(class="talkPartial-panel__item")
             %p(class="text text--minor text-color-secondary") Posted #{time_ago_in_words(talk.created_at)}
-          

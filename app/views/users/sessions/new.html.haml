@@ -3,7 +3,7 @@
 %div(class="auth")
   %div(class="auth-heading")
     %div(class="auth-heading__heading")
-      %h1(class="text text--h2 text-color-light")= t('devise.sessions.heading')
+      %h1(class="text text--h2")= t('devise.sessions.heading')
   
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form'}) do |f|
     %div(class="auth-form__row")

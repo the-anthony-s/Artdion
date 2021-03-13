@@ -14,9 +14,9 @@
 %div(class="auth")
   %div(class="auth-heading")
     %div(class="auth-heading__heading")
-      %h1(class="text text--h2 text-color-light")= t('devise.passwords.new.heading')
+      %h1(class="text text--h2")= t('devise.passwords.new.heading')
     %div(class="auth-heading__subheading")
-      %p(class="text text--large text-color-light")= t('devise.passwords.new.subheading')
+      %p(class="text text--large")= t('devise.passwords.new.subheading')
   
   = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form', method: :post}) do |f|
     %div(class="auth-form__row")
