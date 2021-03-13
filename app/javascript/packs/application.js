@@ -19,7 +19,6 @@ import 'components/search'
 import 'components/nav'
 import 'components/form'
 import 'components/notification'
-import 'components/fileUpload'
 
 // Lazaysizes - lazyload for images
 import 'lazysizes';
@@ -30,3 +29,16 @@ import 'controllers'
 
 // Check website theme
 window.matchMedia('(prefers-color-scheme: dark)').matches
+
+// Use 'DOMContentLoaded' event if not using Turbolinks
+// import { singleFileUpload, multipleFileUpload } from 'components/fileUpload'
+
+// document.addEventListener('turbolinks:load', () => {
+//   document.querySelectorAll('input[type=file]').forEach(fileInput => {
+//     if (fileInput.multiple) {
+//       multipleFileUpload(fileInput)
+//     } else {
+//       singleFileUpload(fileInput)
+//     }
+//   })
+// })
