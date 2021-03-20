@@ -1,4 +1,4 @@
-.type {
+.category {
   position: relative;
   display: block;
   user-select: none;
@@ -8,7 +8,7 @@
   height: 100%;
 }
 
-.type-cover {
+.category-cover {
   position: relative;
   padding-bottom: 30%;
   display: block;
@@ -26,7 +26,7 @@
   }
 }
 
-.type-heading {
+.category-heading {
   padding: 16px 20px 20px;
   position: relative;
   text-align: left;
@@ -37,11 +37,11 @@
   }
 }
 
-.type-heading__subheading {
+.category-heading__subheading {
   padding-top: 8px;
 }
 
-.type-heading__stats {
+.category-heading__stats {
   padding-top: 8px;
 
   & > span + span {

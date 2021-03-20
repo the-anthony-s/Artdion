@@ -2,7 +2,7 @@
   = link_to user, class: 'userMini-avatar' do
     = avatar(user, url_params: {w: 32, h: 32, auto: 'format', fit: 'crop', crop: 'faces', bg: 'fff', fm: 'webp'}, tag_options: {class: 'lazyload', alt: "Go to #{name(user)} profile"})
   %div(class="userMini-profile")
-    = link_to user, class: 'userMini-name' do
+    = link_to user, class: 'userMini-name', title: name(user), rel: 'contact' do
       %span(class="display-name")= name(user)
-    = link_to user, class: 'userMini-username' do
+    = link_to user, class: 'userMini-username', title: username(user), rel: 'contact' do
       %span(class="displya-name")= username(user)

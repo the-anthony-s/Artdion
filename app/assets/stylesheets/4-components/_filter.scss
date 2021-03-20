@@ -1,0 +1,63 @@
+//*************************
+// SUBNAV FILTER
+//*************************
+.filter-subnav {
+  position: relative;
+  display: block;
+  border-bottom: 1px solid var(--color-border-default);
+  margin-bottom: 16px;
+  padding-right: 12px;
+  padding-left: 12px;
+
+  @include bp(sm) {
+    padding-right: 24px;
+    padding-left: 24px;
+    margin-bottom: 32px;
+  }
+}
+
+.filter-subnav .filter-categories {
+  height: var(--nav-height);
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-right: -12px;
+
+  @include bp(sm) {
+    margin-right: -24px;
+  }
+}
+
+.filter-subnav .filter-categories .category {
+  position: relative;
+  height: 100%;
+
+  & + .category {
+    padding-left: 12px;
+
+    @include bp(sm) {
+      padding-left: 24px;
+    }
+  }
+}
+
+.filter-categories > .category > a {
+  color: var(--color-contrast-medium);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-default);
+  position: relative;
+  text-transform: none;
+  text-decoration: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  &.active {
+    color: var(--color-contrast-higher);
+    text-decoration: none;
+  }
+}

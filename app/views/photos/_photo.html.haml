@@ -8,7 +8,7 @@
     %meta{:content => "#{photo_counter}", :itemprop => "position"}/
     %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
 
-    = link_to photo, class: 'photoCard-media' do
+    = link_to photo, class: 'photoCard-media', title: "#{photo.name}" do
       = photo(photo, type = :card)
 
     
@@ -19,5 +19,5 @@
             = link_to photo.name, photo, class: 'photoCard-link photoCard-link--name'
           - if show_user
             %div(class="photoCard-user")
-              = link_to photo.user, class: 'photoCard-link photoCard-link--user' do
+              = link_to photo.user, class: 'photoCard-link photoCard-link--user', rel: 'contact', title: name(photo.user) do
                 %span(class="display-nane")= name(photo.user)

@@ -31,7 +31,7 @@
         %div(class="photoNav-action")
           -# = button_tag class: 'btnAction' do
           -#   Buy
-          = link_to @photo.talk, class: 'btnAction' do
+          = link_to @photo.talk, title: @photo.talk.name, class: 'btnAction' do
             %span= icon "far", "envelope"
             %span= @photo.talk.comments_count
 
@@ -44,10 +44,6 @@
         = simple_format(@photo.description, class: 'text text-paragraph text--small')
       
       %div(class="photoAbout-details")
-        %div(class="photoAbout-detail")
-          %p(class="text text--small text-color-secondary fw-medium") Type
-          = link_to @photo.type.name, @photo.type, class: 'text text--body fw-medium'
-        
         %div(class="photoAbout-detail")
           %p(class="text text--body text-color-secondary fw-medium") Date
           %p(class="text text--body fw-medium") 2020
@@ -66,7 +62,7 @@
       %div(class="container")
         %h4(class="text text--large fw-medium") Related photos
     %div(class="container")
-      %div(class="grid grid--photosRelated")
+      %div(class="grid--photosRelated")
         = render partial: 'photos/photo', collection: @related, locals: { show_info: false }
 
 - if @tags.any?

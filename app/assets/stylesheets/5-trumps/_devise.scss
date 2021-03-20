@@ -65,18 +65,18 @@
 //-------------------------
 .auth {
   width: 100%;
-  max-width: calc(450px + (var(--space-container) * 2));
   margin-right: auto;
   margin-left: auto;
-  padding: 24px var(--space-container);
+  padding: 24px var(--space-page-padding);
   animation: show .8s 0.05s ease 1 both;
 
   &--registration {
     max-width: 700px;
   }
 
-  @include bp(sm) {
-    padding: 48px var(--space-container);
+  @include bp(xs) {
+    padding: 48px var(--space-page-padding);
+    max-width: calc(450px + (var(--space-page-padding) * 2));
   }
 }
 
@@ -159,7 +159,7 @@
   width: 100%;
   position: relative;
   display: block;
-  padding: 8px var(--space-container);
+  padding: 8px 8px;
   color: var(--color-contrast-higher);
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-medium);
@@ -171,7 +171,7 @@
   appearance: none;
 
   @include bp(sm) {
-    padding: 16px var(--space-container);
+    padding: 12px 12px;
   }
 
   &:focus {
@@ -197,7 +197,7 @@
   box-shadow: none;
   border: 1px solid var(--color-accent);
   border-radius: var(--radius-default);
-  padding: 8px var(--space-container);
+  padding: 12px 12px;
   width: 100%;
   background: var(--color-accent);
   user-select: none;
@@ -206,6 +206,9 @@
   white-space: nowrap;
   touch-action: manipulation;
   outline: none;
+  transition: background .1s var(--ease-in),
+              border-color .1s var(--ease-in),
+              color .1s var(--ease-in);
 
   &:hover {
     background: var(--color-accent-dark);
@@ -213,7 +216,7 @@
   }
 
   @include bp(sm) {
-    padding: 16px var(--space-container);
+    padding: 12px 12px;
   }
 }
 

@@ -5,8 +5,8 @@
   max-width: var(--container-width-default);
   margin-right: auto;
   margin-left: auto;
-  padding-right: var(--space-container);
-  padding-left: var(--space-container);
+  padding-right: var(--space-page-padding);
+  padding-left: var(--space-page-padding);
 }
 
 .container--small {
@@ -26,7 +26,7 @@
   padding-left: 0;
 
   @include bp(sm) {
-    padding-right: var(--space-container);
-    padding-left: var(--space-container);
+    padding-right: var(--space-page-padding);
+    padding-left: var(--space-page-padding);
   }
 }

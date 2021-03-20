@@ -11,17 +11,19 @@
     %div(class="nav-right")
       %ul(class="nav-menu")
         %li(class="nav-menu__item")
-          = active_link_to t('nav.link.home'), root_path, active: :exact, class: "nav-link"
+          = active_link_to t('nav.link.home'), root_path, title: t('nav.link.home'), active: :exact, class: "nav-link"
         %li(class="nav-menu__item")
-          = active_link_to t('nav.link.collection'), types_path, class: "nav-link"
+          = active_link_to "Topics", tags_path, title: 'Topics', class: "nav-link"
         %li(class="nav-menu__item")
-          = active_link_to "Talks", talks_path, class: "nav-link"
+          = active_link_to t('nav.link.collection'), categories_path, title: t('nav.link.collection'), class: "nav-link"
+        %li(class="nav-menu__item")
+          = active_link_to "Talks", talks_path, title: t('nav.link.talks'), class: "nav-link"
 
       %div(class="nav-account")
 
         -# UPLOAD BUTTON
         %div(class="nav-account__upload")
-          = active_link_to new_photo_path, class: 'nav-btn nav-btn--upload' do
+          = active_link_to new_photo_path, title: t('nav.button.new_photo'), class: 'nav-btn nav-btn--upload' do
             %span= icon "far", "plus"
             %span= t('nav.button.new_photo')
 
@@ -42,17 +44,17 @@
             %div(class="nav-dropdown dropdown" tabindex="-1")
               %ul(class="dropdown-links")
                 %li(class="dropdown-links__item")
-                  = active_link_to t('nav.link.profile'), user_path(current_user), class: 'dropdown-link', 'data-turbo-action': "replace"
+                  = active_link_to t('nav.link.profile'), user_path(current_user), title: t('nav.link.profile'), class: 'dropdown-link', 'data-turbo-action': "replace"
                 %li(class="dropdown-links__item")
-                  = active_link_to t('nav.link.profile_settings'), edit_user_registration_path, class: 'dropdown-link'
+                  = active_link_to t('nav.link.profile_settings'), edit_user_registration_path, title: t('nav.link.profile_settings'), class: 'dropdown-link'
                 %li(class="dropdown-links__item dropdown-links__item--separator")
-                  = active_link_to t('nav.link.profile_logout'), destroy_user_session_path, method: :delete, class: 'dropdown-link dropdown-link--logout'
+                  = active_link_to t('nav.link.profile_logout'), destroy_user_session_path, method: :delete, title: t('nav.link.profile_logout'), class: 'dropdown-link dropdown-link--logout'
 
         - else
           -# SIGN IN | SING UP -> BUTTONS
           %div(class="nav-account__login")
-            = active_link_to t('nav.button.signin'), new_user_session_path, class: 'nav-btn nav-btn--login'
-            = active_link_to t('nav.button.signup'), new_user_registration_path, class: 'nav-btn nav-btn--signup'
+            = active_link_to t('nav.button.signin'), new_user_session_path, title: t('nav.button.signin'), class: 'nav-btn nav-btn--login'
+            = active_link_to t('nav.button.signup'), new_user_registration_path, title: t('nav.button.signup'), class: 'nav-btn nav-btn--signup'
     
     -# MOBILE NAVIGATION
     %div(class="nav-mobile dropdown-item")

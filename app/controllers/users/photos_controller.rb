@@ -35,7 +35,7 @@ module Users
     private
 
     def photo_params
-      params.require(:photo).permit(:name, :image, :description, :location, :download, :private, :tag_list, :type_id)
+      params.require(:photo).permit(:name, :image, :description, :location, :download, :private, :tag_list)
     end
   end
 end

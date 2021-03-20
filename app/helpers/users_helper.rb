@@ -25,6 +25,16 @@ module UsersHelper
     "#{user.first_name} #{user.last_name.chars.first}"
   end
 
+  # Return User's first name
+  def first_name(user)
+    user.first_name.to_s
+  end
+
+  # Return User's last name
+  def last_name(user)
+    user.last_name.to_s
+  end
+
   # Return User's avatar
   def avatar(user, options = {})
     if user.image_data? && !user.deleted_at?

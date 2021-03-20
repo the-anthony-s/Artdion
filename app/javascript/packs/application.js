@@ -19,10 +19,11 @@ import 'components/search'
 import 'components/nav'
 import 'components/form'
 import 'components/notification'
+import 'components/masonry'
 
 // Lazaysizes - lazyload for images
-import 'lazysizes';
-import 'lazysizes/plugins/parent-fit/ls.parent-fit';
+import 'lazysizes'
+import 'lazysizes/plugins/parent-fit/ls.parent-fit'
 
 // Stimulus JS
 import 'controllers'

@@ -5,24 +5,8 @@
   left: 0;
   width: 100%;
   max-width: 100%;
-  transition: box-shadow 300ms ease-in-out;
+  border-bottom: 1px solid var(--color-border-default);
   z-index: var(--zindex-nav);
-}
-
-:root {
-  --nav-scrolled-shadow: 0 10px 10px -10px rgba(33, 35, 38, .1);
-}
-
-@supports(--css: variabales) {
-  :root {
-    @media (prefers-color-scheme: dark) {
-      --nav-scrolled-shadow: 0 10px 10px -10px rgb(255 255 255 / 10%);
-    }
-  }
-}
-
-.nav.nav--scrolled {
-  box-shadow: var(--nav-scrolled-shadow);
 }
 
 .nav-container {
@@ -32,13 +16,20 @@
   max-width: var(--container-width-default);
   margin-right: auto;
   margin-left: auto;
-  padding-left: var(--space-container);
-  padding-right: var(--space-container);
+  // padding-left: var(--space-page-padding);
+  // padding-right: var(--space-page-padding);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: relative;
   display: flex;
+  padding-right: 12px;
+  padding-left: 12px;
+
+  @include bp(sm) {
+    padding-right: 24px;
+    padding-left: 24px;
+  }
 }
 
 .nav-left,
@@ -106,15 +97,11 @@
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-body);
   width: 100%;
-  height: 100%;
-  background: var(--color-bg);
+  height: calc(var(--nav-height) / 1.4);
+  background: var(--color-contrast-low);
   border-radius: var(--radius-default);
   position: relative;
   z-index: var(--zindex-nav-search);
-
-  @include bp(sm) {
-    max-width: 600px;
-  }
 }
 
 .nav-search.search--focused {
@@ -128,6 +115,7 @@
 
   @include bp(sm) {
     position: relative;
+    height: calc(var(--nav-height) / 1.4);
   }
 }
 
@@ -190,10 +178,10 @@
   border: none;
   border-left: 2px solid var(--color-contrast-higher);
   color: var(--color-contrast-higher);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-large);
-  height: calc(var(--nav-height) / 1.4);
+  line-height: var(--line-height-body);
+  height: 100%;
   padding: 5px 16px;
   appearance: none;
   position: relative;
@@ -351,6 +339,9 @@
   padding: 4px 12px;
   display: flex;
   white-space: pre;
+  transition: background .1s var(--ease-in),
+              border-color .1s var(--ease-in),
+              color .1s var(--ease-in);
 
   & > span + span {
     padding-left: 8px;

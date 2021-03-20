@@ -5,6 +5,7 @@
   text-transform: inherit;
   display: inline-flex;
   align-items: center;
+  transition: color .1s var(--ease-in);
 
   &:hover, 
   &:focus, 
@@ -27,6 +28,7 @@
   text-decoration: underline;
   text-transform: inherit;
   display: inline-block;
+  transition: color .1s var(--ease-in);
 
   &:hover, 
   &:focus, 

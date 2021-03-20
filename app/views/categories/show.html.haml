@@ -2,12 +2,11 @@
   %div(class="container")
     %div(class="intro-heading")
       %div(class="intro-heading__heading")
-        %h1(class="text text--h2")= @type.name
+        %h1(class="text text--h2")= @category.name
       %div(class="intro-heading__subheading")
-        %h2(class="text text--large")= @type.description
-      %div(class="intro-heading__stats")
-        %p(class="text text--body text-color-secondary fw-medium")
-          = t('type.show.subheading', photos_count: "#{formatted_number(@type.photos_count)} " + t('type.show.photos_count', count: @type.photos_count), users_count: "#{formatted_number(@type.users_count)} " + t('type.show.users_count', count: @type.users_count))
+        %h2(class="text text--large")= @category.description
+      %div(id="Category#{@category.id}")
+        = render partial: "categories/follows", locals: { category: @category }
 
 %div{:class => "section", :"data-controller" => "infinite-scroll"}
   %div(class="container container--media")

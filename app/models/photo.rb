@@ -8,7 +8,6 @@ class Photo < ApplicationRecord
   #####################################
   # References
   belongs_to :user
-  belongs_to :type
 
   has_one :talk, as: :talkable
   has_many :likes, as: :likable
@@ -17,9 +16,6 @@ class Photo < ApplicationRecord
   # Counters
   # counter_culture :user, column_name: ->(model) { "#{model.state}_photos_count" }
   counter_culture :user
-  counter_culture :type, column_name: proc { |model|
-    !model.private? && model.active? ? 'photos_count' : nil
-  }
 
   #####################################
   # Tags
@@ -48,7 +44,6 @@ class Photo < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :image
-  validates_presence_of :type_id
 
   #####################################
   # Search -> Searchkick gem
@@ -102,7 +97,7 @@ class Photo < ApplicationRecord
       user: user,
       talkable: self,
       name: "#{name.to_s.capitalize} discussion",
-      tag_list: "#{self.class.to_s.downcase}, #{type.name.to_s.downcase}"
+      tag_list: "#{self.class.to_s.downcase}"
     )
   end
 

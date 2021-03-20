@@ -26,7 +26,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  justify-content: flex-end;
+  // height: 100%;
 }
 
 .photoCard-media {
@@ -34,7 +35,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex: 1;
+  // flex: 1;
 
   & > img {
     width: 100%;
@@ -49,7 +50,7 @@
 .photoCard-info {
   display: block;
   position: relative;
-  flex: none;
+  // flex: none;
 }
 
 .photoCard-info__container {
@@ -120,6 +121,12 @@
 .photoView {
   position: relative;
   overflow: hidden;
+
+  padding: 0 0 16px;
+
+  @include bp(sm) {
+    padding: 20px var(--space-page-padding);
+  }
 }
 
 .photoView-container {
@@ -128,11 +135,6 @@
   width: 100%;
   max-width: var(--container-width-default);
   margin: 0 auto;
-  padding: 0 0 16px;
-
-  @include bp(sm) {
-    padding: 20px var(--space-container);
-  }
 }
 
 .photoView-media {
@@ -147,7 +149,10 @@
   overflow: hidden;
   margin: 0 auto;
   width: 100%;
-  max-width: calc((100vh - ((var(--nav-height) * 2) + (20px * 3))) * var(--aspect-ratio));
+
+  @include bp(sm) {
+    max-width: calc((100vh - ((var(--nav-height) * 2) + (20px * 2))) * var(--aspect-ratio));
+  }
 }
 
 .photoNav {

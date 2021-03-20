@@ -1,7 +1,14 @@
 class Tag < ApplicationRecord
+  #####################################
+  # Relationships
+  has_many :followers, as: :follower, dependent: :delete_all, class_name: 'Follow'
+  has_many :following, as: :followable, dependent: :delete_all, class_name: 'Follow'
+
+  #####################################
   # Scope
   scope :default_order, -> { order(taggings_count: :desc).where.not(taggings_count: nil) }
 
+  #####################################
   # Searchkick
   searchkick callbacks: :async,
              match: :word_start,

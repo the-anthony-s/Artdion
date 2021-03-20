@@ -21,7 +21,7 @@
   = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form', method: :post}) do |f|
     %div(class="auth-form__row")
       %div(class="auth-form__input")
-        = f.input :email, autofocus: false, error: t('devise.passwords.new.form.error.email'), label: false, input_html: {autocomplete: 'email', placeholder: t('devise.passwords.new.form.placeholder.email'), class: 'auth-form__control', tabindex: '1'}, required: true
+        = f.input :email, autofocus: true, error: t('devise.passwords.new.form.error.email'), label: false, input_html: {autocomplete: 'email', placeholder: t('devise.passwords.new.form.placeholder.email'), class: 'auth-form__control', tabindex: '1'}, required: true
     %div(class="auth-form__action")
       = button_tag t('devise.passwords.new.form.submit'), class: "auth-form__submit", data: {disable_with: "<i class='fad fa-spinner-third fa-spin'></i>"}, id: "SubmitAndVerify"  
 

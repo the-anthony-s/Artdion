@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_235418) do
+ActiveRecord::Schema.define(version: 2021_03_19_155926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active", default: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "photos_count", default: 0
+    t.integer "users_count", default: 0
+    t.integer "impressions_count"
+    t.integer "followers_count", default: 0
+  end
+
+  create_table "category_translations", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.string "locale", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.text "description"
+    t.index ["category_id"], name: "index_category_translations_on_category_id"
+    t.index ["locale"], name: "index_category_translations_on_locale"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -139,9 +162,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_235418) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0
     t.integer "comments_count", default: 0
-    t.bigint "type_id"
     t.integer "impressions_count"
-    t.index ["type_id"], name: "index_photos_on_type_id"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
@@ -186,6 +207,7 @@ ActiveRecord::Schema.define(version: 2021_02_22_235418) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer "taggings_count", default: 0
+    t.integer "followers_count", default: 0
     t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
@@ -201,28 +223,6 @@ ActiveRecord::Schema.define(version: 2021_02_22_235418) do
     t.integer "impressions_count"
     t.index ["talkable_type", "talkable_id"], name: "index_talks_on_talkable"
     t.index ["user_id"], name: "index_talks_on_user_id"
-  end
-
-  create_table "type_translations", force: :cascade do |t|
-    t.bigint "type_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.text "description"
-    t.index ["locale"], name: "index_type_translations_on_locale"
-    t.index ["type_id"], name: "index_type_translations_on_type_id"
-  end
-
-  create_table "types", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.boolean "active", default: true
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "photos_count", default: 0
-    t.integer "users_count", default: 0
-    t.integer "impressions_count"
   end
 
   create_table "users", force: :cascade do |t|
@@ -274,7 +274,6 @@ ActiveRecord::Schema.define(version: 2021_02_22_235418) do
   end
 
   add_foreign_key "comments", "users"
-  add_foreign_key "photos", "types"
   add_foreign_key "taggings", "tags"
   add_foreign_key "talks", "users"
 end

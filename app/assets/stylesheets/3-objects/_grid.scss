@@ -1,6 +1,11 @@
 .grid {
   display: grid;
   list-style: none;
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
 
 
@@ -9,27 +14,79 @@
 // PHOTOS
 //-------------
 .grid--photos {
-  grid-template-columns: repeat(1, 1fr);
-  grid-auto-columns: row;
-  grid-row-gap: 40px;
+  // grid-template-columns: repeat(1, 1fr);
+  // grid-auto-columns: row;
+  // grid-gap: 36px;
+
+  // @include bp(sm) {
+  //   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  // }
+
+  // @include bp(lg) {
+  //   grid-template-columns: repeat(auto-fill, minmax(336px, 1fr));
+  // }
+
+  margin: -6px;
 
   @include bp(sm) {
-    grid-gap: var(--space-container);
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    margin: -10px;
+  }
+}
+
+.grid--photos .col {
+  // width: 270px;
+  width: 100%;
+  padding: 6px;
+
+  @include bp(sm) {
+    width: 50%;
+    padding: 10px;
+  }
+
+  @include bp(md) {
+    width: 33.33333%;
   }
 
   @include bp(lg) {
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    width: 25%;
   }
 }
 
 .grid--photosRelated {
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-columns: row;
-  grid-gap: var(--space-container);
+  // grid-template-columns: repeat(2, 1fr);
+  // grid-auto-columns: row;
+  // grid-gap: 12px;
   
+  // @include bp(sm) {
+  //   grid-gap: 36px;
+  //   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  // }
+
+  // @include bp(lg) {
+  //   grid-template-columns: repeat(auto-fill, minmax(336px, 1fr));
+  // }
+  
+  margin: -6px;
+
   @include bp(sm) {
-    grid-template-columns: repeat(auto-fill, minmax(370px, 1fr));
+    margin: -10px;
+  }
+}
+
+.grid--photosRelated .col {
+  width: 50%;
+  padding: 6px;
+
+  @include bp(sm) {
+    padding: 10px;
+  }
+
+  @include bp(md) {
+    width: 33.33333%;
+  }
+
+  @include bp(lg) {
+    width: 25%;
   }
 }
 
@@ -41,7 +98,7 @@
 .grid--types {
   grid-template-columns: repeat(1, 1fr);
   grid-auto-columns: row;
-  grid-gap: var(--space-container);
+  grid-gap: 36px;
   
   @include bp(sm) {
     grid-template-columns: repeat(2, 1fr);

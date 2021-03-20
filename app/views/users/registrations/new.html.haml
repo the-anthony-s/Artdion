@@ -9,7 +9,7 @@
     %div(class="auth-form__row")
       %div(class="auth-form__grid")
         %div(class="auth-form__input")
-          = f.input :first_name, autofocus: false, error: t('devise.registrations.form.error.first_name'), label: false, input_html: {autocomplete: 'first-name', placeholder: t('devise.registrations.form.placeholder.first_name'), class: 'auth-form__control', tabindex: '1'}, required: true
+          = f.input :first_name, autofocus: true, error: t('devise.registrations.form.error.first_name'), label: false, input_html: {autocomplete: 'first-name', placeholder: t('devise.registrations.form.placeholder.first_name'), class: 'auth-form__control', tabindex: '1'}, required: true
 
 
         %div(class="auth-form__input")

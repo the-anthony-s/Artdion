@@ -1,0 +1,12 @@
+- @categories = Category.default_order.all
+
+%div.filter-subnav
+  %ul.filter-categories
+    %li.category
+      = active_link_to 'Editorial', root_path, title: 'Home', active: :exact
+    - if user_signed_in?
+      %li.category
+        = active_link_to 'Following', following_path, title: 'Following', active: :exact
+    - @categories.each do |category|
+      %li.category
+        = active_link_to category.name, category, title: category.name

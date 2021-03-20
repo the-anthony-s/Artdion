@@ -1,5 +1,5 @@
-class AddImpressionsCountToTypes < ActiveRecord::Migration[6.1]
+class AddImpressionsCountToCategories < ActiveRecord::Migration[6.1]
   def change
-    add_column :types, :impressions_count, :int
+    add_column :categories, :impressions_count, :int
   end
 end

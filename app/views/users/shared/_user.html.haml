@@ -16,8 +16,8 @@
                   %span(class="btnAction-text")= t('user.profile.action.edit')
             
             - if user_signed_in? && (current_user != user)
-              %div(class="user-body__action")
-                = render partial: "users/shared/follows", locals: { user: user }
+              %div(class="user-body__action" id="User#{user.id}")
+                = render partial: "users/follows", locals: { user: user }
             
             - if user_signed_in? && (current_user != user) && user.message?
               %div(class="user-body__action")

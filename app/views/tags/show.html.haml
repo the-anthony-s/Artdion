@@ -1,0 +1,16 @@
+= render partial: 'shared/filters-subnav'
+
+.intro
+  .container
+    %h1= @tag.name
+    %div(id="Tag#{@tag.id}")
+      = render partial: "tags/follows", locals: { tag: @tag }
+
+%section{:class => "section", :"data-controller" => "infinite-scroll"}
+  %div(class="container container--media")
+    %div{:class => "grid grid--photos", :"data-target" => "infinite-scroll.entries"}
+      = render @photos
+
+    -# %div(class="pagination-container" id="PaginationContainer")
+    -#   %div{:"data-target" => "infinite-scroll.pagination"}
+    -#     != pagy_nav(@pagy)

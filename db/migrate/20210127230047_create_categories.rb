@@ -1,6 +1,6 @@
-class CreateTypes < ActiveRecord::Migration[6.1]
+class CreateCategories < ActiveRecord::Migration[6.1]
   def change
-    create_table :types do |t|
+    create_table :categories do |t|
       t.string :name
       t.text :description
       t.boolean :active, default: true
@@ -10,11 +10,11 @@ class CreateTypes < ActiveRecord::Migration[6.1]
 
     reversible do |dir|
       dir.up do
-        Type.create_translation_table! name: :string, description: :text
+        Category.create_translation_table! name: :string, description: :text
       end
 
       dir.down do
-        Type.drop_translation_table!
+        Category.drop_translation_table!
       end
     end
   end

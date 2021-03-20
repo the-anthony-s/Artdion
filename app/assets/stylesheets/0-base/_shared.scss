@@ -2,13 +2,13 @@
   // container width
   --container-page: 100%;
   --container-wide: 1480px;
-  --container-width-default: 1920px;
-  // --container-width-default: 100%;
+  // --container-width-default: 1920px;
+  --container-width-default: 100%;
   --container-width-small: 1200px;
   --container-width-tight: 642px;
 
   // navigation bar
-  --nav-height: 54px;
+  --nav-height: 50px;
 
   // radius
   --radius-default: 0px;
@@ -39,7 +39,6 @@
 
   // timing functions
   // credits: https://github.com/ai/easings.net
-  --bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275); // ⚠️ deprecated - replaced with --ease-out-back
   --ease-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
   --ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
   --ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
@@ -47,10 +46,10 @@
 }
 
 
-// @supports(--css: variables) {
-//   :root {
-//     @include bp(sm) {
-//       --nav-height: 54px;
-//     }
-//   }
-// }
+@supports(--css: variables) {
+  :root {
+    @include bp(sm) {
+      --nav-height: 56px;
+    }
+  }
+}

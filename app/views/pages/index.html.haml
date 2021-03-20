@@ -1,16 +1,22 @@
--# %section(class="intro root-intro")
--#   %div(class="root-intro-media")
--#   %div(class="root-intro-container")
--#     %div(class="root-intro-footer")
--#       %div(class="root-intro-footer__credit") Art of the day by Anthony Sergeyev
--#       %div(class="root-intro-footer__legal") legal
--#       %div(class="root-intro-footer__ad") advertising
+= render partial: 'shared/filters-subnav'
+
+- unless user_signed_in?
+  %div.intro.intro--centered
+    %div.container.container--small
+      %div.intro-container
+        %div.intro-heading.text-center
+          %div.intro-heading__heading
+            %h1.text.text--h2 World-wide online gallery.
+          %div.intro-heading__subheading
+            %p.text.text--large Learn more about the world from anywhere.
+          %div.intro-action-group
+            %div.intro-action
+              %p= link_to "Sign up free", new_user_registration_path, class: 'btn btn--accent'
+
 
 %section{:class => "section", :"data-controller" => "infinite-scroll"}
   %div(class="container container--media")
-    %div{:class => "grid grid--photos", :"data-target" => "infinite-scroll.entries"}
-      -# = turbo_stream_from "photos"
-      -# = turbo_frame_tag "photos" do
+    %div{:class => "grid--photos", :"data-target" => "infinite-scroll.entries"}
       = render @photos
 
     %div(class="pagination-container" id="PaginationContainer")

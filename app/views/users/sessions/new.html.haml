@@ -8,7 +8,7 @@
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "auth-form", id: 'invisible-recaptcha-form'}) do |f|
     %div(class="auth-form__row")
       %div(class="auth-form__input")
-        = f.input :login, autofocus: false, error: 'Problem with your login', label: false, input_html: {autocomplete: 'off', placeholder: t('devise.sessions.form.placeholder.login'), class: 'auth-form__control', tabindex: '1'}, required: true
+        = f.input :login, autofocus: true, error: 'Problem with your login', label: false, input_html: {autocomplete: 'off', placeholder: t('devise.sessions.form.placeholder.login'), class: 'auth-form__control', tabindex: '1'}, required: true
     %div(class="auth-form__row")
       %div(class="auth-form__input")
         = f.input :password, autofocus: false, error: 'Problem with your password', label: false, input_html: {autocomplete: 'current-password', placeholder: t('devise.sessions.form.placeholder.password'), class: 'auth-form__control', autocomplete: 'current-password', tabindex: '2'}, required: true

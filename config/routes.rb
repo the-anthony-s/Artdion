@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'talks/index'
-  get 'talks/show'
   # scope '/(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
   # end
 
@@ -15,17 +13,28 @@ Rails.application.routes.draw do
   ## Pages ---> Default Controller
   get '/', to: 'pages#index'
 
+  authenticated :user do
+    get '/following', to: 'pages#following'
+  end
+
   ## Legal ---> Documents: terms, privacy
   get '/privacy', to: 'legal#privacy'
   get '/terms', to: 'legal#terms'
+
+  ## Topics -> Tags pages
+  resources :tags, path: 'topics', only: %i[index show] do
+    resource :follow, module: :tags
+  end
 
   # Comments
   resources :comments do
     resource :like, module: :comments, only: %i[create destroy]
   end
 
-  # Types
-  resources :types, path: 'gallery', only: %i[index show]
+  # Categories
+  resources :categories, path: 'gallery', only: %i[index show] do
+    resource :follow, module: :categories
+  end
 
   # Talks
   resources :talks, path: 'talks' do
@@ -38,7 +47,6 @@ Rails.application.routes.draw do
       post :mark_as_read
     end
   end
-
 
   # Users Controller
   devise_for :users, path: 'account', path_names: {
@@ -71,7 +79,7 @@ Rails.application.routes.draw do
     end
     resource :follow, module: :users
   end
-  
+
   # Photos
   resources :photos, path: 'photos', only: %i[index show] do
     resource :like, module: :photos, only: %i[create destroy]

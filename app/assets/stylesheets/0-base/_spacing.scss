@@ -4,9 +4,14 @@
   --space-3: 36px;
   --space-4: 72px;
 
-  --space-container: 12px;
+  // Page padding
+  --space-page-padding: 12px;
 
-  @include bp(md) {
-    --space-container: 30px;
+  @include bp(sm) {
+    --space-page-padding: 32px;
+  }
+
+  @include bp(lg) {
+    --space-page-padding: 72px;
   }
 }
