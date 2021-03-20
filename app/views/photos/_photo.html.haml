@@ -8,7 +8,7 @@
     %meta{:content => "#{photo_counter}", :itemprop => "position"}/
     %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
 
-    = link_to photo, class: 'photoCard-media', title: "#{photo.name}" do
+    = link_to photo, class: 'photoCard-media', title: "#{photo.name} photo" do
       = photo(photo, type = :card)
 
     

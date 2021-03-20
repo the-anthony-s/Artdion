@@ -24,10 +24,7 @@
 //--------------------
 .photoCard {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  // height: 100%;
+  display: block;
 }
 
 .photoCard-media {
@@ -50,7 +47,6 @@
 .photoCard-info {
   display: block;
   position: relative;
-  // flex: none;
 }
 
 .photoCard-info__container {

@@ -1,4 +1,5 @@
 import { Controller } from "stimulus"
+import Masonry from 'masonry-layout'
 
 export default class extends Controller {
   static targets = ["entries", "pagination"]
@@ -47,6 +48,11 @@ export default class extends Controller {
         //   cancel_on_exit: true,
         //   use_native: false
         // });
+        new Masonry('.grid--photos', {
+          itemSelector: '.col',
+          percentPosition: true,
+          transitionDuration: 0
+        })
       }
     })
   }
