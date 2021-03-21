@@ -7,11 +7,11 @@
   // Page padding
   --space-page-padding: 12px;
 
-  @include bp(sm) {
-    --space-page-padding: 32px;
-  }
+  // Elements
+  --space-nav-padding: 12px;
 
-  @include bp(lg) {
-    --space-page-padding: 72px;
+  @include bp(sm) {
+    --space-page-padding: 24px;
+    --space-nav-padding: 24px;
   }
 }

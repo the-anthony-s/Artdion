@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_155926) do
     t.boolean "active", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "photos_count", default: 0
     t.integer "users_count", default: 0
     t.integer "impressions_count"
     t.integer "followers_count", default: 0
@@ -153,6 +152,7 @@ ActiveRecord::Schema.define(version: 2021_03_19_155926) do
     t.string "location"
     t.float "longitude"
     t.float "latitude"
+    t.integer "year", default: 2021
     t.boolean "download", default: true
     t.boolean "private", default: false
     t.boolean "active", default: true
@@ -161,7 +161,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_155926) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "likes_count", default: 0
-    t.integer "comments_count", default: 0
     t.integer "impressions_count"
     t.index ["user_id"], name: "index_photos_on_user_id"
   end

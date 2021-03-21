@@ -10,5 +10,5 @@ class Like < ApplicationRecord
   counter_culture :likable
 
   # Scopes
-  scope :default_order, -> { order(created_at: :asc) }
+  scope :default_order, -> { order(created_at: :desc) }
 end

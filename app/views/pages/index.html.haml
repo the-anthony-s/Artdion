@@ -15,10 +15,10 @@
 
 
 %section{:class => "section", :"data-controller" => "infinite-scroll"}
-  %div(class="container container--media")
+  %div.container.container--media
     %div{:class => "grid--photos", :"data-target" => "infinite-scroll.entries"}
       = render @photos
 
-    %div(class="pagination-container" id="PaginationContainer")
+    %div.pagination-container#PaginationContainer
       %div{:"data-target" => "infinite-scroll.pagination"}
         != pagy_nav(@pagy)

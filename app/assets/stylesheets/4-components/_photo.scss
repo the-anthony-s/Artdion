@@ -45,28 +45,37 @@
 }
 
 .photoCard-info {
-  display: block;
-  position: relative;
-}
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .05s var(--ease-in),
+              visibility .05s var(--ease-in),
+              background .05s var(--ease-in);
 
-.photoCard-info__container {
-  margin-top: 12px;
-  padding: 0 var(--space-container);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-
-  @include bp(sm) {
-    padding: 0;
+  @include bp(md) {
+    
   }
 }
 
-.photoCard-grid {
-  display: grid;
-  gap: 8px;
-  margin-top: auto;
-  grid-template-columns: minmax(0,-webkit-min-content) auto;
-  grid-template-columns: minmax(0,min-content) auto;
+.photoCard:hover .photoCard-info {
+  opacity: 1;
+  visibility: visible;
+  background: rgba(0,0,0,.55);
+}
+
+.photoCard-info__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  width: 100%;
+  padding: 12px;
 }
 
 .photoCard-user {
@@ -86,25 +95,25 @@
 }
 
 .photoCard-link--name {
-  color: var(--color-contrast-higher);
-  font-size: var(--font-size-body);
+  color: var(--color-white);
+  font-size: var(--font-size-small);
   font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-body);
+  line-height: 1;
 
   &:hover {
-    color: var(--color-contrast-higher);
+    color: var(--color-white);
     text-decoration: none;
   }
 }
 
 .photoCard-link--user {
-  color: var(--color-contrast-medium);
-  font-size: var(--font-size-small);
+  color: var(--color-white-darker);
+  font-size: var(--font-size-minor);
   font-weight: var(--font-weight-default);
-  line-height: var(--line-height-small);
+  line-height: 1;
 
   &:hover {
-    color: var(--color-contrast-higher);
+    color: var(--color-white);
     text-decoration: none;
   }
 }
@@ -159,7 +168,9 @@
 .photoNav-container {
   height: var(--nav-height);
   width: 100%;
-  max-width: 100%;
+  max-width: var(--container-width-default);
+  padding-right: var(--space-nav-padding);
+  padding-left: var(--space-nav-padding);
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -178,11 +189,19 @@
   flex: none;
   display: flex;
   position: relative;
+  padding-left: 12px;
+}
+
+.photoNav-options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: -4px;
 }
 
-.photoNav-action {
+.photoNav-option {
   padding: 4px;
+  flex: 0;
 }
 
 // Photo Description and Details
@@ -191,35 +210,33 @@
   padding: 20px 0 0;
 }
 
-.photoAbout-container {
-  width: 100%;
+.photoAbout-heading__share {
+  padding-top: 12px;
+  display: block;
+  position: relative;
+}
 
-  // @include bp(sm) {
-  //   max-width: 700px;
-  // }
+.photoAbout-shareOptions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: -6px;
+
+  & > li {
+    padding: 6px;
+  }
 }
 
 .photoAbout-description {
-  padding-top: 16px;
+  padding-top: 36px;
   display: block;
   position: relative;
 }
 
 .photoAbout-details {
-  padding-top: 20px;
+  padding-top: 36px;
   position: relative;
-  display: grid;
-  grid-gap: var(--space-container);
-  grid-template-columns: repeat(2, 1fr);
-
-  @include bp(sm) {
-    padding-top: 30px;
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @include bp(lg) {
-    grid-template-columns: repeat(6,1fr);
-  }
 }
 
 .photoAbout-detail {

@@ -14,7 +14,9 @@
   border-radius: var(--radius-default);
   border: 1px solid var(--color-contrast-higher);
   background: var(--color-contrast-higher);
-  transition: background 10s var(--ease-in-out);
+  transition: background .2s var(--ease-in),
+              color .2s var(--ease-in),
+              border-color .2s var(--ease-in);
   user-select: none;
   appearance: none;
   cursor: pointer;
@@ -108,10 +110,9 @@
 
 .btnAction {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 32px;
-  padding: 0 11px;
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-medium);
   line-height: 30px;
@@ -119,22 +120,64 @@
   user-select: none;
   text-decoration: none;
   text-transform: none;
-  border: 1px solid var(--color-contrast-medium);
-  border-radius: var(--radius-default);
+  outline-style: none;
+  // border-radius: var(--radius-rounded);
   background: var(--color-bg);
   color: var(--color-contrast-medium);
   box-shadow: 0 1px 1px var(--btnAction-shadow);
   cursor: pointer;
   appearance: none;
+  transition: background .2s var(--ease-in),
+              color .2s var(--ease-in),
+              border-color .2s var(--ease-in);
 
   &:hover {
     color: var(--color-contrast-higher);
-    border-color: var(--color-contrast-higher);
+  }
+
+  &:hover .btnAction-icon,
+  &:active .btnAction-icon,
+  &:focus .btnAction-icon {
+    background: var(--color-contrast-lower);
   }
 }
 
-.btnAction-icon + .btnAction-text {
-  margin-left: 8px;
+.btnAction-icon {
+  font-size: var(--font-size-large);
+  height: 36px;
+  width: 36px;
+  border-radius: var(--radius-rounded);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: transparent;
+  transition: background .2s var(--ease-in),
+              color .2s var(--ease-in),
+              border-color .2s var(--ease-in),
+              opacity .2s var(--ease-in);
+}
+
+.btnAction-icon + .btnAction-content {
+  margin-left: 4px;
+}
+
+
+// Like actions button
+.btnAction--liked,
+.btnAction--like {
+
+  & .btnAction-icon {
+    color: var(--color-red);
+    background: transparent;
+  }
+
+  &:hover .btnAction-icon,
+  &:active .btnAction-icon,
+  &:focus .btnAction-icon {
+    color: var(--color-red);
+    background: var(--color-red-lighter);
+  }
 }
 
 

@@ -28,9 +28,10 @@ class UsersController < ApplicationController
   end
 
   def likes
+    # .order('likes.created_at DESC')
     @pagy, @photos = pagy Photo.where(
-      id: Like.where(likable_type: 'Photo', user_id: @user.id).pluck(:likable_id)
-    ).default_order.includes([:user]).all
+      id: Like.where(likable_type: 'Photo', user_id: @user.id).order(created_at: :desc).pluck(:likable_id)
+    ).includes([:user])
 
     respond_to do |format|
       format.html

@@ -16,8 +16,8 @@
           = active_link_to "Topics", tags_path, title: 'Topics', class: "nav-link"
         %li(class="nav-menu__item")
           = active_link_to t('nav.link.collection'), categories_path, title: t('nav.link.collection'), class: "nav-link"
-        %li(class="nav-menu__item")
-          = active_link_to "Talks", talks_path, title: t('nav.link.talks'), class: "nav-link"
+        -# %li(class="nav-menu__item")
+        -#   = active_link_to t('nav.link.talks'), talks_path, title: t('nav.link.talks'), class: "nav-link"
 
       %div(class="nav-account")
 
@@ -29,12 +29,12 @@
 
         - if user_signed_in?
           -# NOTIFICATIONS
-          %div(class="nav-account__notification dropdown-item" data-behavior="notifications")
-            = button_tag(class: 'nav-action nav-action--notifications dropdown-trigger', 'data-behavior': "notifications-link") do
-              = icon "fal", "bell"
-              %span(class="nav-action__counter" data-behavior="unread-count")
-            %div(class="nav-dropdown dropdown" tabindex="-1")
-              %div(data-behavior="notification-group" class="notification-group")
+          -# %div(class="nav-account__notification dropdown-item" data-behavior="notifications")
+          -#   = button_tag(class: 'nav-action nav-action--notifications dropdown-trigger', 'data-behavior': "notifications-link") do
+          -#     = icon "fal", "bell"
+          -#     %span(class="nav-action__counter" data-behavior="unread-count")
+          -#   %div(class="nav-dropdown dropdown" tabindex="-1")
+          -#     %div(data-behavior="notification-group" class="notification-group")
           
           -# USER PROFILE
           %div(class="nav-account__profile dropdown-item")

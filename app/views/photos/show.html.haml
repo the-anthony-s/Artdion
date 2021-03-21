@@ -4,57 +4,49 @@
       %div(class="photoUser-left")
       %div(class="photoUser-right")
 
-%section(class="photoView" id="Photo#{@photo.id}")
+%section(class="photoView")
   %div(class="photoView-container")
     %div(class="photoView-media")
       = photo(@photo)
 
-%section(class="photoNav")
-  %div(class="container")
-    %div(class="photoNav-container")
-      %div(class="photoNav-left")
-        = render partial: 'users/shared/user-mini', locals: { user: @photo.user }
-      %div(class="photoNav-right") 
-        %div(class="photoNav-action")
-          = button_tag class: 'btnAction' do
-            = icon "fas", "user-plus"
-        %div(class="photoNav-action")
-          = button_tag class: 'btnAction' do
-            = icon "fas", "heart"
-        %div(class="photoNav-action")
-          = button_tag class: 'btnAction' do
-            = icon "fas", "share"
-        %div(class="photoNav-action")
-          = button_tag class: 'btnAction' do
-            %span(class="btnAction-icon")= icon "fas", "download"
-            %span(class="btnAction-text") Download
-        %div(class="photoNav-action")
-          -# = button_tag class: 'btnAction' do
-          -#   Buy
+
+%section.photoNav
+  %div.photoNav-container
+    %div.photoNav-left
+      = render partial: 'users/shared/user-mini', locals: { user: @photo.user }
+    %div.photoNav-right
+      %div.photoNav-options
+        %div.photoNav-option(id="Photo#{@photo.id}")
+          = render partial: 'photos/likes', locals: { photo: @photo }
+        %div.photoNav-option
           = link_to @photo.talk, title: @photo.talk.name, class: 'btnAction' do
-            %span= icon "far", "envelope"
-            %span= @photo.talk.comments_count
+            %span.btnAction-icon= icon 'fad', 'comments-alt'
+            %span.btnAction-content= formatted_number(@photo.talk.comments_count)
 
-%section(class="photoAbout")
-  %div(class="container")
-    %div(class="photoAbout-container")
-      %div(class="photoAbout-name")
-        %h1(class="text text--h3")= @photo.name
-      %div(class="photoAbout-description")
-        = simple_format(@photo.description, class: 'text text-paragraph text--small')
-      
-      %div(class="photoAbout-details")
-        %div(class="photoAbout-detail")
-          %p(class="text text--body text-color-secondary fw-medium") Date
-          %p(class="text text--body fw-medium") 2020
-        
-        %div(class="photoAbout-detail")
-          %p(class="text text--body text-color-secondary fw-medium") Size
-          %p(class="text text--body fw-medium") 2000 cm x 4500 cm
+%section.photoAbout
+  %div.container.container--tight
+    %div.photoAbout-heading.text-center
+      %div.photoAbout-heading__heading
+        %h1.text.text--h2= @photo.name
+      %div.photoAbout-heading__share
+        %ul.photoAbout-shareOptions
+          %li Share
+          %li —
+          %li Twitter
+          %li Facebook
+          %li VK
+          %li Copy link
 
-        %div(class="photoAbout-detail")
-          %p(class="text text--body text-color-secondary fw-medium") Location
-          %p(class="text text--body fw-medium")= @photo.location
+    %div.photoAbout-description
+      %p.text.text--body.text-paragraph Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam corporis quasi fugit ipsam saepe velit minus nostrum vero dignissimos! Omnis ducimus veritatis blanditiis officia atque placeat illo cupiditate cum animi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolorem excepturi molestiae enim ea cum quasi architecto sed ipsa at, doloribus, ullam odit laudantium impedit vel iste sunt qui recusandae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta blanditiis iste provident exercitationem tenetur ipsam officia sapiente repellat necessitatibus dolore? Optio tenetur suscipit at obcaecati dolorum porro nostrum provident dicta? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti impedit, voluptatum fugit iure iste architecto, eligendi aspernatur recusandae odio ullam natus commodi! Nemo quos soluta magnam, facilis sit ipsa eum!
+      %p.text.text--body.text-paragraph Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam corporis quasi fugit ipsam saepe velit minus nostrum vero dignissimos! Omnis ducimus veritatis blanditiis officia atque placeat illo cupiditate cum animi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolorem excepturi molestiae enim ea cum quasi architecto sed ipsa at, doloribus, ullam odit laudantium impedit vel iste sunt qui recusandae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta blanditiis iste provident exercitationem tenetur ipsam officia sapiente repellat necessitatibus dolore? Optio tenetur suscipit at obcaecati dolorum porro nostrum provident dicta? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti impedit, voluptatum fugit iure iste architecto, eligendi aspernatur recusandae odio ullam natus commodi! Nemo quos soluta magnam, facilis sit ipsa eum!
+
+    %ul.photoAbout-details
+      %li location
+      %li size
+      %li year
+      %li created at
+
 
 - if @related.any?
   %section(class="photoRelated")
@@ -64,6 +56,7 @@
     %div(class="container")
       %div(class="grid--photosRelated")
         = render partial: 'photos/photo', collection: @related, locals: { show_info: false }
+
 
 - if @tags.any?
   %section(class="photoTags")

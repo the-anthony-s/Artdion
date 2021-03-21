@@ -1,0 +1,11 @@
+- if user_signed_in?
+  - if current_user.likes?(photo)
+    = link_to photo_like_path(photo), method: :delete, remote: true, class: "btnAction btnAction--liked" do
+      %span.btnAction-icon= icon "fas", "heart"
+  - else
+    = link_to photo_like_path(photo), method: :post, remote: true, class: "btnAction btnAction--like" do
+      %span.btnAction-icon= icon "fal", "heart"
+
+- else
+  = link_to new_user_session_path, class: "btnAction btnAction--like" do
+    %span.btnAction-icon= icon "fal", "heart"

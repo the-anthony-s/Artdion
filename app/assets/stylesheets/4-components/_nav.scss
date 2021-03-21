@@ -1,8 +1,9 @@
 .nav {
-  position: sticky;
-  top: 0;
-  right: 0;
-  left: 0;
+  position: relative;
+  // position: sticky;
+  // top: 0;
+  // right: 0;
+  // left: 0;
   width: 100%;
   max-width: 100%;
   border-bottom: 1px solid var(--color-border-default);
@@ -16,20 +17,13 @@
   max-width: var(--container-width-default);
   margin-right: auto;
   margin-left: auto;
-  // padding-left: var(--space-page-padding);
-  // padding-right: var(--space-page-padding);
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: relative;
   display: flex;
-  padding-right: 12px;
-  padding-left: 12px;
-
-  @include bp(sm) {
-    padding-right: 24px;
-    padding-left: 24px;
-  }
+  padding-right: var(--space-nav-padding);
+  padding-left: var(--space-nav-padding);
 }
 
 .nav-left,
