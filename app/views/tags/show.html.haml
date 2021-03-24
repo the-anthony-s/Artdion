@@ -3,8 +3,6 @@
 .intro
   .container
     %h1= @tag.name
-    %div(id="Tag#{@tag.id}")
-      = render partial: "tags/follows", locals: { tag: @tag }
 
 %section{:class => "section", :"data-controller" => "infinite-scroll"}
   %div(class="container container--media")

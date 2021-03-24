@@ -1,4 +1,4 @@
-- @categories = Category.default_order.all
+- @categories = Category.includes([:translations]).default_order.all
 
 %div.filter-subnav
   %ul.filter-categories

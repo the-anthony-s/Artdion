@@ -70,6 +70,7 @@
                     = f.input :website, required: false, autofocus: false, label: t('user.settings.edit.form.label.website')
                     = f.input :language, label: t('user.settings.edit.form.label.language'), selected: 1 do
                       = f.select :language, Language.is_active.all.map { |r| [r.name_native, r.iso_639_1, { class: r.id }] }, include_blank: t('user.settings.edit.form.select.language_default')
+                    = f.input :tag_list, input_html: { value: f.object.tag_list.join(',') }
                   %div(class="form-row form-row--grid")
                     = f.input :about, required: false, autofocus: false, label: t('user.settings.edit.form.label.about')
               

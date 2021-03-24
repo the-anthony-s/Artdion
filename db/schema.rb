@@ -152,7 +152,6 @@ ActiveRecord::Schema.define(version: 2021_03_19_155926) do
     t.string "location"
     t.float "longitude"
     t.float "latitude"
-    t.integer "year", default: 2021
     t.boolean "download", default: true
     t.boolean "private", default: false
     t.boolean "active", default: true

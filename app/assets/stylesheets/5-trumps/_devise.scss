@@ -185,7 +185,7 @@
 }
 
 .auth-form__submit {
-  color: var(--color-white);
+  color: var(--color-contrast-lower);
   font-size: var(--font-size-large);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-large);
@@ -195,11 +195,11 @@
   text-align: center;
   display: inline-block;
   box-shadow: none;
-  border: 1px solid var(--color-accent);
+  border: 1px solid var(--color-contrast-higher);
   border-radius: var(--radius-default);
   padding: 12px 12px;
   width: 100%;
-  background: var(--color-accent);
+  background: var(--color-contrast-higher);
   user-select: none;
   appearance: none;
   cursor: pointer;
@@ -210,9 +210,11 @@
               border-color .1s var(--ease-in),
               color .1s var(--ease-in);
 
-  &:hover {
-    background: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
+  &:hover,
+  &:active {
+    color: var(--color-white);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
   }
 
   @include bp(sm) {

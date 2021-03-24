@@ -59,7 +59,7 @@ module Users
         :current_password, :image, :location, :website,
         :about, :instagram, :twitter, :message, :language,
         :email_announcements, :email_notifications, :email_recommendations,
-        :email_tips, :email_updates
+        :email_tips, :email_updates, :tag_list
       )
     end
 

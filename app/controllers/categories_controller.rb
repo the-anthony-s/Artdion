@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
     impressionist(@category)
 
     # @pagy, @photos = pagy @category.photos.default_order.includes([:user]).all
-    @pagy, @photos = pagy Photo.includes([:user]).tagged_with(@category.tags, any: true)
+    @pagy, @photos = pagy Photo.includes([:user]).tagged_with(@category.categories, any: true)
 
     respond_to do |format|
       format.html

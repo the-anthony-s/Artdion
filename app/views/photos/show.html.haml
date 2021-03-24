@@ -1,14 +1,7 @@
-%section(class="photoUser")
-  %div(class="container")
-    %div(class="photoUser-container")
-      %div(class="photoUser-left")
-      %div(class="photoUser-right")
-
 %section(class="photoView")
   %div(class="photoView-container")
     %div(class="photoView-media")
       = photo(@photo)
-
 
 %section.photoNav
   %div.photoNav-container
@@ -38,14 +31,21 @@
           %li Copy link
 
     %div.photoAbout-description
-      %p.text.text--body.text-paragraph Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam corporis quasi fugit ipsam saepe velit minus nostrum vero dignissimos! Omnis ducimus veritatis blanditiis officia atque placeat illo cupiditate cum animi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolorem excepturi molestiae enim ea cum quasi architecto sed ipsa at, doloribus, ullam odit laudantium impedit vel iste sunt qui recusandae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta blanditiis iste provident exercitationem tenetur ipsam officia sapiente repellat necessitatibus dolore? Optio tenetur suscipit at obcaecati dolorum porro nostrum provident dicta? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti impedit, voluptatum fugit iure iste architecto, eligendi aspernatur recusandae odio ullam natus commodi! Nemo quos soluta magnam, facilis sit ipsa eum!
-      %p.text.text--body.text-paragraph Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam corporis quasi fugit ipsam saepe velit minus nostrum vero dignissimos! Omnis ducimus veritatis blanditiis officia atque placeat illo cupiditate cum animi. Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore dolorem excepturi molestiae enim ea cum quasi architecto sed ipsa at, doloribus, ullam odit laudantium impedit vel iste sunt qui recusandae? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dicta blanditiis iste provident exercitationem tenetur ipsam officia sapiente repellat necessitatibus dolore? Optio tenetur suscipit at obcaecati dolorum porro nostrum provident dicta? Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti impedit, voluptatum fugit iure iste architecto, eligendi aspernatur recusandae odio ullam natus commodi! Nemo quos soluta magnam, facilis sit ipsa eum!
+      = simple_format(@photo.description, class: 'text text--body text-paragraph')
 
     %ul.photoAbout-details
-      %li location
-      %li size
-      %li year
-      %li created at
+      %li.photoAbout-detail
+        %span.photoAbout-detail_icon= icon 'far', 'map-marker-alt'
+        = link_to @photo.location, "/s?utf8=✓&q=#{@photo.location.downcase}", class: 'link'
+      %li.photoAbout-detail
+        %span.photoAbout-detail_icon= icon 'far', 'ruler-combined'
+        77 cm × 53 cm (30 in × 21 in)
+      %li.photoAbout-detail
+        %span.photoAbout-detail_icon= icon 'far', 'calendar-day'
+        1506
+      %li.photoAbout-detail
+        %span.photoAbout-detail_icon= icon 'far', 'list'
+        = @photo.created_at.strftime("%B, %Y")
 
 
 - if @related.any?
@@ -65,4 +65,6 @@
         %h4(class="text text--large fw-medium") Related tags
     %div(class="container")
       %div(class="tags")
-        = render partial: 'tags/tag', collection: @tags
+        - tag_cloud(@tags, {}) do |tag|
+          %div.tag-container
+            = link_to tag.name, "/s?utf8=✓&q=#{tag.name.downcase}", class: 'tag', title: tag.name

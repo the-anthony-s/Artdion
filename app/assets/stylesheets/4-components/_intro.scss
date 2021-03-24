@@ -26,6 +26,11 @@
 
 .intro-heading__subheading {
   margin-top: 16px;
+  max-width: var(--container-width-tight);
+}
+
+.intro-heading.text-center > .intro-heading__subheading {
+  margin: 16px auto 0 !important;
 }
 
 .intro-action-group {
@@ -39,6 +44,6 @@
   padding: 12px;
 }
 
-.text-center > .intro-action-group {
+.intro-heading.text-center > .intro-action-group {
   justify-content: center;
 }

@@ -1,4 +1,6 @@
 module CategoriesHelper
+  include ActsAsTaggableOn::TagsHelper
+
   def category_cover(photo)
     image_tag(
       photo.image_url(:S100),

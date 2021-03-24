@@ -1,12 +1,15 @@
-%section(class="intro")
-  %div(class="container")
-    %div(class="intro-heading")
-      %div(class="intro-heading__heading")
-        %h1(class="text text--h2")= t('type.index.heading')
-      %div(class="intro-heading__subheading")
-        %h2(class="text text--large")= t('type.index.subheading', photos_count: t('type.index.photos_count', count: 23), users_count: t('type.index.users_count', count: 100))
+= render partial: 'shared/filters-subnav'
 
-%section(class="section")
-  %div(class="container")
-    %div(class="grid grid--types")
+%section.intro
+  %div.container
+    %div.intro-container
+      %div.intro-heading
+        %div.intro-heading__heading
+          %h1.text.text--h2= t('type.index.heading')
+        %div.intro-heading__subheading
+          %h2.text.text--large= t('type.index.subheading', photos_count: t('type.index.photos_count', count: 23), users_count: t('type.index.users_count', count: 100))
+
+%section.section
+  %div.container
+    %div.grid.grid--types
       = render partial: 'categories/category', collection: @categories

@@ -1,4 +1,7 @@
 module PhotosHelper
+  # Act As Taggable gem -> Tag clouds
+  include ActsAsTaggableOn::TagsHelper
+
   def photo(photo, _type = :default)
     # src - low-quality media
     # data-src - original media
@@ -20,7 +23,8 @@ module PhotosHelper
           class: 'lazyload photo',
           alt: photo.alt_text || "#{photo.name} by #{name(photo.user)} (#{username(photo.user)})",
           'data-src': photo.image_url,
-          'data-sizes': 'auto'
+          'data-sizes': 'auto',
+          itemprop: 'thumbnailUrl'
         )
       end
     end
@@ -39,7 +43,7 @@ module PhotosHelper
       tag_options: {
         'data-sizes': 'auto',
         alt: photo.alt_text || "#{photo.name} by #{name(photo.user)} (#{username(photo.user)})",
-        class: 'lazyload photo'
+        class: 'lazyload photo',
         # src: 'low-quality-media'
       }
     )

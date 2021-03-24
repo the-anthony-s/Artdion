@@ -22,9 +22,7 @@ Rails.application.routes.draw do
   get '/terms', to: 'legal#terms'
 
   ## Topics -> Tags pages
-  resources :tags, path: 'topics', only: %i[index show] do
-    resource :follow, module: :tags
-  end
+  resources :tags, path: 'topics', only: %i[index show]
 
   # Comments
   resources :comments do
@@ -32,9 +30,7 @@ Rails.application.routes.draw do
   end
 
   # Categories
-  resources :categories, path: 'gallery', only: %i[index show] do
-    resource :follow, module: :categories
-  end
+  resources :categories, path: 'gallery', only: %i[index show]
 
   # Talks
   resources :talks, path: 'talks' do

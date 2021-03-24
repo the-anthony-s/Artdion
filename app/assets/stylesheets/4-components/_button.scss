@@ -59,16 +59,16 @@
 }
 
 .btn--accent {
-  color: var(--color-white);
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-contrast-lower);
+  background: var(--color-contrast-higher);
+  border-color: var(--color-contrast-higher);
 
   &:hover,
   &:focus,
   &:active {
     color: var(--color-white);
-    background: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
   }
 }
 
@@ -109,13 +109,12 @@
 }
 
 .btnAction {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: var(--font-size-small);
   font-weight: var(--font-weight-medium);
-  line-height: 30px;
   fill: currentColor;
   user-select: none;
   text-decoration: none;
@@ -144,8 +143,8 @@
 
 .btnAction-icon {
   font-size: var(--font-size-large);
-  height: 36px;
-  width: 36px;
+  height: 40px;
+  width: 40px;
   border-radius: var(--radius-rounded);
   display: flex;
   align-items: center;
@@ -178,6 +177,18 @@
     color: var(--color-red);
     background: var(--color-red-lighter);
   }
+}
+
+// Email
+.btnAction--email .btnAction-icon {
+  color: var(--color-accent);
+  background: var(--color-accent-ligher);
+}
+
+.btnAction--email:hover .btnAction-icon,
+.btnAction--email:active .btnAction-icon {
+  color: var(--color-accent);
+  background: var(--color-accent-ligher);
 }
 
 

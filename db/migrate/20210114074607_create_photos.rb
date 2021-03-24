@@ -9,7 +9,6 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
       t.string :location
       t.float :longitude
       t.float :latitude
-      t.integer :year, default: Time.current.year
       t.boolean :download, default: true
       t.boolean :private, default: false
       t.boolean :active, default: true

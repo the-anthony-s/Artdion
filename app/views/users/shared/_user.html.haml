@@ -13,7 +13,7 @@
               %div(class="user-body__action")
                 = link_to edit_user_registration_path, class: 'btnAction' do
                   %span(class="btnAction-icon")= icon 'fas', 'pen'
-                  %span(class="btnAction-text")= t('user.profile.action.edit')
+                  %span(class="btnAction-content")= t('user.profile.action.edit')
             
             - if user_signed_in? && (current_user != user)
               %div(class="user-body__action" id="User#{user.id}")
@@ -21,8 +21,8 @@
             
             - if user_signed_in? && (current_user != user) && user.message?
               %div(class="user-body__action")
-                = link_to user, class: 'btnAction' do
-                  = icon 'fas', 'envelope'
+                = link_to user, class: 'btnAction btnAction--email' do
+                  %span.btnAction-icon= icon 'fas', 'envelope'
 
         - if user.about?
           %div(class="user-body__about")

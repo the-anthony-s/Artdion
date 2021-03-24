@@ -1,3 +1,2 @@
-%div(class="tag-container")
-  = link_to tag.name, "/s?utf8=✓&q=#{tag.name.downcase}", class: 'tag'
-  -# = link_to tag.name, tag_path(tag), class: 'tag'
+%div.tag-container
+  = link_to tag.name, "/s?utf8=✓&q=#{tag.name.downcase}", class: 'tag', title: tag.name

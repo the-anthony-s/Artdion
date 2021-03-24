@@ -351,16 +351,16 @@
 }
 
 .nav-btn--signup {
-  color: var(--color-white);
-  background: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-contrast-lower);
+  background: var(--color-contrast-higher);
+  border-color: var(--color-contrast-higher);
 
   &:hover,
   &:active,
   &:focus {
     color: var(--color-white);
-    background: var(--color-accent-dark);
-    border-color: var(--color-accent-dark);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
   }
 }
 

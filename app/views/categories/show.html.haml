@@ -1,18 +1,19 @@
-%section(class="intro")
-  %div(class="container")
-    %div(class="intro-heading")
-      %div(class="intro-heading__heading")
-        %h1(class="text text--h2")= @category.name
-      %div(class="intro-heading__subheading")
-        %h2(class="text text--large")= @category.description
-      %div(id="Category#{@category.id}")
-        = render partial: "categories/follows", locals: { category: @category }
+= render partial: 'shared/filters-subnav'
+
+%section.intro
+  %div.container
+    %div.intro-container
+      %div.intro-heading
+        %div.intro-heading__heading
+          %h1.text.text--h2= @category.name
+        %div.intro-heading__subheading
+          %h2.text.text--large= @category.description
 
 %div{:class => "section", :"data-controller" => "infinite-scroll"}
-  %div(class="container container--media")
+  %div.container.container--media
     %div{:class => "grid grid--photos", :"data-target" => "infinite-scroll.entries"}
       = render partial: 'photos/photo', collection: @photos
     
-    %div(class="pagination-container" id="PaginationContainer")
+    %div.pagination-container#PaginationContainer
       %div{:"data-target" => "infinite-scroll.pagination"}
         != pagy_nav(@pagy)

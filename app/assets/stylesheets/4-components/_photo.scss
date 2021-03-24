@@ -156,7 +156,7 @@
   width: 100%;
 
   @include bp(sm) {
-    max-width: calc((100vh - ((var(--nav-height) * 2) + (20px * 2))) * var(--aspect-ratio));
+    max-width: calc((100vh - ((var(--nav-height) * 2) + (20px * 3))) * var(--aspect-ratio));
   }
 }
 
@@ -237,11 +237,14 @@
 .photoAbout-details {
   padding-top: 36px;
   position: relative;
+  list-style: none;
 }
 
 .photoAbout-detail {
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 // photo related

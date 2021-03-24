@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: languages
+#
+#  id             :bigint           not null, primary key
+#  common         :boolean          default(FALSE)
+#  iso_639_1      :string
+#  iso_639_2b     :string
+#  iso_639_2t     :string
+#  iso_639_3      :string
+#  language_scope :integer          default(1)
+#  language_type  :integer          default(1)
+#  name           :string
+#  name_native    :string
+#  pause          :boolean          default(TRUE)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
 class Language < ApplicationRecord
   scope :is_active, -> { where(pause: false) }
 
