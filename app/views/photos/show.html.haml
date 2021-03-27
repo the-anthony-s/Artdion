@@ -48,14 +48,14 @@
         = @photo.created_at.strftime("%B, %Y")
 
 
-- if @related.any?
+- if @photos.any?
   %section(class="photoRelated")
     %div(class="photoHeading")
       %div(class="container")
         %h4(class="text text--large fw-medium") Related photos
     %div(class="container")
       %div(class="grid--photosRelated")
-        = render partial: 'photos/photo', collection: @related, locals: { show_info: false }
+        = render partial: 'photos/photo', collection: @photos, locals: { show_info: false }
 
 
 - if @tags.any?

@@ -1,13 +1,27 @@
+:root {
+  --nav-shadow: rgba(0,0,0,.1);
+}
+
+body {
+  @media (prefers-color-scheme: dark) {
+    --nav-shadow: rgba(255,255,255,.1);
+  }
+}
+
 .nav {
-  position: relative;
-  // position: sticky;
-  // top: 0;
-  // right: 0;
-  // left: 0;
+  // position: relative;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
   width: 100%;
   max-width: 100%;
-  border-bottom: 1px solid var(--color-border-default);
+  transition: box-shadow .15s var(--ease-in-out);
   z-index: var(--zindex-nav);
+}
+
+.nav.nav--scrolled {
+  box-shadow: 0px 8px 8px -8px var(--nav-shadow);
 }
 
 .nav-container {
@@ -22,8 +36,8 @@
   align-items: center;
   position: relative;
   display: flex;
-  padding-right: var(--space-nav-padding);
-  padding-left: var(--space-nav-padding);
+  padding-right: var(--space-page-padding);
+  padding-left: var(--space-page-padding);
 }
 
 .nav-left,
@@ -92,7 +106,7 @@
   line-height: var(--line-height-body);
   width: 100%;
   height: calc(var(--nav-height) / 1.4);
-  background: var(--color-contrast-low);
+  background: var(--color-contrast-lower);
   border-radius: var(--radius-default);
   position: relative;
   z-index: var(--zindex-nav-search);
@@ -170,11 +184,11 @@
   flex-grow: 1;
   background: none;
   border: none;
-  border-left: 2px solid var(--color-contrast-higher);
   color: var(--color-contrast-higher);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-minor);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-body);
+  line-height: var(--line-height-minor);
+  text-transform: uppercase;
   height: 100%;
   padding: 5px 16px;
   appearance: none;
@@ -218,13 +232,19 @@
   text-align: center;
   position: relative;
   color: var(--color-contrast-medium);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-minor);
   font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-body);
+  line-height: var(--line-height-minor);
+  text-transform: uppercase;
 
-  &:hover,
+  &:hover {
+    color: var(--color-contrast-higher);
+    text-decoration: none;
+  }
+
   &.active {
     color: var(--color-contrast-higher);
+    text-decoration: underline;
   }
 }
 
@@ -326,10 +346,11 @@
   background: transparent;
   border: 1px solid var(--color-contrast-medium);
   border-radius: var(--radius-default);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-minor);
+  line-height: var(--line-height-minor);
   font-weight: var(--font-weight-default);
   text-decoration: none;
-  text-transform: none;
+  text-transform: uppercase;
   padding: 4px 12px;
   display: flex;
   white-space: pre;

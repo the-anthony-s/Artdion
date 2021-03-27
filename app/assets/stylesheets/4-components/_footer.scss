@@ -1,0 +1,13 @@
+.footer {
+  position: relative;
+}
+
+.footer-container {
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  @include bp(sm) {
+    padding-top: 76px;
+    padding-bottom: 40px;
+  }
+}

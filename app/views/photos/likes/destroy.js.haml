@@ -1,1 +1,2 @@
 $("#Photo#{@likable.id}").html("#{j render partial: "photos/likes", locals: {photo: @likable}}");
+$("#PhotoCard#{@likable.id}").html("#{j render partial: "photos/card-likes", locals: {photo: @likable}}");

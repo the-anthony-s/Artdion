@@ -28,8 +28,8 @@ module Art
 
     config.imgix = {
       use_https: true,
-      source: 'artdion.imgix.net',
-      secure_url_token: 'gtVrV6dParFc9stC'
+      source: Rails.application.credentials[:imgix][:source],
+      secure_url_tocken: Rails.application.credentials[:imgix][:secure_url_tocken]
     }
 
     # Change default locale structure

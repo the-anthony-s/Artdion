@@ -10,21 +10,17 @@ class PhotosController < ApplicationController
     # Count views
     impressionist(@photo)
 
-    @related = Photo.default_order.includes([:user]).where.not(
+    @photos = Photo.default_order.includes([:user]).where.not(
       id: @photo.id
     ).tagged_with(
       @photo.tags, any: true
     ).take(20)
 
-    if @related.any?
-      @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
-        taggings: {
-          taggable_type: 'Photo', taggable_id: @related.pluck(:id)
-        }
-      ).take(30).uniq
-    else
-      @tags = @photo.tags.all
-    end
+    @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
+      taggings: {
+        taggable_type: 'Photo', taggable_id: @photos.pluck(:id)
+      }
+    ).take(20).uniq
   end
 
   private
@@ -34,6 +30,7 @@ class PhotosController < ApplicationController
   end
 
   def convert_search
+    # TODO: convert search only from Search controller
     return if request.referer.blank?
 
     referer = CGI.parse(request.referer)['q'][0]

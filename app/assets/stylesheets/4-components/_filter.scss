@@ -4,13 +4,16 @@
 .filter-subnav {
   position: relative;
   display: block;
-  border-bottom: 1px solid var(--color-border-default);
-  padding-right: 12px;
-  padding-left: 12px;
+  width: 100%;
+  max-width: var(--container-width-default);
+  margin: 0 auto;
+  background: var(--color-bg);
+  padding-right: var(--space-page-padding);
+  padding-left: var(--space-page-padding);
 
   @include bp(sm) {
-    padding-right: 24px;
-    padding-left: 24px;
+    padding-right: var(--space-page-padding);
+    padding-left: var(--space-page-padding);
   }
 }
 
@@ -43,11 +46,12 @@
 
 .filter-categories .category a {
   color: var(--color-contrast-medium);
-  font-size: var(--font-size-body);
+  font-size: var(--font-size-minor);
   font-weight: var(--font-weight-medium);
-  position: relative;
-  text-transform: none;
+  line-height: var(--line-height-minor);
+  text-transform: uppercase;
   text-decoration: none;
+  position: relative;
   height: 100%;
   display: flex;
   align-items: center;
@@ -56,6 +60,6 @@
 
   &.active {
     color: var(--color-contrast-higher);
-    text-decoration: none;
+    text-decoration: underline;
   }
 }

@@ -1,0 +1,8 @@
+%footer#GlobalFooter.footer
+  %div.container
+    %div.footer-container
+      %p.text.text--body
+        - if user_signed_in?
+          See the world through art, #{first_name(current_user)}.
+        - else
+          See the world through art.

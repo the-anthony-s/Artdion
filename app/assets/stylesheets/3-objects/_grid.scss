@@ -37,7 +37,7 @@
   }
 
   @include bp(sm) {
-    margin: -5px;
+    margin: -12px;
   }
 }
 
@@ -47,7 +47,7 @@
 
   @include bp(sm) {
     width: 50%;
-    padding: 5px;
+    padding: 12px;
   }
 
   @include bp(md) {
@@ -56,6 +56,14 @@
 
   @include bp(lg) {
     width: 25%;
+  }
+}
+
+.grid--photos .col + .col {
+  margin-top: 38px;
+
+  @include bp(sm) {
+    margin-top: 0;
   }
 }
 
@@ -70,7 +78,7 @@
   padding: 6px;
 
   @include bp(sm) {
-    padding: 5px;
+    padding: 12px;
   }
 
   @include bp(md) {

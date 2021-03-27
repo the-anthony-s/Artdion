@@ -22,6 +22,108 @@
 //--------------------
 // PHOTO CARD
 //--------------------
+// .photoCard {
+//   position: relative;
+//   display: block;
+// }
+
+// .photoCard-media {
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   // flex: 1;
+
+//   & > img {
+//     width: 100%;
+//     max-width: 100%;
+//     background: var(--color-contrast-lower);
+//     object-fit: contain;
+//     display: block;
+//     height: auto;
+//   }
+// }
+
+// .photoCard-info {
+//   position: relative;
+//   display: block;
+
+//   @include bp(md) {
+//     pointer-events: none;
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     opacity: 0;
+//     visibility: hidden;
+//     transition: opacity .05s var(--ease-in),
+//                 visibility .05s var(--ease-in),
+//                 background .05s var(--ease-in);
+//   }
+// }
+
+// .photoCard:hover .photoCard-info {
+//   @include bp(md) {
+//     opacity: 1;
+//     visibility: visible;
+//     background: rgba(0,0,0,.55);
+//   }
+// }
+
+// .photoCard-info__container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: flex-end;
+//   height: 100%;
+//   width: 100%;
+//   padding: 12px;
+// }
+
+// .photoCard-user {
+//   pointer-events: auto;
+//   position: relative;
+//   display: inline-block;
+//   min-width: 0;
+//   max-width: 100%;
+// }
+
+// .photoCard-link {
+//   text-transform: none;
+//   text-decoration: none;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
+
+// .photoCard-link--user {
+//   color: var(--color-contrast-higher);
+//   font-size: var(--font-size-small);
+//   font-weight: var(--font-weight-medium);
+//   line-height: 1;
+
+//   &:hover {
+//     color: var(--color-contrast-higher);
+//     text-decoration: none;
+//   }
+
+//   @include bp(md) {
+//     color: var(--color-white);
+
+//     &:hover {
+//       color: var(--color-white);
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
 .photoCard {
   position: relative;
   display: block;
@@ -29,22 +131,18 @@
 
 .photoCard-media {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  // flex: 1;
+  display: block;
 
   & > img {
+    height: auto;
     width: 100%;
     max-width: 100%;
-    background: var(--color-contrast-lower);
-    object-fit: contain;
+    object-fit: container;
     display: block;
-    height: auto;
   }
 }
 
-.photoCard-info {
+.photoCard-details {
   pointer-events: none;
   position: absolute;
   width: 100%;
@@ -54,68 +152,127 @@
   right: 0;
   opacity: 0;
   visibility: hidden;
-  transition: opacity .05s var(--ease-in),
-              visibility .05s var(--ease-in),
-              background .05s var(--ease-in);
+}
 
-  @include bp(md) {
-    
+.photoCard-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1;
+
+  @include bp(sm) {
+    display: block;
   }
 }
 
-.photoCard:hover .photoCard-info {
-  opacity: 1;
-  visibility: visible;
-  background: rgba(0,0,0,.55);
-}
+.photoCard-top {
+  display: grid;
+  padding: 12px 12px;
+  position: relative;
+  z-index: 2;
 
-.photoCard-info__container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  height: 100%;
-  width: 100%;
-  padding: 12px;
+  @include bp(sm) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .photoCard-user {
   pointer-events: auto;
+  display: flex;
+  align-items: center;
+}
+
+.photoCard-user__avatar {
+  height: 32px;
+  width: 32px;
   position: relative;
-  display: inline-block;
-  min-width: 0;
-  max-width: 100%;
 }
 
-.photoCard-link {
-  text-transform: none;
-  text-decoration: none;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.photoCard-user__body {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-left: 8px;
 }
 
-.photoCard-link--name {
-  color: var(--color-white);
+.photoCard-user__name {
+  color: var(--color-contrast-higher);
   font-size: var(--font-size-small);
-  font-weight: var(--font-weight-bold);
   line-height: 1;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  text-transform: none;
 
-  &:hover {
+  @include bp(sm) {
     color: var(--color-white);
-    text-decoration: none;
   }
 }
 
-.photoCard-link--user {
-  color: var(--color-white-darker);
-  font-size: var(--font-size-minor);
-  font-weight: var(--font-weight-default);
-  line-height: 1;
+.photoCard-bottom {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto minmax(0, -webkit-max-content);
+  grid-template-columns: auto minmax(0, max-content);
+  grid-template-areas: "left right";
+  padding: 12px 12px;
+  position: relative;
+  pointer-events: none;
+  z-index: 2;
 
-  &:hover {
-    color: var(--color-white);
-    text-decoration: none;
+  @include bp(sm) {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
   }
+}
+
+.photoCard-buttons {
+  display: grid;
+  gap: 8px;
+  grid-area: left;
+  justify-self: start;
+  grid-auto-flow: column;
+  pointer-events: auto;
+}
+
+.photoCard-ad {
+  align-self: flex-end;
+  pointer-events: auto;
+  grid-area: right;
+}
+
+// photo card hover effects
+.photoCard-top,
+.photoCard-bottom,
+.photoCard-overlay {
+  transition: background-image .1s var(--ease-in-out),
+              opacity  .1s var(--ease-in-out),
+              visibility .1s var(--ease-in-out);
+}
+
+.photoCard:hover .photoCard-overlay,
+.photoCard:focus .photoCard-overlay {
+  background-image: linear-gradient(180deg,rgba(0,0,0,.34) 0,rgba(0,0,0,.338) 3.5%,rgba(0,0,0,.324) 7%,rgba(0,0,0,.306) 10.35%,rgba(0,0,0,.285) 13.85%,rgba(0,0,0,.262) 17.35%,rgba(0,0,0,.237) 20.85%,rgba(0,0,0,.213) 24.35%,rgba(0,0,0,.188) 27.85%,rgba(0,0,0,.165) 31.35%,rgba(0,0,0,.144) 34.85%,rgba(0,0,0,.126) 38.35%,rgba(0,0,0,.112) 41.85%,rgba(0,0,0,.103) 45.35%,rgba(0,0,0,.1) 48.85%,rgba(0,0,0,.103) 52.35%,rgba(0,0,0,.112) 55.85%,rgba(0,0,0,.126) 59.35%,rgba(0,0,0,.144) 62.85%,rgba(0,0,0,.165) 66.35%,rgba(0,0,0,.188) 69.85%,rgba(0,0,0,.213) 73.35%,rgba(0,0,0,.237) 76.85%,rgba(0,0,0,.262) 80.35%,rgba(0,0,0,.285) 83.85%,rgba(0,0,0,.306) 87.35%,rgba(0,0,0,.324) 90.85%,rgba(0,0,0,.338) 94.35%,rgba(0,0,0,.347) 97.85%,rgba(0,0,0,.35));
+}
+
+.photoCard:hover .photoCard-top,
+.photoCard:focus .photoCard-top,
+.photoCard:hover .photoCard-bottom,
+.photoCard:focus .photoCard-bottom {
+  opacity: 1;
+  visibility: visible;
 }
 
 

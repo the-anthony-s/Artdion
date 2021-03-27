@@ -13,9 +13,5 @@
 
     = content_tag :div, class: "app-body", id: "AppContainer" do
       = yield
-
-      .container(style="padding-top: 40px;")
-        - if user_signed_in?
-          %p See the world through art, #{first_name(current_user)}.
-        - else
-          %p See the world through art.
+    
+    = render partial: 'shared/footer'

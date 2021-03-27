@@ -1,4 +1,4 @@
-= render partial: 'shared/filters-subnav'
+= content_for :filters_subnav, true
 
 - unless user_signed_in?
   %div.intro.intro--centered

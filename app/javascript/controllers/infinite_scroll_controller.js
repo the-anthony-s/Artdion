@@ -43,11 +43,6 @@ export default class extends Controller {
       success: (data) => {
         this.entriesTarget.insertAdjacentHTML('beforeend', data.entries);
         this.paginationTarget.innerHTML = data.pagination;
-        // new LazyLoad({
-        //   elements_selector: ".lazy",
-        //   cancel_on_exit: true,
-        //   use_native: false
-        // });
         new Masonry('.grid--photos', {
           itemSelector: '.col',
           percentPosition: true,

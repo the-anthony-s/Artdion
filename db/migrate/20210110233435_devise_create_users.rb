@@ -15,7 +15,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.string :instagram
       t.string :twitter
       t.string :language
-      t.string :timezone
       t.text :about
       t.string :location
       t.float :longitude
