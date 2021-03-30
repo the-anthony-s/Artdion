@@ -4,6 +4,7 @@
 #
 #  id                :bigint           not null, primary key
 #  active            :boolean          default(TRUE)
+#  ancestry          :string
 #  description       :text
 #  followers_count   :integer          default(0)
 #  impressions_count :integer
@@ -11,6 +12,10 @@
 #  users_count       :integer          default(0)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#
+# Indexes
+#
+#  index_categories_on_ancestry  (ancestry)
 #
 class Category < ApplicationRecord
   translates :name, :description
@@ -32,4 +37,8 @@ class Category < ApplicationRecord
   #####################################
   # Tags
   acts_as_taggable_on :categories
+
+  #####################################
+  # Ancestry
+  has_ancestry
 end

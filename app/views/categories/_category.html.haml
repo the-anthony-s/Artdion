@@ -6,8 +6,9 @@
     %div(class="category-heading")
       %div(class="category-heading__heading")
         %p(class="text text--h4")= category.name
-      %div(class="category-heading__subheading")
-        %p(class="text text--body")= category.description.truncate(128)
+      - if category.description?
+        %div(class="category-heading__subheading")
+          %p(class="text text--body")= category.description.truncate(128)
       %p(class="text text--body fw-medium category-heading__stats")
         %span(class="text-color-secondary")= icon "far", "image-polaroid"
         -# %span #{formatted_number(category.photos_count)} #{t('category.photos', count: category.photos_count)}

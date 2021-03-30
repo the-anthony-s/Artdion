@@ -60,7 +60,3 @@
     %div(class="nav-mobile dropdown-item")
       = button_tag(class: 'nav-toggle dropdown-trigger') do
         = icon "far", "bars"
-
-
-  - if content_for?(:filters_subnav)
-    = render partial: 'shared/filters-subnav'

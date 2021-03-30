@@ -36,6 +36,7 @@
 #  reset_password_token   :string
 #  sign_in_count          :integer          default(0), not null
 #  slug                   :string
+#  timezone               :string
 #  twitter                :string
 #  unconfirmed_email      :string
 #  username               :string

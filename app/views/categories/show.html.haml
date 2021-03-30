@@ -6,8 +6,15 @@
       %div.intro-heading
         %div.intro-heading__heading
           %h1.text.text--h2= @category.name
-        %div.intro-heading__subheading
-          %h2.text.text--large= @category.description
+        - if @category.description?
+          %div.intro-heading__subheading
+            %h2.text.text--large= @category.description
+        - if @category.has_children?
+          - @category.children.each do |child|
+            %p= link_to child.name, child
+      %div.intro-tags
+        %ul.tags
+          = render partial: "tags/tag", collection: @category.categories
 
 %div{:class => "section", :"data-controller" => "infinite-scroll"}
   %div.container.container--media

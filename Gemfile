@@ -64,6 +64,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'active_link_to'
 gem 'activerecord-typedstore'
 gem 'acts-as-taggable-on', '~> 7.0'
+gem 'ancestry'
 gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', '~> 1.14'
 gem 'counter_culture'
@@ -90,7 +91,6 @@ gem 'simple_form'
 gem 'sucker_punch'
 gem 'typhoeus'
 gem 'uppy-s3_multipart', '>= 0.3.2'
-# gem 'ancestry'
 
 # Subscription options
 # gem 'pay', '~> 2.0'

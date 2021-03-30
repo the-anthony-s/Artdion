@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_19_155926) do
+ActiveRecord::Schema.define(version: 2021_03_30_143923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(version: 2021_03_19_155926) do
     t.integer "users_count", default: 0
     t.integer "impressions_count"
     t.integer "followers_count", default: 0
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
   end
 
   create_table "category_translations", force: :cascade do |t|

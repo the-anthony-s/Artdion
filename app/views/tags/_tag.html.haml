@@ -1,2 +1,2 @@
 %div.tag-container
-  = link_to tag.name, "/s?utf8=✓&q=#{tag.name.downcase}", class: 'tag', title: tag.name
+  = link_to tag.name.capitalize, "/s?utf8=✓&q=#{tag.name.downcase}", class: 'tag', title: tag.name
