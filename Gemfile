@@ -90,3 +90,8 @@ gem 'simple_form'
 gem 'sucker_punch'
 gem 'typhoeus'
 gem 'uppy-s3_multipart', '>= 0.3.2'
+# gem 'ancestry'
+
+# Subscription options
+# gem 'pay', '~> 2.0'
+# gem 'paddle_pay', '~> 0.1'

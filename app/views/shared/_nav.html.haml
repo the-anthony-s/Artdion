@@ -40,7 +40,7 @@
           %div(class="nav-account__profile dropdown-item")
             = button_tag(class: 'nav-action dropdown-trigger') do
               %span(class="avatar")
-                = avatar(current_user, url_params: {w: 32, h: 32, auto: 'format', fit: 'crop', crop: 'faces', bg: 'fff', fm: 'webp'}, tag_options: {class: 'lazyload', alt: "Avatar of user #{name(current_user)}"})
+                = avatar(current_user, type: :small)
             %div(class="nav-dropdown dropdown" tabindex="-1")
               %ul(class="dropdown-links")
                 %li(class="dropdown-links__item")

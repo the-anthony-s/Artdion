@@ -36,31 +36,48 @@ module UsersHelper
   end
 
   # Return User's avatar
-  def avatar(user, options = {})
-    if user.image_data? && !user.deleted_at?
-      opt = {
-        url_params: {
-          w: 150, h: 150, auto: 'format',
-          fit: 'crop', crop: 'faces', bg: 'fff',
-          fm: 'webp'
-        },
-        attribute_options: {
-          src: 'data-src', srcset: 'data-srcset', sizes: 'data-sizes'
-        },
-        tag_options: {
-          class: 'lazyload',
-          role: 'presentation',
-          alt: "Avatar of user #{name(user)}"
-        }
-      }.merge(options)
-
-      content_tag(:div, class: 'avatar') do
-        ix_image_tag URI(user.image_url).path, opt
-      end
-    else
-      content_tag(:div, class: 'avatar') do
-        image_tag(asset_path('avatar.jpg'), class: 'lazyload')
+  def avatar(user, _type = :default)
+    content_tag(:div, class: 'avatar') do
+      if Rails.env.production?
+        if _type = :small
+          small_avatar(user)
+        else
+          default_avatar(user)
+        end
+      else
+        image_tag(
+          user.image_url(:S100),
+          class: 'lazyload avatar--media',
+          alt: "Picture of #{name(user)}",
+          'data-src': user.image_url,
+          'data-sizes': 'auto',
+          itemprop: 'thumbnailUrl'
+        )
       end
     end
+  end
+
+  # Avatar helper
+  def default_avatar(user)
+    ix_image_tag(
+      user.image_url,
+      url_params: { w: 150, h: 150, q: 60, fit: 'crop', crop: 'faces', bg: 'fff', auto: 'format' },
+      tag_options: {
+        alt: "Picture of #{name(user)}",
+        class: 'lazyload avatar--media'
+      }
+    )
+  end
+
+  # Small avatar helper
+  def small_avatar(user)
+    ix_image_tag(
+      user.image_url,
+      url_params: { w: 32, h: 32, q: 60, fit: 'crop', crop: 'faces', bg: 'fff', auto: 'format' },
+      tag_options: {
+        alt: "Picture of #{name(user)}",
+        class: 'lazyload avatar--media'
+      }
+    )
   end
 end

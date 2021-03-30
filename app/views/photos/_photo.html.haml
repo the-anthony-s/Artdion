@@ -13,7 +13,7 @@
     %div.photoCard-top
       %div.photoCard-user
         = link_to photo.user, class: 'photoCard-user__avatar' do
-          = avatar(photo.user)
+          = avatar(photo.user, type: :small)
         %div.photoCard-user__body
           %span.photoCard-user__name= name(photo.user)
     

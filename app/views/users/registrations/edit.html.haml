@@ -49,9 +49,7 @@
                   %div(class="form-row")
                     %div(style="positon: relative;")
                       = f.label :image, 'Upload your file'
-                      = image_tag current_user.image_url, 'data-src': current_user.image_url, class: "lazy file-upload-preview photo-upload__view__photo", id: "NewPhoto"
-                      = f.file_field :image, accept: ImageUploader::ALLOWED_TYPES.join(","), data: { upload_server: upload_server, preview_element: "NewPhoto", upload_result_element: "photo-image-upload-result" }
-                      = f.hidden_field :image, value: current_user.cached_image_data, id: "photo-image-upload-result"
+                      = f.file_field :image
 
                   %div(class="form-row form-row--grid")
                     = f.input :first_name, required: true, autofocus: false, label: t('user.settings.edit.form.label.first_name')
