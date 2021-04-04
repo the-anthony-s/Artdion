@@ -29,6 +29,19 @@
             %p Sponsored
 
 
+- unless user_signed_in?
+  %section.section
+    %div.container
+      %h2.text.text--h2 Creative tools, inspiration, and a place for you to be you.
+      %div.grid.grid--1-3
+        %div.col
+          %p Create - Photo and video tools for creators, by creators.
+        %div.col
+          %p Discover - A place to discover new perspectives and share your own.
+        %div.col
+          %p Connect - Freedom from follower counts, comments, and ads.
+
+
 %section{:class => "section", :"data-controller" => "infinite-scroll"}
   %div.container.container--media
     %div{:class => "grid--photos", :"data-target" => "infinite-scroll.entries"}

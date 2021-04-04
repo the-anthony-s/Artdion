@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   # Add a comment summarizing the current schema
   gem 'annotate'
+  # track rails performace
+  gem 'rails_performance'
 end
 
 group :development do
