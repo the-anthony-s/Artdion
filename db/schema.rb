@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_30_143923) do
+ActiveRecord::Schema.define(version: 2021_03_31_180934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,18 +25,8 @@ ActiveRecord::Schema.define(version: 2021_03_30_143923) do
     t.integer "impressions_count"
     t.integer "followers_count", default: 0
     t.string "ancestry"
+    t.integer "children_count", default: 0
     t.index ["ancestry"], name: "index_categories_on_ancestry"
-  end
-
-  create_table "category_translations", force: :cascade do |t|
-    t.bigint "category_id", null: false
-    t.string "locale", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "name"
-    t.text "description"
-    t.index ["category_id"], name: "index_category_translations_on_category_id"
-    t.index ["locale"], name: "index_category_translations_on_locale"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -235,7 +225,6 @@ ActiveRecord::Schema.define(version: 2021_03_30_143923) do
     t.string "instagram"
     t.string "twitter"
     t.string "language"
-    t.string "timezone"
     t.text "about"
     t.string "location"
     t.float "longitude"

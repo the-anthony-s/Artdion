@@ -10,11 +10,7 @@ class PhotosController < ApplicationController
     # Count views
     impressionist(@photo)
 
-    @photos = Photo.default_order.includes([:user]).where.not(
-      id: @photo.id
-    ).tagged_with(
-      @photo.tags, any: true
-    ).take(20)
+    @photos = @photo.find_related_tags.includes([:user]).take(20)
 
     @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
       taggings: {

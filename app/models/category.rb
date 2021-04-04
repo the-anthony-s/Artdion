@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  active            :boolean          default(TRUE)
 #  ancestry          :string
+#  children_count    :integer          default(0)
 #  description       :text
 #  followers_count   :integer          default(0)
 #  impressions_count :integer
@@ -18,8 +19,6 @@
 #  index_categories_on_ancestry  (ancestry)
 #
 class Category < ApplicationRecord
-  translates :name, :description
-
   #####################################
   # Relationships
   has_many :followers, as: :follower, dependent: :delete_all, class_name: 'Follow'
@@ -40,5 +39,11 @@ class Category < ApplicationRecord
 
   #####################################
   # Ancestry
-  has_ancestry
+  has_ancestry counter_cache: true
+
+  #####################################
+  # Returns first photo
+  def first_photo
+    Photo.tagged_with(categories, any: true).first
+  end
 end

@@ -9,24 +9,26 @@
     
     %div.photoCard-overlay
     
-    
-    %div.photoCard-top
-      %div.photoCard-user
-        = link_to photo.user, class: 'photoCard-user__avatar' do
-          = avatar(photo.user, type: :small)
-        %div.photoCard-user__body
-          %span.photoCard-user__name= name(photo.user)
+    - if show_info
+      %div.photoCard-top
+        = link_to photo.user, class: 'photoCard-user', rel: 'contact' do
+          %div.photoCard-user__avatar
+            = avatar(photo.user, type: :small)
+          %div.photoCard-user__body
+            %span.photoCard-user__name= name(photo.user)
     
     = link_to photo, class: 'photoCard-media', title: "#{photo.name}" do
       = photo(photo, type = :card)
-
-    %div.photoCard-bottom
-      %div.photoCard-buttons
-        %span(id="PhotoCard#{photo.id}")
-          = render partial: 'photos/card-likes', locals: { photo: photo }, cached: true
-        %span btn
-      %div.photoCard-ad
-        sponsored
+    
+    - if show_info 
+      %div.photoCard-bottom
+        %div.photoCard-buttons
+          %span(id="PhotoCard#{photo.id}")
+            = render partial: 'photos/card-likes', locals: { photo: photo }, cached: true
+          -# %span btn
+        - if photo.on_sale
+          %div.photoCard-ad
+            For sale
 
 
 

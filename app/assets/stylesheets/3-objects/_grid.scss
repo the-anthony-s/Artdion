@@ -53,10 +53,6 @@
   @include bp(md) {
     width: 33.33333%;
   }
-
-  @include bp(lg) {
-    width: 25%;
-  }
 }
 
 .grid--photos .col + .col {
@@ -70,7 +66,11 @@
 .grid--photosRelated {
   position: relative;
   display: block;
-  margin: -6px;  
+  margin: -6px;
+  
+  @include bp(sm) {
+    margin: -12px;
+  } 
 }
 
 .grid--photosRelated .col {
@@ -83,10 +83,6 @@
 
   @include bp(md) {
     width: 33.33333%;
-  }
-
-  @include bp(lg) {
-    width: 25%;
   }
 }
 

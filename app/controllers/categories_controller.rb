@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: :show
 
   def index
-    @categories = Category.includes([:translations]).roots.default_order.all
+    @categories = Category.includes(%i[categories category_taggings]).roots.default_order.all
   end
 
   def show

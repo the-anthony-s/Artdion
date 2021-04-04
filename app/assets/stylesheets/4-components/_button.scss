@@ -1,219 +1,155 @@
+:root {
+  --btn-shadow: rgba(0,0,0,.05);
+  --btn-card-background: rgba(255,255,255,.85);
+  --btn-card-background-hover: rgba(255,255,255,1);
+}
+
+@supports(--css: variables) {
+  body {
+    @media (prefers-color-scheme: dark) {
+      --btn-shadow: rgba(255,255,255,.05);
+      --btn-card-background: rgba(0,0,0,.85);
+      --btn-card-background-hover: rgba(0,0,0,1);
+    }
+  }
+}
+
 .btn {
-	color: var(--color-contrast-lower);
-  font-size: var(--font-size-body);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: none;
-  line-height: var(--line-height-body);
-  text-decoration: none;
-  text-transform: none;
-  text-align: center;
   display: inline-block;
-  padding: var(--space-2) var(--space-2);
-  width: auto;
-  min-width: 140px;
+  border: 1px solid transparent;
   border-radius: var(--radius-default);
-  border: 1px solid var(--color-contrast-higher);
-  background: var(--color-contrast-higher);
-  transition: background .2s var(--ease-in),
-              color .2s var(--ease-in),
-              border-color .2s var(--ease-in);
+  box-shadow: 0 1px 1px var(--btn-shadow);
+  transition: all .1s var(--ease-in-out);
+  text-align: center;
   user-select: none;
-  appearance: none;
-  cursor: pointer;
-  white-space: nowrap;
-  touch-action: manipulation;
   fill: currentColor;
-  outline: none;
+  text-decoration: none;
+}
 
-  &:hover, 
-  &:focus,
-  &:active, 
-  &:focus-within {
-    color: var(--color-contrast-lower);
-	  background: var(--color-contrast-high);
-	  border-color: var(--color-contrast-high);
-  }
+.btn-iconic {
+  display: flex;
+  align-items: center;
+}
 
-  & > span + span {
-    margin-left: var(--space-xxxs);
-  }
+.btn-iconic .btn-icon + .btn-content {
+  margin-left: 6px;
 }
 
 
 
-//-----------------
-// Colors
-//-----------------
-.btn--primary {
-  color: var(--color-white);
-  background: var(--color-primary);
-  border-color: var(--color-primary);
+//****************
+// SIZE
+//****************
+.btn--small {
+  height: 32px;
+  padding: 0 10px;
+  font-size: var(--font-size-body);
+  line-height: 30px;
+}
 
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-white);
-    background: var(--color-primary-dark);
-    border-color: var(--color-primary-dark);
+.btn--big {
+  height: 44px;
+  padding: 0 16px;
+  font-size: var(--font-size-body);
+  line-height: 42px;
+}
+
+
+
+//****************
+// COLOUR
+//****************
+.btn--contrast {
+  color: var(--color-contrast-lower);
+  background: var(--color-contrast-higher);
+
+  &:hover {
+    color: var(--color-contrast-lower);
+    background: var(--color-contrast-high);
   }
 }
 
 .btn--accent {
-  color: var(--color-contrast-lower);
-  background: var(--color-contrast-higher);
-  border-color: var(--color-contrast-higher);
+  color: var(--color-white);
+  background: var(--color-accent);
 
-  &:hover,
-  &:focus,
-  &:active {
+  &:hover {
     color: var(--color-white);
-    background: var(--color-accent);
-    border-color: var(--color-accent);
+    background: var(--color-accent-dark);
   }
 }
 
-.btn--light {
-  color: var(--color-black);
-  background: var(--color-white);
-  border-color: var(--color-white);
 
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-black);
-    background: var(--color-white-darker);
-    border-color: var(--color-white-darker);
+
+//****************
+// TYPE
+//****************
+.btn--action {
+  color: var(--color-contrast-medium);
+  border-color: var(--color-border-default);
+  background: var(--color-bg);
+
+  &:hover {
+    color: var(--color-contrast-higher);
+    border-color: var(--color-border-dark);
   }
 }
 
-.btn--delete {
+.btn--action--liked {
   color: var(--color-white);
   background: var(--color-red);
   border-color: var(--color-red);
 
-  &:hover,
-  &:focus,
-  &:active {
-   color: var(--color-white);
-  background: var(--color-red-dark);
-  border-color: var(--color-red-dark); 
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-red-dark);
+    border-color: var(--color-red-dark);
   }
 }
 
 
-//-----------------
-// ACTION BUTTON
-//-----------------
-:root {
-  --btnAction-shadow: 0 1px 1px rgb(0 0 0 / 4%); 
-}
-
-.btnAction {
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--font-size-small);
-  font-weight: var(--font-weight-medium);
-  fill: currentColor;
-  user-select: none;
-  text-decoration: none;
-  text-transform: none;
-  outline-style: none;
-  // border-radius: var(--radius-rounded);
-  background: var(--color-bg);
+// card buttons
+.btn--card {
   color: var(--color-contrast-medium);
-  box-shadow: 0 1px 1px var(--btnAction-shadow);
-  cursor: pointer;
-  appearance: none;
-  transition: background .2s var(--ease-in),
-              color .2s var(--ease-in),
-              border-color .2s var(--ease-in);
+  background: var(--btn-card-background);
+  border-color: var(--color-border-default);
+
+  @include bp(sm) {
+    border-color: transparent;
+  }
 
   &:hover {
     color: var(--color-contrast-higher);
-  }
+    background: var(--btn-card-background-hover);
+    border-color: var(--color-border-dark);
 
-  &:hover .btnAction-icon,
-  &:active .btnAction-icon,
-  &:focus .btnAction-icon {
-    background: var(--color-contrast-lower);
+    @include bp(sm) {
+      border-color: transparent;
+    }
   }
 }
 
-.btnAction-icon {
-  font-size: var(--font-size-large);
-  height: 40px;
-  width: 40px;
-  border-radius: var(--radius-rounded);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.btn--card--liked {
+  color: var(--color-white);
+  background: var(--color-red);
+  border-color: var(--color-red);
+
+  &:hover {
+    color: var(--color-white);
+    background: var(--color-red-dark);
+    border-color: var(--color-red-dark);
+  }
+}
+
+
+// transparent background -> url buttons
+.btn--url {
+  color: var(--color-contrast-medium);
   background: transparent;
-  transition: background .2s var(--ease-in),
-              color .2s var(--ease-in),
-              border-color .2s var(--ease-in),
-              opacity .2s var(--ease-in);
-}
+  box-shadow: none;
 
-.btnAction-icon + .btnAction-content {
-  margin-left: 4px;
-}
-
-
-// Like actions button
-.btnAction--liked,
-.btnAction--like {
-
-  & .btnAction-icon {
-    color: var(--color-red);
-    background: transparent;
-  }
-
-  &:hover .btnAction-icon,
-  &:active .btnAction-icon,
-  &:focus .btnAction-icon {
-    color: var(--color-red);
-    background: var(--color-red-lighter);
-  }
-}
-
-// Email
-.btnAction--email .btnAction-icon {
-  color: var(--color-accent);
-  background: var(--color-accent-ligher);
-}
-
-.btnAction--email:hover .btnAction-icon,
-.btnAction--email:active .btnAction-icon {
-  color: var(--color-accent);
-  background: var(--color-accent-ligher);
-}
-
-
-
-//-----------------
-// Modifications
-//-----------------
-.btn--small {
-  padding: 9px 12px;
-  min-width: auto;
-}
-
-.btn--action {
-  min-width: 0px;
-  padding: var(--space-xxs) var(--space-sm);
-}
-
-.btn--wide {
-  width: 100%;
-}
-
-.btn--responsive {
-  width: 100%;
-
-  @include bp(xs) {
-    width: auto;
+  &:hover {
+    color: var(--color-contrast-higher);
+    background: var(--color-contrast-low);
   }
 }

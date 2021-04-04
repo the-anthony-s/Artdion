@@ -1,6 +1,5 @@
 # This is a subclass of Shrine base that will be further configured for it's requirements.
 # This will be included in the model to manage the file.
-
 class ImageUploader < Shrine
   ALLOWED_TYPES  = %w[image/jpeg image/png image/webp].freeze
   MAX_SIZE       = 20 * 1024 * 1024 # 20 MB
@@ -14,7 +13,8 @@ class ImageUploader < Shrine
   plugin :pretty_location
   plugin :validation_helpers
   plugin :store_dimensions, log_subscriber: nil
-  plugin :derivation_endpoint, prefix: 'derivations/image'
+  plugin :derivation_endpoint, prefix: 'derivations/photos'
+  plugin :download_endpoint, redirect: true, prefix: 'photo', host: Rails.application.credentials[:s3][:host]
 
   # File validations (requires `validation_helpers` plugin)
   Attacher.validate do

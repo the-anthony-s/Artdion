@@ -38,20 +38,28 @@ module UsersHelper
   # Return User's avatar
   def avatar(user, _type = :default)
     content_tag(:div, class: 'avatar') do
-      if Rails.env.production?
-        if _type = :small
-          small_avatar(user)
+      if user.image_data?
+        if Rails.env.production?
+          if _type = :small
+            small_avatar(user)
+          else
+            default_avatar(user)
+          end
         else
-          default_avatar(user)
+          image_tag(
+            user.image_url(:S100),
+            class: 'lazyload avatar--media',
+            alt: "Photo of #{name(user)}",
+            'data-src': user.image_url,
+            'data-sizes': 'auto',
+            itemprop: 'thumbnailUrl'
+          )
         end
       else
         image_tag(
-          user.image_url(:S100),
-          class: 'lazyload avatar--media',
-          alt: "Picture of #{name(user)}",
-          'data-src': user.image_url,
-          'data-sizes': 'auto',
-          itemprop: 'thumbnailUrl'
+          asset_path('avatar.jpg'),
+          alt: "Photo of #{name(user)}",
+          class: 'lazyload'
         )
       end
     end
@@ -63,7 +71,7 @@ module UsersHelper
       user.image_url,
       url_params: { w: 150, h: 150, q: 60, fit: 'crop', crop: 'faces', bg: 'fff', auto: 'format' },
       tag_options: {
-        alt: "Picture of #{name(user)}",
+        alt: "Photo of #{name(user)}",
         class: 'lazyload avatar--media'
       }
     )
@@ -75,7 +83,7 @@ module UsersHelper
       user.image_url,
       url_params: { w: 32, h: 32, q: 60, fit: 'crop', crop: 'faces', bg: 'fff', auto: 'format' },
       tag_options: {
-        alt: "Picture of #{name(user)}",
+        alt: "Photo of #{name(user)}",
         class: 'lazyload avatar--media'
       }
     )

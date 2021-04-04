@@ -23,7 +23,7 @@ module Art
                              :s3
                            else
                              :s3
-                            #  :app
+                             #  :app
                            end
 
     config.imgix = {

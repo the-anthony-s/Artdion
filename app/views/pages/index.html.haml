@@ -1,17 +1,33 @@
-= content_for :filters_subnav, true
+-# - unless user_signed_in?
+-#   %div.intro.intro--centered
+-#     %div.container.container--small
+-#       %div.intro-container
+-#         %div.intro-heading.text-center
+-#           %div.intro-heading__heading
+-#             %h1.text.text--h2 World-wide online gallery.
+-#           %div.intro-heading__subheading
+-#             %p.text.text--large Learn more about the world from anywhere.
+-#           %div.intro-action-group
+-#             %div.intro-action
+-#               %p= link_to "Sign up free", new_user_registration_path, class: 'btn btn--accent'
 
-- unless user_signed_in?
-  %div.intro.intro--centered
-    %div.container.container--small
-      %div.intro-container
-        %div.intro-heading.text-center
-          %div.intro-heading__heading
-            %h1.text.text--h2 World-wide online gallery.
-          %div.intro-heading__subheading
-            %p.text.text--large Learn more about the world from anywhere.
-          %div.intro-action-group
-            %div.intro-action
-              %p= link_to "Sign up free", new_user_registration_path, class: 'btn btn--accent'
+
+-# Best photo of the day
+- @photo_of_the_day = Photo.where.not(photo_of_the_day: nil).last
+- if @photo_of_the_day
+  %div.heroWelcome
+    %div.heroWelcome-media
+      = image_tag(@photo_of_the_day.image_url)
+    %div.heroWelcome-container
+      %div.container
+        %div.heroWelcome-grid
+          %div.heroWelcome-grid__col.heroWelcome-owner
+            %p #{@photo_of_the_day.name} by #{name(@photo_of_the_day.user)}
+          %div.heroWelcome-grid__col.heroWelcome-legal
+            %p Read more about the Artdion License
+          %div.heroWelcome-grid__col.heroWelcome-ads
+            %p Sponsored
+
 
 %section{:class => "section", :"data-controller" => "infinite-scroll"}
   %div.container.container--media

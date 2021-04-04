@@ -46,7 +46,7 @@ class Photo < ApplicationRecord
 
   #####################################
   # Tags
-  acts_as_taggable_on :tags, :categories
+  acts_as_taggable_on :tags
 
   #####################################
   # Impressions -> Count views

@@ -5,16 +5,14 @@
   right: 0;
   left: 0;
   width: 100%;
-  max-width: 100%;
-  transition: box-shadow .15s var(--ease-in-out);
+  background: var(--color-bg);
   z-index: var(--zindex-nav);
 }
 
 .nav-container {
   width: 100%;
   height: var(--nav-height);
-  background: var(--color-bg);
-  max-width: var(--container-width-default);
+  // max-width: var(--container-width-default);
   margin-right: auto;
   margin-left: auto;
   flex-direction: row;
@@ -171,10 +169,10 @@
   background: none;
   border: none;
   color: var(--color-contrast-higher);
-  font-size: var(--font-size-minor);
+  font-size: var(--font-size-small);
   font-weight: var(--font-weight-medium);
-  line-height: var(--line-height-minor);
-  text-transform: uppercase;
+  line-height: var(--line-height-small);
+  text-transform: none;
   height: 100%;
   padding: 5px 16px;
   appearance: none;
@@ -218,10 +216,10 @@
   text-align: center;
   position: relative;
   color: var(--color-contrast-medium);
-  font-size: var(--font-size-minor);
+  font-size: var(--font-size-body);
   font-weight: var(--font-weight-regular);
-  line-height: var(--line-height-minor);
-  text-transform: uppercase;
+  line-height: var(--line-height-body);
+  text-transform: none;
 
   &:hover {
     color: var(--color-contrast-higher);
@@ -298,6 +296,10 @@
   }
 }
 
+.nav-account__login > .btn + .btn {
+  margin-left: 12px;
+}
+
 .nav-account__profile {
   position: relative;
   margin-left: 6px;
@@ -320,83 +322,6 @@
   & .avatar {
     height: 32px;
     width: 32px;
-  }
-}
-
-
-//-----------------
-// BUTTONS
-//-----------------
-.nav-btn {
-  color: var(--color-primary-lower);
-  background: transparent;
-  border: 1px solid var(--color-contrast-medium);
-  border-radius: var(--radius-default);
-  font-size: var(--font-size-minor);
-  line-height: var(--line-height-minor);
-  font-weight: var(--font-weight-default);
-  text-decoration: none;
-  text-transform: uppercase;
-  padding: 4px 12px;
-  display: flex;
-  white-space: pre;
-  transition: background .1s var(--ease-in),
-              border-color .1s var(--ease-in),
-              color .1s var(--ease-in);
-
-  & > span + span {
-    padding-left: 8px;
-  }
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-contrast-higher);
-    background: transparent;
-    border-color: var(--color-contrast-high);
-  }
-}
-
-.nav-btn--signup {
-  color: var(--color-contrast-lower);
-  background: var(--color-contrast-higher);
-  border-color: var(--color-contrast-higher);
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--color-white);
-    background: var(--color-accent);
-    border-color: var(--color-accent);
-  }
-}
-
-.nav-btn--login {
-  color: var(--color-contrast-higher);
-  background: transparent;
-  border-color: transparent;
-  margin-right: var(--space-sm);
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-accent);
-    background: transparent;
-    border-color: transparent;
-  }
-}
-
-.nav-btn--upload {
-  color: var(--color-contrast-medium);
-  background: var(--color-contrast-lower);
-  border-color: transparent;
-
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--color-contrast-higher);
-    background: var(--color-contrast-lower);
-    border-color: transparent;
   }
 }
 

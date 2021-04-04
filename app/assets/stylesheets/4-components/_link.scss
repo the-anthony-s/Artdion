@@ -5,7 +5,8 @@
   text-transform: inherit;
   display: inline-flex;
   align-items: center;
-  transition: color .1s var(--ease-in);
+  transition: color .1s var(--ease-in-out);
+  text-decoration-skip-ink: auto;
 
   &:hover, 
   &:focus, 

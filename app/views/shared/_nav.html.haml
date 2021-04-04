@@ -23,9 +23,7 @@
 
         -# UPLOAD BUTTON
         %div(class="nav-account__upload")
-          = active_link_to new_photo_path, title: t('nav.button.new_photo'), class: 'nav-btn nav-btn--upload' do
-            %span= icon "far", "plus"
-            %span= t('nav.button.new_photo')
+          = active_link_to t('nav.button.new_photo'), new_photo_path, title: t('nav.button.new_photo'), class: 'btn btn--small btn--action'
 
         - if user_signed_in?
           -# NOTIFICATIONS
@@ -53,8 +51,8 @@
         - else
           -# SIGN IN | SING UP -> BUTTONS
           %div(class="nav-account__login")
-            = active_link_to t('nav.button.signin'), new_user_session_path, title: t('nav.button.signin'), class: 'nav-btn nav-btn--login'
-            = active_link_to t('nav.button.signup'), new_user_registration_path, title: t('nav.button.signup'), class: 'nav-btn nav-btn--signup'
+            = active_link_to t('nav.button.signin'), new_user_session_path, title: t('nav.button.signin'), class: 'btn btn--small btn--url'
+            = active_link_to t('nav.button.signup'), new_user_registration_path, title: t('nav.button.signup'), class: 'btn btn--small btn--accent'
     
     -# MOBILE NAVIGATION
     %div(class="nav-mobile dropdown-item")

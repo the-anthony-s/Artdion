@@ -29,7 +29,7 @@ class SearchController < ApplicationController
     end
 
     if @photos.total_count != 0
-      @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
+      @tags = ActsAsTaggableOn::Tag.joins([:taggings]).where(
         taggings: {
           taggable_type: 'Photo', taggable_id: @photos.pluck(:id)
         }

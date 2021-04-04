@@ -101,4 +101,6 @@ Rails.application.routes.draw do
   end
 
   mount ImageUploader.derivation_endpoint => '/derivations/image'
+  mount ImageUploader.download_endpoint => '/photo'
+  # https://dagglo-cdn.nyc3.digitaloceanspaces.com/store/photo/4/image/
 end

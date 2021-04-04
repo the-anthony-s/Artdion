@@ -11,9 +11,9 @@
             
             - if user_signed_in? && (current_user == user)
               %div(class="user-body__action")
-                = link_to edit_user_registration_path, class: 'btnAction' do
-                  %span(class="btnAction-icon")= icon 'fas', 'pen'
-                  %span(class="btnAction-content")= t('user.profile.action.edit')
+                = link_to edit_user_registration_path, class: 'btn btn-iconic btn--action btn--small' do
+                  %span.btn-icon= icon 'fas', 'pen'
+                  %span.btn-content= t('user.profile.action.edit')
             
             - if user_signed_in? && (current_user != user)
               %div(class="user-body__action" id="User#{user.id}")

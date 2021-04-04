@@ -1,4 +1,8 @@
 %div(class="col")
+  -# - @photo = Photo.tagged_with(category.categories, any: true).includes([:category_taggings, :categories]).last
+  - if category.first_photo
+    = image_tag(category.first_photo.image_url, class: 'lazyload', cached: true)
+
   = link_to category, class: 'category' do
     %div(class="category-cover")
       -# crop photo
@@ -6,6 +10,11 @@
     %div(class="category-heading")
       %div(class="category-heading__heading")
         %p(class="text text--h4")= category.name
+        %p Items #{category.children_count}
+        %ul.tags
+          = render partial: 'tags/tag', collection: category.category_counts.take(3)
+
+
       - if category.description?
         %div(class="category-heading__subheading")
           %p(class="text text--body")= category.description.truncate(128)

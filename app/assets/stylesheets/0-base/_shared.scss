@@ -3,7 +3,8 @@
   --container-page: 100%;
   --container-wide: 1480px;
   // --container-width-default: 1920px;
-  --container-width-default: 100%;
+  // --container-width-default: 1516px;
+  --container-width-default: 1476px;
   --container-width-small: 1200px;
   --container-width-tight: 672px;
 
@@ -11,7 +12,7 @@
   --nav-height: 50px;
 
   // radius
-  --radius-default: 0px;
+  --radius-default: 3px;
   --radius-rounded: 99999px;
   --radius-sm: calc(var(--radius, 0.25em)/2);
   --radius-md: var(--radius, 0.25em);

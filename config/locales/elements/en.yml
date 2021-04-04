@@ -2,8 +2,8 @@ en:
   # PRIMARY NAVBAR
   nav:
     search:
-      title: Search gallery
-      placeholder: Search online gallery
+      title: Search the gallery
+      placeholder: Search the gallery
     link:
       home: Home
       collection: Collection

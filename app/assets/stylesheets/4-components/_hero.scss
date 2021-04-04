@@ -1,0 +1,80 @@
+//************************
+// ROOT PAGE HERO
+//************************
+.heroWelcome {
+  position: relative;
+  display: block;
+  background: var(--color-black);
+  margin-bottom: 48px;
+}
+
+.heroWelcome-media {
+  display: block;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // left: 0;
+  // bottom: 0;
+  position: relative;
+  overflow: hidden;
+  height: 50vh;
+
+  & > img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    display: block;
+    object-fit: cover;
+    background-position: center;
+  }
+}
+
+.heroWelcome-container {
+  // padding-top: 80px;
+  // padding-bottom: 64px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  position: relative;
+
+  @include bp(sm) {
+    // padding-top: 144px;
+    // padding-bottom: 152px;
+    // padding-top: 20px;
+    // padding-bottom: 20px;
+  }
+}
+
+.heroWelcome-grid {
+  display: grid;
+  grid-gap: 12px;
+
+  @include bp(sm) {
+    grid-gap: 20px;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+  }
+}
+
+.heroWelcome-grid__col > p {
+  color: var(--color-white);
+  font-size: var(--font-size-small);
+}
+
+.heroWelcome-owner {
+  text-align: left;
+}
+
+.heroWelcome-legal {
+  @include bp(sm) {
+    text-align: center;
+  }
+}
+
+.heroWelcome-ads {
+  @include bp(sm) {
+    text-align: right;
+  }
+} 

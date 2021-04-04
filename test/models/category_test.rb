@@ -5,6 +5,7 @@
 #  id                :bigint           not null, primary key
 #  active            :boolean          default(TRUE)
 #  ancestry          :string
+#  children_count    :integer          default(0)
 #  description       :text
 #  followers_count   :integer          default(0)
 #  impressions_count :integer
