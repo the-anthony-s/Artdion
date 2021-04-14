@@ -28,9 +28,24 @@
 class Photo < ApplicationRecord
   #####################################
   # Scope
-  scope :default_order, -> { order(created_at: :desc).where(private: false, active: true) }
-  scope :user_order, -> { order(created_at: :desc) }
-  scope :search_import, -> { includes(:tags, :user).where(private: false, active: true) }
+  scope :show_all, -> { order(created_at: :desc) }
+  scope :show_public, -> { order(created_at: :desc).where.not(private: false, active: true) }
+
+  scope :newest_first, lambda {
+    order(created_at: :desc).includes([:user]).where(private: false, active: true)
+  }
+
+  scope :oldest_first, lambda {
+    order(created_at: :asc).includes([:user]).where(private: false, active: true)
+  }
+
+  scope :by_tags, lambda { |photo, tags, count|
+    tagged_with(tags, any: true).includes([:user]).where.not(id: photo.id).take(count)
+  }
+
+  scope :search_import, lambda {
+    includes(:tags, :user).where(private: false, active: true)
+  }
 
   #####################################
   # References
@@ -127,7 +142,7 @@ class Photo < ApplicationRecord
       user: user,
       talkable: self,
       name: "#{name.to_s.capitalize} discussion",
-      tag_list: "#{self.class.to_s.downcase}"
+      tag_list: self.class.to_s.downcase.to_s
     )
   end
 

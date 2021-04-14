@@ -1,0 +1,9 @@
+%div.col
+  %div(class="photoCard" itemListElement="itemListElement" itemscope itemtype="http://schema.org/ListItem" id="#{dom_id(photo)}")
+    %meta{:content => "#{photo.name}", :itemprop => "name"}/
+    %meta{:content => "#{photo_counter}", :itemprop => "position"}/
+    %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
+
+    %div.photoCard-top
+      = link_to photo, class: 'photoCard-media', title: "#{photo.name}" do
+        = photo(photo, type = :card)

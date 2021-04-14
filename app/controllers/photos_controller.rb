@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :set_photo, only: %i[show edit update]
+  before_action :set_photo, only: %i[edit update]
   before_action :convert_search, only: %i[show]
 
   def index
@@ -7,16 +7,18 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @photo = Photo.includes([:user]).find(params[:id])
+
     impressionist(@photo)
 
     @tags = @photo.tags
-    @photos = Photo.tagged_with(@tags, any: true).includes([:user]).where.not(id: @photo.id).take(20)
+    @photos = Photo.by_tags(@photo, @tags, 20)
   end
 
   private
 
   def set_photo
-    @photo = Photo.includes([:user]).find(params[:id])
+    @photo = Photo.find(params[:id])
   end
 
   def convert_search

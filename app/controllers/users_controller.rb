@@ -6,9 +6,9 @@ class UsersController < ApplicationController
     impressionist(@user)
 
     if user_signed_in? && (@user == current_user)
-      @pagy, @photos = pagy @user.photos.user_order.all
+      @pagy, @photos = pagy @user.photos.show_all
     else
-      @pagy, @photos = pagy @user.photos.default_order.all
+      @pagy, @photos = pagy @user.photos.show_public
     end
 
     respond_to do |format|
@@ -32,6 +32,8 @@ class UsersController < ApplicationController
     @pagy, @photos = pagy Photo.where(
       id: Like.where(likable_type: 'Photo', user_id: @user.id).order(created_at: :desc).pluck(:likable_id)
     ).includes([:user])
+
+    @page, @photos = pagy Photo.show_liked
 
     respond_to do |format|
       format.html

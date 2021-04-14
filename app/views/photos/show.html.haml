@@ -63,11 +63,10 @@
 
 
 - if @photos.any?
-  -# Related photos
-  %section(class="photoRelated")
-    %div(class="photoHeading")
-      %div(class="container")
-        %h4(class="text text--large fw-medium") Related photos
-    %div(class="container")
-      %div(class="grid--photosRelated")
+  %section.photoRelated
+    %div.photoHeading
+      %div.container
+        %h4.text.text-size--large.text-weight--medium Related photos
+    %div.container
+      %div.grid--photosRelated
         = render partial: 'photos/photo', collection: @photos, locals: { show_bottom: false }

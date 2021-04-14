@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def index
-    @pagy, @photos = pagy(Photo.default_order.includes([:user]).all, items: 20)
+    @pagy, @photos = pagy(Photo.newest_first, items: 20)
 
     respond_to do |format|
       format.html
