@@ -20,6 +20,7 @@ import 'components/nav'
 import 'components/form'
 import 'components/notification'
 import 'components/masonry'
+import 'components/fileUpload'
 
 // Lazaysizes - lazyload for images
 import 'lazysizes'

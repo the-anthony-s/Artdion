@@ -1,41 +1,25 @@
-- show_info = true if show_info == nil || show_info != false
-- show_user = true if show_user == nil || show_user != false
+-# - show_buttons = true if show_buttons == nil || show_buttons != false
+-# - show_user = true if show_user == nil || show_user != false
+- show_bottom = true if show_bottom == nil || show_bottom != false
 
 %div.col
   %div(class="photoCard" itemListElement="itemListElement" itemscope itemtype="http://schema.org/ListItem" id="#{dom_id(photo)}")
     %meta{:content => "#{photo.name}", :itemprop => "name"}/
     %meta{:content => "#{photo_counter}", :itemprop => "position"}/
     %meta{:content => "#{photo_url(photo)}", :itemprop => "url"}/
-    
-    %div.photoCard-overlay
-    
-    - if show_info
-      %div.photoCard-top
-        = link_to photo.user, class: 'photoCard-user', rel: 'contact' do
-          %div.photoCard-user__avatar
-            = avatar(photo.user, type: :small)
-          %div.photoCard-user__body
-            %span.photoCard-user__name= name(photo.user)
-    
-    = link_to photo, class: 'photoCard-media', title: "#{photo.name}" do
-      = photo(photo, type = :card)
-    
-    - if show_info 
+
+    %div.photoCard-top
+      = link_to photo, class: 'photoCard-media', title: "#{photo.name}" do
+        = photo(photo, type = :card)
+
+    - if show_bottom
       %div.photoCard-bottom
-        %div.photoCard-buttons
-          %span(id="PhotoCard#{photo.id}")
-            = render partial: 'photos/card-likes', locals: { photo: photo }, cached: true
-          -# %span btn
-        - if photo.on_sale
-          %div.photoCard-ad
-            For sale
-
-
-
-    -# - if show_info
-    -#   %div.photoCard-info
-    -#     %div.photoCard-info__container
-    -#       - if show_user
-    -#         %div.photoCard-user
-    -#           = link_to photo.user, class: 'photoCard-link photoCard-link--user', rel: 'contact', title: name(photo.user) do
-    -#             %span.display-name= name(photo.user)
+        %div.photoCard-bottom__container
+          = link_to photo.user, rel: 'contact', class: 'photoCard-user' do
+            %div.photoCard-user__avatar
+              = avatar(photo.user, type: :card)
+            %div.photoCard-user__name
+              %p.text.text--minor= name(photo.user)
+          %div.photoCard-buttons
+            %span(id="PhotoCard#{photo.id}")
+              = render partial: 'photos/card-likes', locals: { photo: photo }, cached: true

@@ -1,0 +1,36 @@
+.badge {
+  height: 32px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-contrast-medium);
+  font-size: var(--font-size-body);
+  background: var(--color-contrast-lower);
+  box-shadow: 0 0 0 2px var(--color-bg);
+  border-radius: var(--radius-rounded);
+  text-decoration: none;
+  text-transform: none;
+  transition: color .15s var(--ease-in-out),
+              background .15s var(--ease-in-out);
+  z-index: 1;
+}
+
+.badge + .badge {
+  margin-left: 7px;
+}
+
+
+
+//**********************
+// TYPES
+//**********************
+.badge--awards {
+  color: var(--color-accent);
+  background: var(--color-accent-ligher);
+}
+
+a.badge--awards:hover {
+  color: var(--color-accent);
+  background: var(--color-accent-light);
+}

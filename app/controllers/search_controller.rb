@@ -1,16 +1,28 @@
 class SearchController < ApplicationController
   def show
     search = params[:q].present? ? params[:q] : nil
+    # location = Geocoder.search(params[:q]).first # searches location
+    # puts "\n\n\n\n\n\n\n #{location.longitude} + #{location.latitude} \n\n\n\n\n\n"
 
     @pagy, @photos = pagy_searchkick(
       Photo.pagy_search(
         search,
-        fields: ['username^10', 'default^10', 'location^9'],
+        # fields: ['username^10', 'default^10', 'location^9'],
+        fields: ['name^10', 'tag^9', 'username^8', 'location^8'],
         suggest: true,
         track: { user_id: user_signed_in? ? current_user.id : nil },
         includes: %i[user],
         match: :word_middle,
         misspellings: { below: 5 }
+        # where: {
+        #   location: {
+        #     near: {
+        #       lat: location.latitude,
+        #       lon: location.longitude
+        #     },
+        #     within: '100mi'
+        #   }
+        # }
       )
     )
 

@@ -2,7 +2,7 @@
 = render partial: 'users/shared/nav', locals: { user: @user }
 
 %div{:class => "section", :"data-controller" => "infinite-scroll"}
-  %div(class="container container--media")
+  %div(class="container")
     %div{:class => "grid grid--photos", :"data-target" => "infinite-scroll.entries"}
       -# = turbo_stream_from "photos"
       -# = turbo_frame_tag "photos" do

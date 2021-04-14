@@ -1,10 +1,10 @@
 - if user_signed_in?
   - if current_user.follows?(user)
-    = link_to user_follow_path(user), method: :delete, remote: true, class: 'btnAction btnAction--followed' do
-      %span.btnAction-icon= icon 'fas', 'user-check'
+    = link_to user_follow_path(user), method: :delete, remote: true, class: 'btn btn-iconic btn-action btn-action--followed btn-size--small', title: t('user.profile.action.followed', user: name(user)) do
+      %span.btn-icon= icon 'fas', 'user-check'
   - else
-    = link_to user_follow_path(user), method: :post, remote: true, class: 'btnAction btnAction--follow' do
-      %span.btnAction-icon= icon 'fas', 'user-plus'
+    = link_to user_follow_path(user), method: :post, remote: true, class: 'btn btn-iconic btn-action btn-action--follow btn-size--small', title: t('user.profile.action.follow', user: name(user)) do
+      %span.btn-icon= icon 'fas', 'user-plus'
 - else
-  = link_to new_user_registration_path, class: 'btnAction btnAction--follow' do
-    %span.btnAction-icon= icon 'fas', 'user-plus'
+  = link_to new_user_registration_path, class: 'btn btn-iconic btn-action btn-action--follow btn-size--small', title: t('user.profile.action.follow', user: name(user)) do
+    %span.btn-icon= icon 'fas', 'user-plus'

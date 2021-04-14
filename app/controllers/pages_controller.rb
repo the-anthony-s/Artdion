@@ -9,7 +9,8 @@ class PagesController < ApplicationController
           entries: render_to_string(
             partial: 'photos/photo',
             collection: @photos,
-            formats: [:html]
+            formats: [:html],
+            cached: true
           ),
           pagination: view_context.pagy_nav(@pagy)
         }

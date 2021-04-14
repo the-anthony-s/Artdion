@@ -4,6 +4,9 @@ en:
     profile:
       action:
         edit: Edit profile
+        follow: Follow %{user}
+        followed: Unfollow %{user}
+        email: Email %{user}
 
     banner:
       pending_confirmation_html: Your email %{email} has not been confirmed. %{change_email} or %{confirmation_resend}.
@@ -11,9 +14,7 @@ en:
       confirmation_resend: resend confirmation
     
     tabs:
-      works: 
-        one: work
-        other: works
+      gallery: Gallery 
       likes: 
         one: like
         other: likes

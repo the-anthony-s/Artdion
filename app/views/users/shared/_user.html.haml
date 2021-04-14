@@ -1,41 +1,49 @@
-%section(class="user-panel")
-  %div(class="container")
-    %div(class="user")
-      %div(class="user-avatar")
-        -# = render partial: 'users/shared/avatar', locals: { user: user }
+-# user profile partial
+
+%section.user-panel
+  %div.container
+    %div.user
+      %div.user-avatar
         = avatar(user)
-      %div(class="user-body")
-        %div(class="user-body__name")
-          %h1(class="text text--h2")= name(user)
-          %div(class="user-body__actions")
+        -# Badges for users
+        -# %div.avatar-badge
+        -#   = link_to user, class: 'badge badge--awards', title: 'Awards 2021 Nominee' do
+        -#     = icon 'fas', 'trophy'
+      %div.user-body
+        %div.user-body__name
+
+          -# User's name
+          %h1.text.text--h2= name(user)
+
+          %div.user-body__actions
             
             - if user_signed_in? && (current_user == user)
-              %div(class="user-body__action")
-                = link_to edit_user_registration_path, class: 'btn btn-iconic btn--action btn--small' do
+              %div.user-body__action
+                = link_to edit_user_registration_path, class: 'btn btn-iconic btn-action btn-size--small' do
                   %span.btn-icon= icon 'fas', 'pen'
                   %span.btn-content= t('user.profile.action.edit')
             
             - if user_signed_in? && (current_user != user)
-              %div(class="user-body__action" id="User#{user.id}")
-                = render partial: "users/follows", locals: { user: user }
-            
-            - if user_signed_in? && (current_user != user) && user.message?
-              %div(class="user-body__action")
-                = link_to user, class: 'btnAction btnAction--email' do
-                  %span.btnAction-icon= icon 'fas', 'envelope'
-
-        - if user.about?
-          %div(class="user-body__about")
-            %p(class="text text--body")= simple_format(user.about)
+              %div.user-body__action{ id: "User#{user.id}" }
+                = render partial: 'users/follows', locals: { user: user }
+              
+              %div.user-body__action
+                = mail_to user.email, class: 'btn btn-iconic btn-action btn-size--small', title: t('user.profile.action.email', user: name(user)) do
+                  %span.btn-icon= icon 'fas', 'envelope'
         
-        %div(class="user-body__details")
+        - if user.about?
+          %div.user-body__about
+            = simple_format(user.about, class: 'text text-paragraph text-size--body')
+
+        %div.user-body__details
           - if user.location?
-            %div(class="user-body__detail")
-              = link_to "/s?utf8=✓&q=#{user.location.downcase}", class: 'link link--secondary' do
-                %span= icon "fas", "map-marker-alt"
-                %span= user.location
+            %div.user-body__detail
+              = link_to "/s?utf8=✓&q=#{user.location.downcase}", class: 'link link-iconic link-color--secondary' do
+                %span.link-icon= icon 'fas', 'map-marker-alt'
+                %span.link-content= user.location
+          
           - if user.website?
-            %div(class="user-body__detail")
-              = link_to "http://#{user.website}", class: 'link link--secondary', target: :_blank, rel: "nofollow" do
-                %span= icon "fas", "link"
-                %span= user.website
+            %div.user-body__detail
+              = link_to "http://#{user.website}", class: 'link link-iconic link-color--secondary', target: :_blank, rel: 'nofollow' do
+                %span.link-icon= icon 'fas', 'link'
+                %span.link-content= user.website

@@ -92,7 +92,6 @@ gem 'shrine'
 gem 'simple_form'
 gem 'sucker_punch'
 gem 'typhoeus'
-gem 'uppy-s3_multipart', '>= 0.3.2'
 
 # Subscription options
 # gem 'pay', '~> 2.0'

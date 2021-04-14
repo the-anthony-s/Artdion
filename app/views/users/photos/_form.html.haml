@@ -1,10 +1,22 @@
 %section.section
   %div.container.container--small
+    = form_with(model: photo, local: true, html: { class: 'photoNew form' }) do |f|
+      - if photo.errors.any?
+        %ul
+          - photo.errors.full_messages.each do |message|
+            %li= message
 
-    = simple_form_for(photo, html: { class: 'photoNew form' }) do |f|
       
       %div.photoNew-view
-        = f.input :image
+        %div.photoPicker-js
+          %label.photoTarget-js
+            %div.photoPreview-js
+            = f.label :image
+            = image_tag f.object.image_url if f.object.cached_image_data
+            = f.file_field :image, value: f.object.cached_image_data
+            = f.file_field :image, class: 'photoInput', accept: ImageUploader::ALLOWED_TYPES.join(",")
+          
+          %a.disabled(data-action='remove_current_photo') remove image
         -# = f.label :image, 'Upload your file'
 
         -# = image_tag photo.image_url(:S300).to_s, 'data-src': photo.image_url, class: "lazy file-upload-preview photo-upload__view__photo", id: "NewPhoto"	    
@@ -15,10 +27,10 @@
 
       
       %div.photoNew-details
-        = f.input :name, label: "Name"
-        = f.input :description, placeholder: 'Tell everyone about your process and how you came up with this idea', label: "Description", input_html: { class: 'textarea-js' }
-        = f.input :location, label: 'Place or City'
-        = f.input :tag_list, input_html: { value: f.object.tag_list.join(',') }
+        = f.text_field :name, label: "Name"
+        = f.text_field :description, placeholder: 'Tell everyone about your process and how you came up with this idea', label: "Description", input_html: { class: 'textarea-js' }
+        = f.text_field :location, label: 'Place or City'
+        = f.text_field :tag_list, input_html: { value: f.object.tag_list.join(',') }
         = f.submit "Upload", class: 'btn btn--primary btn--wide'
 
 

@@ -4,6 +4,9 @@ ru:
     profile:
       action:
         edit: Редактировать
+        follow: Подписаться %{user}
+        followed: Отписаться %{user}
+        email: Написать %{user}
 
     banner:
       pending_confirmation_html: Ваш адрес электронной почты %{email} не подтвержден. %{change_email} или %{confirmation_resend}.
@@ -11,11 +14,7 @@ ru:
       confirmation_resend: повторно отправить подтверждение
 
     tabs:
-      works:
-        few: работы
-        many: работ
-        one: работа
-        other: работ
+      gallery: Галерея
       likes:
         few: нравятся
         many: нравятся

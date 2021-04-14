@@ -1,4 +1,4 @@
-%nav(id="GlobalNav" class="nav")
+%nav(id="GlobalNav" class="nav"){ class: content_for?(:nav_class) ? yield(:nav_class) : nil }
   %div(class="nav-container")
     %div(class="nav-left")
       = link_to root_path, class: 'nav-root' do
@@ -23,7 +23,7 @@
 
         -# UPLOAD BUTTON
         %div(class="nav-account__upload")
-          = active_link_to t('nav.button.new_photo'), new_photo_path, title: t('nav.button.new_photo'), class: 'btn btn--small btn--action'
+          = active_link_to t('nav.button.new_photo'), new_photo_path, title: t('nav.button.new_photo'), class: 'btn btn-action btn-size--small'
 
         - if user_signed_in?
           -# NOTIFICATIONS
@@ -51,8 +51,8 @@
         - else
           -# SIGN IN | SING UP -> BUTTONS
           %div(class="nav-account__login")
-            = active_link_to t('nav.button.signin'), new_user_session_path, title: t('nav.button.signin'), class: 'btn btn--small btn--url'
-            = active_link_to t('nav.button.signup'), new_user_registration_path, title: t('nav.button.signup'), class: 'btn btn--small btn--accent'
+            = active_link_to t('nav.button.signin'), new_user_session_path, title: t('nav.button.signin'), class: 'btn btn-url btn-size--small'
+            = active_link_to t('nav.button.signup'), new_user_registration_path, title: t('nav.button.signup'), class: 'btn btn-size--small btn-color--accent'
     
     -# MOBILE NAVIGATION
     %div(class="nav-mobile dropdown-item")

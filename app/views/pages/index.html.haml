@@ -1,51 +1,34 @@
--# - unless user_signed_in?
--#   %div.intro.intro--centered
--#     %div.container.container--small
--#       %div.intro-container
--#         %div.intro-heading.text-center
--#           %div.intro-heading__heading
--#             %h1.text.text--h2 World-wide online gallery.
--#           %div.intro-heading__subheading
--#             %p.text.text--large Learn more about the world from anywhere.
--#           %div.intro-action-group
--#             %div.intro-action
--#               %p= link_to "Sign up free", new_user_registration_path, class: 'btn btn--accent'
-
-
 -# Best photo of the day
-- @photo_of_the_day = Photo.where.not(photo_of_the_day: nil).last
-- if @photo_of_the_day
-  %div.heroWelcome
-    %div.heroWelcome-media
-      = image_tag(@photo_of_the_day.image_url)
-    %div.heroWelcome-container
-      %div.container
-        %div.heroWelcome-grid
-          %div.heroWelcome-grid__col.heroWelcome-owner
-            %p #{@photo_of_the_day.name} by #{name(@photo_of_the_day.user)}
-          %div.heroWelcome-grid__col.heroWelcome-legal
-            %p Read more about the Artdion License
-          %div.heroWelcome-grid__col.heroWelcome-ads
-            %p Sponsored
+- @photo_of_the_day = Photo.where.not(photo_of_the_day: nil).order(photo_of_the_day: :asc).includes(:user).last
+- if @photo_of_the_day  
+  %section.heroHome
+    %div.heroHome-cover
+      = photo_of_the_day(@photo_of_the_day)
+    %div.container.container--small
+      %div.heroHome-container
+        %div.heroHome-top
+          %div.heroHome-heading
+            %h1.text.text--h1.text-color-white Become a member
+          %div.heroHome-subheading
+            %p.text.text--large.text-color-white Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam beatae illum eos adipisci voluptatem a quaerat provident. Deleniti doloremque consectetur atque, molestiae, magni voluptatum officiis quasi delectus dolorum, enim ullam.
+          = form_tag search_path, method: :get, class: 'heroHome-search', role: 'searchh', enforce_utf8: true, autofocus: false, 'accept-charset': 'UTF-8' do
+            %button.heroHome-search__button
+            %div.heroHome-search__input(role="combobox")
+              = text_field_tag :q, params[:q], placeholder: t('nav.search.placeholder'), class: 'heroHome-search__control', type: "search", id: "searchControl", autocomplete: "off", tabindex: "1", autocapitalize: "none", spellcheck: "false", title: t('nav.search.title'), required: true, 'accept-charset': 'UTF-8'
+        %div.heroHome-bottom
+          %div.heroHome-grid
+            %div.heroHome-grid__col.heroHome-owner
+              %p.text.text--body.text-color-white #{link_to @photo_of_the_day.name, @photo_of_the_day, class: 'link link--decorated'} by #{link_to name(@photo_of_the_day.user), @photo_of_the_day.user, class: 'link link--decorated'}
+            -# %div.heroHome-grid__col.heroHome-legal
+            -#   %p Read more about the Artdion License
+            -# %div.heroHome-grid__col.heroHome-ads
+            -#   %p Sponsored
 
 
-- unless user_signed_in?
-  %section.section
-    %div.container
-      %h2.text.text--h2 Creative tools, inspiration, and a place for you to be you.
-      %div.grid.grid--1-3
-        %div.col
-          %p Create - Photo and video tools for creators, by creators.
-        %div.col
-          %p Discover - A place to discover new perspectives and share your own.
-        %div.col
-          %p Connect - Freedom from follower counts, comments, and ads.
-
-
-%section{:class => "section", :"data-controller" => "infinite-scroll"}
-  %div.container.container--media
-    %div{:class => "grid--photos", :"data-target" => "infinite-scroll.entries"}
-      = render @photos
+%section.section.section-padding-top{:"data-controller" => "infinite-scroll"}
+  %div.container
+    %div.grid--photos{:"data-target" => "infinite-scroll.entries"}
+      = render @photos, cached: true
 
     %div.pagination-container#PaginationContainer
       %div{:"data-target" => "infinite-scroll.pagination"}

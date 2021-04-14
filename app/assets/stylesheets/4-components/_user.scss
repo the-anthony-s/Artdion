@@ -19,8 +19,8 @@
 
 .user {
   width: 100%;
-  max-width: 900px;
-  // margin: 0 auto;
+  max-width: 812px;
+  margin: 0 auto;
   position: relative;
   display: block;
   
@@ -37,20 +37,14 @@
   flex: none;
   height: 120px;
   width: 120px;
-  overflow: hidden;
   margin-bottom: var(--space-2);
   position: relative;
   
   @include bp(sm) {
-    height: 180px;
-    width: 180px;
+    height: 150px;
+    width: 150px;
     margin-bottom: 0;
     margin-right: var(--space-3);
-  }
-
-  @include bp(lg) {
-    height: 200px;
-    width: 200px;
   }
 }
 
@@ -96,10 +90,8 @@
 
 .user-body__about {
   padding-top: 16px;
-
-  @include bp(sm) {
-    padding-top: 24px;
-  }
+  display: block;
+  position: relative;
 }
 
 .user-body__details {
@@ -124,33 +116,29 @@
 //------------------
 .user-tabs {
   position: sticky;
-  top: 0;
+  top: var(--nav-height);
   left: 0;
   background: var(--color-bg);
   margin-bottom: 24px;
-  border-top: 1px solid var(--color-border-default);
-  border-bottom: 1px solid var(--color-border-default);
   z-index: var(--zindex-user-tabs);
 }
 
 .user-tabs__container {
-  width: 100%;
-  margin: 0 -8px;
   display: flex;
   align-items: center;
-
-  @include bp(sm) {
-    margin: 0 -16px;
-  }
+  padding-right: var(--space-nav-padding);
+  padding-left: var(--space-nav-padding);
 }
 
 .user-tab {
   padding: 0 8px;
   height: var(--nav-height);
+  display: flex;
+  align-items: center;
   position: relative;
 
-  @include bp(sm) {
-    padding: 0 16px;
+  &:first-child {
+    margin-left: -8px;
   }
 }
 
@@ -159,19 +147,24 @@
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-medium);
   line-height: var(--line-height-body);
+  background: transparent;
+  transition: color .15s var(--ease-in-out);
+  padding: 0 11px;
+  height: 32px;
+  border-radius: var(--radius-default);
   position: relative;
   display: inline-flex;
   align-items: center;
-  height: 100%;
 
   &:hover,
   &:focus {
     color: var(--color-contrast-higher);
+    background: var(--color-contrast-lower);
   }
 
   &.active {
-    color: var(--color-accent);
-    // background: var(--color-contrast-lower);
+    color: var(--color-contrast-higher);
+    background: var(--color-contrast-lower);
   }
 }
 

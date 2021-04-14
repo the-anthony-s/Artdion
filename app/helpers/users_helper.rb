@@ -40,8 +40,8 @@ module UsersHelper
     content_tag(:div, class: 'avatar') do
       if user.image_data?
         if Rails.env.production?
-          if _type = :small
-            small_avatar(user)
+          if _type = :card
+            card_avatar(user)
           else
             default_avatar(user)
           end
@@ -78,10 +78,10 @@ module UsersHelper
   end
 
   # Small avatar helper
-  def small_avatar(user)
+  def card_avatar(user)
     ix_image_tag(
       user.image_url,
-      url_params: { w: 32, h: 32, q: 60, fit: 'crop', crop: 'faces', bg: 'fff', auto: 'format' },
+      url_params: { w: 26, h: 26, q: 60, fit: 'crop', crop: 'faces', bg: 'fff', auto: 'format' },
       tag_options: {
         alt: "Photo of #{name(user)}",
         class: 'lazyload avatar--media'

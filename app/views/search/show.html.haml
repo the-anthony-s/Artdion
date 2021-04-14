@@ -14,7 +14,8 @@
       %div(class="intro-heading__tags")
         %div(class="intro-tags")
           %div(class="intro-tags__scroll")
-            = render partial: 'tags/tag', collection: @tags
+            %ul.tags
+              = render partial: 'tags/tag', collection: @tags
 
 
 %div{:class => "section", :"data-controller" => "infinite-scroll"}

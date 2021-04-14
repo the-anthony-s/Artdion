@@ -5,17 +5,12 @@
   --space-4: 72px;
 
   // Page padding
-  --space-page-padding: 12px;
+  --space-page-padding: 3%;
 
   // Elements
-  --space-nav-padding: 12px;
+  --space-nav-padding: 3%;
 
   @include bp(sm) {
-    --space-page-padding: 24px;
-    --space-nav-padding: 24px;
-  }
-
-  @include bp(xl) {
-    --space-page-padding: 48px
+    --space-page-padding: 5%;
   }
 }

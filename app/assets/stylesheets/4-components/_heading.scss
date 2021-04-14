@@ -1,0 +1,13 @@
+.heading {
+  display: block;
+  position: relative;
+  margin-bottom: 68px;
+}
+
+.heading--centered {
+  text-align: left;
+
+  @include bp(sm) {
+    text-align: center;
+  }
+}

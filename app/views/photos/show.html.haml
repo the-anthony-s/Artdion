@@ -1,11 +1,6 @@
 %div
   
-  %section(class="photoView")
-    %div(class="photoView-container")
-      %div(class="photoView-media")
-        = photo(@photo)
-        -# = ix_image_tag(@photo.image_url)
-
+  -# User information + actions -> like button, community button
   %section.photoNav
     %div.photoNav-container
       %div.photoNav-left
@@ -13,63 +8,66 @@
       %div.photoNav-right
         %div.photoNav-options
           %div.photoNav-option
-            = link_to @photo.talk, title: @photo.talk.name, class: 'btn btn-iconic btn--action btn--small' do
-              %span.btn-icon= icon 'fas', 'comments'
+            = link_to @photo.talk, title: @photo.talk.name, class: 'btn btn-iconic btn-action btn-size--small' do
+              %span.btn-icon= icon 'far', 'comments'
               %span.btn-content= formatted_number(@photo.talk.comments_count)
           %div.photoNav-option(id="Photo#{@photo.id}")
             = render partial: 'photos/likes', locals: { photo: @photo }
 
+  -# Photo element
+  %section(class="photoView")
+    %div(class="photoView-container")
+      %div(class="photoView-media")
+        = photo(@photo)
+        -# = ix_image_tag(@photo.image_url)
+
+  -# Photo description
   %section.photoAbout
-    %div.container.container--tight
-      %div.photoAbout-heading.text-center
-        %div.photoAbout-heading__heading
-          %h1.text.text--h2= @photo.name
-        %div.photoAbout-heading__share
-          %ul.photoAbout-shareOptions
-            %li Share
-            %li —
-            %li Twitter
-            %li Facebook
-            %li VK
-            %li Copy link
-            %li= link_to "Download", @photo.image.download_url, download: @photo.image.original_filename, target: :_blank, rel: 'nofollow', title: "Download #{@photo.name}"
+    %div.photoAbout-heading
+      %div.photoAbout-heading__heading
+        %h1.text.text--h3= @photo.name
+      %div.photoAbout-heading__share
+        %ul.photoAbout-shareOptions
+          %li Share
+          %li —
+          %li Twitter
+          %li Facebook
+          %li VK
+          %li Copy link
 
-      - if @photo.description?
-        %div.photoAbout-description
-          = simple_format(@photo.description, class: 'text text--body text-paragraph')
+    - if @photo.description?
+      %div.photoAbout-description
+        = auto_link(simple_format(h(@photo.description), class: 'text text-size--small text-paragraph'), :html => { target: '_blank', class: 'link link-type--decorated', rel: "noopener noreferrer nofollow" })
 
-      %ul.photoAbout-details
-        %li.photoAbout-detail
-          %span.photoAbout-detail__icon= icon 'fas', 'map-marker-alt'
-          %span.photoAbout-detail__content= link_to @photo.location, "/s?utf8=✓&q=#{@photo.location.downcase}"
-        %li.photoAbout-detail
-          %span.photoAbout-detail__icon= icon 'fas', 'ruler-combined'
-          %span.photoAbout-detail__content 77 cm × 53 cm (30 in × 21 in)
-        %li.photoAbout-detail
-          %span.photoAbout-detail__icon= icon 'fas', 'calendar-day'
-          %span.photoAbout-detail__content 1506
-        %li.photoAbout-detail
-          %span.photoAbout-detail__icon= icon 'fas', 'list'
-          %span.photoAbout-detail__content= @photo.created_at.strftime("%B, %Y")
+    %ul.photoAbout-details
+      %li.photoAbout-detail
+        %span.photoAbout-detail__icon= icon 'fas', 'map-marker-alt'
+        %span.photoAbout-detail__content= link_to @photo.location, "/s?utf8=✓&q=#{@photo.location.downcase}"
+      %li.photoAbout-detail
+        %span.photoAbout-detail__icon= icon 'fas', 'ruler-combined'
+        %span.photoAbout-detail__content 77 cm × 53 cm (30 in × 21 in)
+      %li.photoAbout-detail
+        %span.photoAbout-detail__icon= icon 'fas', 'calendar-day'
+        %span.photoAbout-detail__content 1506
+      %li.photoAbout-detail
+        %span.photoAbout-detail__icon= icon 'fas', 'list'
+        %span.photoAbout-detail__content= @photo.created_at.strftime("%B, %Y")
+      %li.photoAbout-detail
+        %span.photoAbout-detail__icon= icon 'fas', 'cloud-download'
+        %span.photoAbout-detail__content= link_to "Download", @photo.image.download_url, download: @photo.image.original_filename, target: :_blank, rel: 'nofollow', title: "Download #{@photo.name}"
+    
+    %div.photoAbout-tags
+      %ul.tags
+        = render partial: 'tags/tag', collection: @photo.tags
+
 
 
 - if @photos.any?
+  -# Related photos
   %section(class="photoRelated")
     %div(class="photoHeading")
       %div(class="container")
         %h4(class="text text--large fw-medium") Related photos
     %div(class="container")
       %div(class="grid--photosRelated")
-        = render partial: 'photos/photo', collection: @photos, locals: { show_info: false }
-
-
-- if @tags.any?
-  %section(class="photoTags")
-    %div(class="photoHeading")
-      %div(class="container")
-        %h4(class="text text--large fw-medium") Related tags
-    %div(class="container")
-      %div(class="tags")
-        - tag_cloud(@tags, {}) do |tag|
-          %div.tag-container
-            = link_to tag.name, "/s?utf8=✓&q=#{tag.name.downcase}", class: 'tag', title: tag.name
+        = render partial: 'photos/photo', collection: @photos, locals: { show_bottom: false }

@@ -88,11 +88,14 @@ class Photo < ApplicationRecord
 
   def search_data
     {
+      # name: name,
+      # default: "#{name} #{tags.map(&:name).join(' ')} #{user.first_name} #{user.last_name} #{user.username}",
+      # location: location,
+
       name: name,
-      default: "#{name} #{tags.map(&:name).join(' ')} #{user.first_name} #{user.last_name} #{user.username}",
-      location: location,
-      username: "@#{user.username}",
+      username: user.username,
       tag: tags.map(&:name),
+      location: location,
       conversions: map_conversions
     }
   end

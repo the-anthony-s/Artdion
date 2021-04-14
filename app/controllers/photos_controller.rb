@@ -7,27 +7,23 @@ class PhotosController < ApplicationController
   end
 
   def show
-    # Count views
     impressionist(@photo)
 
-    @photos = @photo.find_related_tags.includes([:user]).take(20)
-
-    @tags = ActsAsTaggableOn::Tag.joins(:taggings).where(
-      taggings: {
-        taggable_type: 'Photo', taggable_id: @photos.pluck(:id)
-      }
-    ).take(20).uniq
+    @tags = @photo.tags
+    @photos = Photo.tagged_with(@tags, any: true).includes([:user]).where.not(id: @photo.id).take(20)
   end
 
   private
 
   def set_photo
-    @photo = Photo.find(params[:id])
+    @photo = Photo.includes([:user]).find(params[:id])
   end
 
   def convert_search
-    # TODO: convert search only from Search controller
-    return if request.referer.blank?
+    # convert search only if the referer 'search' controller
+    if request.referer.blank? || Rails.application.routes.recognize_path(request.referrer)[:controller] != 'search'
+      return
+    end
 
     referer = CGI.parse(request.referer)['q'][0]
     query_to_convert = Searchjoy::Search.where(normalized_query: referer).last

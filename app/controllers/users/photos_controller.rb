@@ -14,11 +14,17 @@ module Users
       else
         render :new, notice: 'Something went wrong'
       end
+
+      # if @photo.save
+      #   render json: { message: 'success', uploadId: @photo.id }, status: 200
+      # else
+      #   render json: { error: @photo.errors.full_messages.join(', ') }, status: 400
+      # end
     end
 
     def edit
       # redirect to 404 if the user is not the owner
-      # return redirect_to @photo if user_signed_in? && current_user.id != @photo.user_id
+      return redirect_to @photo if current_user.id != @photo.user_id
     end
 
     def update

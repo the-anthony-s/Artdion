@@ -1,13 +1,11 @@
 %section(class="user-tabs")
-  %div(class="container")
-    %div(class="user-tabs__container")
-      %div(class="user-tab")
-        = active_link_to user, class: 'user-tab-link', active: :exact do
-          %span(class="user-tab-link__icon")= icon "fas", "image"
-          %span(class="user-tab-link__name")= t('user.tabs.works', count: user.photos_count).capitalize
-          %span(class="user-tab-link__count")= formatted_number(user.photos_count)
-      %div(class="user-tab")
-        = active_link_to likes_user_path, class: 'user-tab-link', active: :exact do
-          %span(class="user-tab-link__icon")= icon "fas", "heart"
-          %span(class="user-tab-link__name")= t('user.tabs.likes', count: user.photos_likes_count).capitalize
-          %span(class="user-tab-link__count")= formatted_number(user.photos_likes_count)
+  %div(class="user-tabs__container")
+    %div(class="user-tab")
+      = active_link_to user, class: 'user-tab-link', active: :exact do
+        %span(class="user-tab-link__icon")= icon "far", "images"
+        %span(class="user-tab-link__name")= t('user.tabs.gallery')
+    %div(class="user-tab")
+      = active_link_to likes_user_path, class: 'user-tab-link', active: :exact do
+        %span(class="user-tab-link__icon")= icon "far", "heart"
+        %span(class="user-tab-link__name")= t('user.tabs.likes', count: user.photos_likes_count).capitalize
+        %span(class="user-tab-link__count")= formatted_number(user.photos_likes_count)

@@ -1,25 +1,10 @@
-:root {
-  --btn-shadow: rgba(0,0,0,.05);
-  --btn-card-background: rgba(255,255,255,.85);
-  --btn-card-background-hover: rgba(255,255,255,1);
-}
-
-@supports(--css: variables) {
-  body {
-    @media (prefers-color-scheme: dark) {
-      --btn-shadow: rgba(255,255,255,.05);
-      --btn-card-background: rgba(0,0,0,.85);
-      --btn-card-background-hover: rgba(0,0,0,1);
-    }
-  }
-}
-
 .btn {
   display: inline-block;
   border: 1px solid transparent;
   border-radius: var(--radius-default);
-  box-shadow: 0 1px 1px var(--btn-shadow);
   transition: all .1s var(--ease-in-out);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-medium);
   text-align: center;
   user-select: none;
   fill: currentColor;
@@ -29,6 +14,7 @@
 .btn-iconic {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .btn-iconic .btn-icon + .btn-content {
@@ -40,14 +26,14 @@
 //****************
 // SIZE
 //****************
-.btn--small {
+.btn-size--small {
   height: 32px;
   padding: 0 10px;
   font-size: var(--font-size-body);
   line-height: 30px;
 }
 
-.btn--big {
+.btn-size--big {
   height: 44px;
   padding: 0 16px;
   font-size: var(--font-size-body);
@@ -59,7 +45,7 @@
 //****************
 // COLOUR
 //****************
-.btn--contrast {
+.btn-color--contrast {
   color: var(--color-contrast-lower);
   background: var(--color-contrast-higher);
 
@@ -69,7 +55,7 @@
   }
 }
 
-.btn--accent {
+.btn-color--accent {
   color: var(--color-white);
   background: var(--color-accent);
 
@@ -84,66 +70,70 @@
 //****************
 // TYPE
 //****************
-.btn--action {
+.btn-action {
   color: var(--color-contrast-medium);
-  border-color: var(--color-border-default);
-  background: var(--color-bg);
+  background: var(--color-contrast-lower);
 
   &:hover {
     color: var(--color-contrast-higher);
-    border-color: var(--color-border-dark);
+    background: var(--color-contrast-low);
   }
 }
 
-.btn--action--liked {
-  color: var(--color-white);
-  background: var(--color-red);
-  border-color: var(--color-red);
+.btn-action--liked {
+  color: var(--color-red);
+  background: var(--color-red-lighter);
 
   &:hover {
-    color: var(--color-white);
-    background: var(--color-red-dark);
-    border-color: var(--color-red-dark);
+    color: var(--color-red-dark);
+    background: var(--color-red-light);
+  }
+}
+
+.btn-action--followed {
+  color: var(--color-contrast-medium);
+  background: var(--color-contrast-lower);
+
+  &:hover {
+    color: var(--color-contrast-higher);
+    background: var(--color-contrast-low);
+  }
+}
+
+.btn-action--followed {
+  color: var(--color-contrast-medium);
+  background: var(--color-contrast-lower);
+
+  &:hover {
+    color: var(--color-)
   }
 }
 
 
 // card buttons
-.btn--card {
+.btn-card {
   color: var(--color-contrast-medium);
-  background: var(--btn-card-background);
-  border-color: var(--color-border-default);
-
-  @include bp(sm) {
-    border-color: transparent;
-  }
+  font-size: var(--font-size-large);
+  line-height: 20px;
+  border: none;
 
   &:hover {
     color: var(--color-contrast-higher);
     background: var(--btn-card-background-hover);
-    border-color: var(--color-border-dark);
-
-    @include bp(sm) {
-      border-color: transparent;
-    }
   }
 }
 
-.btn--card--liked {
-  color: var(--color-white);
-  background: var(--color-red);
-  border-color: var(--color-red);
+.btn-card--liked {
+  color: var(--color-red);
 
   &:hover {
-    color: var(--color-white);
-    background: var(--color-red-dark);
-    border-color: var(--color-red-dark);
+    color: var(--color-red-dark);
   }
 }
 
 
 // transparent background -> url buttons
-.btn--url {
+.btn-url {
   color: var(--color-contrast-medium);
   background: transparent;
   box-shadow: none;
